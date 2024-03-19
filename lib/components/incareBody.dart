@@ -13,7 +13,7 @@ class incareBody extends StatelessWidget {
           var cubit = inCareHeaderCubit.get(context);
           print(cubit.currentIndex);
           return Container(
-            height: 627,
+            height: 628,
             child: ListView(
               children: [
                 cubit.contents[cubit.currentIndex],
