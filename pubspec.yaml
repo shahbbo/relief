@@ -83,6 +83,10 @@ flutter:
     - asseets/Moon.png
     - asseets/ReceiptX.png
     - asseets/Timer.png
+    - asseets/Bell.png
+    - asseets/HandHeart.png
+    - asseets/PaintBrushHousehold.png
+    - asseets/Plant.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

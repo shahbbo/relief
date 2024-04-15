@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:relief/screens/benefits.dart';
-import 'package:relief/screens/fqa.dart';
 import 'package:relief/screens/howItWorks.dart';
 import 'package:relief/screens/overview.dart';
 import 'package:relief/screens/pricing.dart';
@@ -26,7 +25,6 @@ class inCareHeaderCubit extends Cubit<headerState> {
     howItWorks(),
     benefits(),
     pricing(),
-    fqa(),
   ];
 
 // void changeContent ({required int index}){

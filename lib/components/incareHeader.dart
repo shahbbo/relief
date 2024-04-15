@@ -10,7 +10,6 @@ class inCareHeader extends StatelessWidget {
     'How it works',
     'Benefits',
     'Pricing',
-    'FQA',
   ];
 
   @override
