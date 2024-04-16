@@ -352,11 +352,11 @@ class pricing extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 15),
+        const SizedBox(height: 24),
         Container(
-          width: 361,
-          height: 102,
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          width: double.infinity,
+          height: 105,
+          // padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
             color: Colors.black,
@@ -366,13 +366,15 @@ class pricing extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                width: 161,
-                height: 40,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                decoration: ShapeDecoration(
-                  color: Color(0xFFD90429),
+              ElevatedButton(
+                onPressed: () {
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => liveInCare()),
+                  // );
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.red,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25),
                   ),
