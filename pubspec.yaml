@@ -87,6 +87,8 @@ flutter:
     - asseets/HandHeart.png
     - asseets/PaintBrushHousehold.png
     - asseets/Plant.png
+    - asseets/cryptocurrency-color_r.png
+    - asseets/CheckCircle (2).png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
