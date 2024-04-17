@@ -237,7 +237,7 @@ class shortTPrice extends StatelessWidget {
                                           'asseets/CheckCircle (2).png')),
                                   const SizedBox(width: 10),
                                   Text(
-                                    'One week trial ',
+                                    'Fast turnaround ',
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 16,
