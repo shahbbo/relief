@@ -321,7 +321,7 @@ class liveInPrice extends StatelessWidget {
                           children: [
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFFD90429),
+                                backgroundColor: Color(0xFFFD90429),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(25),
                                   side: BorderSide(
@@ -345,7 +345,7 @@ class liveInPrice extends StatelessWidget {
                             const SizedBox(width: 10),
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF6F3EF),
+                                backgroundColor: Color(0xFFF6F3EF),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(25),
                                   side: BorderSide(
