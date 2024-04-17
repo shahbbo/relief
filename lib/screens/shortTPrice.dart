@@ -203,7 +203,7 @@ class shortTPrice extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         child: Text(
-                          'Full time care (also called live-in care) gives people the choice to be cared for in their own homes. Full time care includes: ',
+                          'Relief can arrange short-term respite care for shorter periods. A carer will move into the home and provide expert care.',
                           style: TextStyle(
                             color: Color(0xFF3E5C76),
                             fontSize: 16,
