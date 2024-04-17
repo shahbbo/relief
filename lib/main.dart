@@ -15,17 +15,27 @@ class relief extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      // home: AnimatedSplashScreen(
-      //     duration: 5000,
-      //     splashIconSize: 220,
-      //     splash: Image.asset('asseets/logo.png',
-      //     fit: BoxFit.cover,),
-      //     nextScreen: logIn(),
-      //     splashTransition: SplashTransition.fadeTransition,
-      //     backgroundColor: Colors.white)
-      home: homeScreen(),
+    return BlocProvider(
+      create: (context) => inCareHeaderCubit(),
+      child: BlocConsumer<inCareHeaderCubit, headerState>(
+        listener: (context, state) {
+          // TODO: implement listener
+        },
+        builder: (context, state) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            // home: AnimatedSplashScreen(
+            //     duration: 5000,
+            //     splashIconSize: 220,
+            //     splash: Image.asset('asseets/logo.png',
+            //     fit: BoxFit.cover,),
+            //     nextScreen: logIn(),
+            //     splashTransition: SplashTransition.fadeTransition,
+            //     backgroundColor: Colors.white)
+            home: homeScreen(),
+          );
+        },
+      ),
     );
   }
 }

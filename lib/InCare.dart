@@ -1,4 +1,7 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 import 'package:relief/screens/liveInCare.dart';
 
 class Incare extends StatelessWidget {
@@ -116,6 +119,10 @@ class Incare extends StatelessWidget {
                       const SizedBox(width: 25),
                       GestureDetector(
                         onTap: () {
+                          print(inCareHeaderCubit.get(context).priceActice);
+                          inCareHeaderCubit
+                              .get(context)
+                              .changePriceActive(priceActive: true);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -263,6 +270,10 @@ class Incare extends StatelessWidget {
                       const SizedBox(width: 25),
                       GestureDetector(
                         onTap: () {
+                          print(inCareHeaderCubit.get(context).priceActice);
+                          inCareHeaderCubit
+                              .get(context)
+                              .changePriceActive(priceActive: false);
                           Navigator.push(
                             context,
                             MaterialPageRoute(

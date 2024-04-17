@@ -13,11 +13,17 @@ class inCareHeaderCubit extends Cubit<headerState> {
   static inCareHeaderCubit get(context) => BlocProvider.of(context);
 
   int currentIndex = 0;
+  bool priceActice = false;
 
   void changeColors({required int index}) {
     currentIndex = index;
     print(currentIndex);
     emit(ChangeCurrentIndex());
+  }
+
+  void changePriceActive({required bool priceActive}) {
+    priceActice = priceActive;
+    emit(ChangePriceActive());
   }
 
   List<Widget> contents = [
