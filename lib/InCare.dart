@@ -1,10 +1,8 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:relief/consset.dart';
 import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 import 'package:relief/screens/liveInCare.dart';
+import 'package:relief/screens/speakToAnExp.dart';
 
 class Incare extends StatelessWidget {
   const Incare({super.key});
@@ -91,32 +89,41 @@ class Incare extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        width: 151,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 12),
-                        decoration: ShapeDecoration(
-                          color: Color(0xFFD90429),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25),
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              'speak to an expert',
-                              style: TextStyle(
-                                color: Color(0xFFF8F9FA),
-                                fontSize: 13,
-                                fontFamily: 'Barlow',
-                                fontWeight: FontWeight.w500,
-                                height: 0,
-                              ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => speakToAnExp()),
+                          );
+                        },
+                        child: Container(
+                          width: 151,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 12),
+                          decoration: ShapeDecoration(
+                            color: Color(0xFFD90429),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
                             ),
-                          ],
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                'speak to an expert',
+                                style: TextStyle(
+                                  color: Color(0xFFF8F9FA),
+                                  fontSize: 13,
+                                  fontFamily: 'Barlow',
+                                  fontWeight: FontWeight.w500,
+                                  height: 0,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       const SizedBox(width: 25),
@@ -242,32 +249,41 @@ class Incare extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        width: 151,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 12),
-                        decoration: ShapeDecoration(
-                          color: Color(0xFFD90429),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25),
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              'speak to an expert',
-                              style: TextStyle(
-                                color: Color(0xFFF8F9FA),
-                                fontSize: 13,
-                                fontFamily: 'Barlow',
-                                fontWeight: FontWeight.w500,
-                                height: 0,
-                              ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => speakToAnExp()),
+                          );
+                        },
+                        child: Container(
+                          width: 151,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 12),
+                          decoration: ShapeDecoration(
+                            color: Color(0xFFD90429),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
                             ),
-                          ],
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                'speak to an expert',
+                                style: TextStyle(
+                                  color: Color(0xFFF8F9FA),
+                                  fontSize: 13,
+                                  fontFamily: 'Barlow',
+                                  fontWeight: FontWeight.w500,
+                                  height: 0,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       const SizedBox(width: 25),
