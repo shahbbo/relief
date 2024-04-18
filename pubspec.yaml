@@ -89,7 +89,13 @@ flutter:
     - asseets/Plant.png
     - asseets/cryptocurrency-color_r.png
     - asseets/CheckCircle (2).png
-
+    - asseets/CalendarBlankOff.png
+    - asseets/CalendarBlankOn.png
+    - asseets/HouseOff.png
+    - asseets/HouseOn.png
+    - asseets/SittingOff.png
+    - asseets/SittingOn.png
+    - asseets/NotificationOff.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

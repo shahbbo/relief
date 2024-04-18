@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:relief/components/navBar.dart';
 import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 import 'package:relief/log in.dart';
 import 'package:relief/homeScreen.dart';
@@ -32,7 +33,18 @@ class relief extends StatelessWidget {
             //     nextScreen: logIn(),
             //     splashTransition: SplashTransition.fadeTransition,
             //     backgroundColor: Colors.white)
-            home: homeScreen(),
+            home: Scaffold(
+              body: Column(
+                children: [
+                  Container(
+                    // height: 627,
+                    child: inCareHeaderCubit.get(context).mainScreens[
+                        inCareHeaderCubit.get(context).currentIndex],
+                  ),
+                  navBar()
+                ],
+              ),
+            ),
           );
         },
       ),

@@ -8,12 +8,10 @@ class homeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: Color(0xFFFFFFFC),
-        body: Column(
-          children: [
-            const SizedBox(height: 14),
-            Container(
+      child: Column(
+        children: [
+          const SizedBox(height: 4),
+          Container(
               // width: 361,
               height: 51,
               child: Row(
@@ -34,9 +32,8 @@ class homeScreen extends StatelessWidget {
                             'Hello Mr. Mohamed ',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              color:
-                                  Colors.black.withOpacity(0.20000000298023224),
-                              fontSize: 18,
+                              color: Colors.black,
+                            fontSize: 18,
                               fontFamily: 'Barlow',
                               fontWeight: FontWeight.w500,
                               height: 0,
@@ -73,8 +70,8 @@ class homeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 29),
-            SizedBox(
+          SizedBox(height: 4),
+          SizedBox(
               width: 325,
               height: 44,
               child: TextField(
@@ -109,12 +106,11 @@ class homeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 24),
-            nurseBuilder(),
+          SizedBox(height: 15),
+          nurseBuilder(),
             Incare(),
           ],
         ),
-      ),
     );
   }
 }

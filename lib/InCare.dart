@@ -10,7 +10,7 @@ class Incare extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       height: 412,
       child: ListView(
         scrollDirection: Axis.vertical,
