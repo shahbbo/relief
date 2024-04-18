@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class shortTPrice extends StatelessWidget {
-  shortTPrice({Key? key}) : super(key: key);
+  shortTPrice({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class shortTPrice extends StatelessWidget {
             Center(
               child: Container(
                   width: 361,
-                  height: 501,
+                  height: 502,
                   padding: const EdgeInsets.all(15),
                   clipBehavior: Clip.antiAlias,
                   decoration: ShapeDecoration(
@@ -75,7 +75,7 @@ class shortTPrice extends StatelessWidget {
                             ),
                             const SizedBox(width: 15),
                             Text(
-                              'full time care ',
+                              'short-term care ',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.black,
@@ -90,7 +90,7 @@ class shortTPrice extends StatelessWidget {
                       ),
                       const SizedBox(height: 20),
                       Container(
-                        width: 198,
+                        width: 220,
                         height: 41,
                         child: Row(
                           mainAxisSize: MainAxisSize.min,

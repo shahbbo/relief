@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:relief/consset.dart';
 import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 import 'package:relief/screens/liveInPrice.dart';
 import 'package:relief/screens/shortTPrice.dart';
 
 class pricing extends StatelessWidget {
-  const pricing({super.key});
+  pricing({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -371,14 +373,14 @@ class pricing extends StatelessWidget {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  if (inCareHeaderCubit.get(context).priceActice = true) {
+                  print(priceActice);
+                  if (priceActice == true) {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => liveInPrice(),
                         ));
-                  } else if (inCareHeaderCubit.get(context).priceActice =
-                      false) {
+                  } else if (priceActice == false) {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -387,7 +389,7 @@ class pricing extends StatelessWidget {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.red,
+                  backgroundColor: Colors.red,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25),
                   ),

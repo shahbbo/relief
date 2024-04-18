@@ -108,8 +108,8 @@ class homeScreen extends StatelessWidget {
             ),
           SizedBox(height: 15),
           nurseBuilder(),
-            Incare(),
-          ],
+          Incare(),
+        ],
         ),
     );
   }

@@ -8,7 +8,7 @@ import 'package:relief/screens/pricing.dart';
 import 'package:relief/calendar.dart';
 import 'package:relief/events.dart';
 import 'package:relief/sittings.dart';
-
+import 'package:relief/consset.dart';
 part 'inCareStates.dart';
 
 class inCareHeaderCubit extends Cubit<headerState> {
@@ -17,7 +17,8 @@ class inCareHeaderCubit extends Cubit<headerState> {
   static inCareHeaderCubit get(context) => BlocProvider.of(context);
 
   int currentIndex = 0;
-  bool priceActice = false;
+
+  // bool priceActive = false;
 
   void changeColors({required int index}) {
     currentIndex = index;

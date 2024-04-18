@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:relief/bloc_obv.dart';
 import 'package:relief/components/navBar.dart';
 import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 import 'package:relief/log in.dart';
@@ -9,6 +10,7 @@ import 'package:relief/homeScreen.dart';
 
 void main() {
   runApp(const relief());
+  Bloc.observer = MyBlocObserver();
 }
 
 class relief extends StatelessWidget {

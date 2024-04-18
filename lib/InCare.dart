@@ -1,6 +1,8 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:relief/consset.dart';
 import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 import 'package:relief/screens/liveInCare.dart';
 
@@ -13,6 +15,7 @@ class Incare extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       height: 412,
       child: ListView(
+        physics: NeverScrollableScrollPhysics(),
         scrollDirection: Axis.vertical,
         children: [
           Container(
@@ -119,10 +122,10 @@ class Incare extends StatelessWidget {
                       const SizedBox(width: 25),
                       GestureDetector(
                         onTap: () {
-                          print(inCareHeaderCubit.get(context).priceActice);
                           inCareHeaderCubit
                               .get(context)
                               .changePriceActive(priceActive: true);
+                          print(priceActice);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -270,10 +273,10 @@ class Incare extends StatelessWidget {
                       const SizedBox(width: 25),
                       GestureDetector(
                         onTap: () {
-                          print(inCareHeaderCubit.get(context).priceActice);
                           inCareHeaderCubit
                               .get(context)
                               .changePriceActive(priceActive: false);
+                          print(priceActice);
                           Navigator.push(
                             context,
                             MaterialPageRoute(

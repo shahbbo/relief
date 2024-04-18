@@ -7,6 +7,13 @@ class incareBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = inCareHeaderCubit.get(context);
+    print(cubit.currentIndex);
+    return Container(
+      height: 627,
+      child: cubit.contents[cubit.currentIndex],
+    );
+/*
     return BlocConsumer<inCareHeaderCubit, headerState>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -17,5 +24,6 @@ class incareBody extends StatelessWidget {
             child: cubit.contents[cubit.currentIndex],
           );
         });
+*/
   }
 }
