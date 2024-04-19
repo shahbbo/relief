@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:relief/screens/speakToAnExp.dart';
 
 class overview extends StatelessWidget {
   const overview({super.key});
@@ -179,7 +180,12 @@ class overview extends StatelessWidget {
           Row(
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => speakToAnExp()),
+                  );
+                },
                 child: Text(
                   'Speak To An Expert',
                   style: TextStyle(
