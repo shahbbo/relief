@@ -8,6 +8,8 @@ class editProfile extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               height: 50,
@@ -58,7 +60,38 @@ class editProfile extends StatelessWidget {
                 ),
               ),
             ), //Profile Picture
-            SizedBox(height: 70),
+            SizedBox(height: 18),
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      ' upload photo',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xFF343A40),
+                        fontSize: 16,
+                        fontFamily: 'Barlow',
+                        fontWeight: FontWeight.w500,
+                        height: 0,
+                      ),
+                    ),
+                    SizedBox(width: 8),
+                    Container(
+                        width: 16,
+                        height: 16,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(),
+                        child: Image.asset('asseets/plus.png'))
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 35),
             Container(
               width: 400,
               height: 220,
@@ -70,117 +103,131 @@ class editProfile extends StatelessWidget {
                   Container(
                     width: 355,
                     height: 46,
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(width: 1, color: Color(0xFFBBD0FF)),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'moahmed khaled',
-                          style: TextStyle(
-                            color: Color(0xFF6C757D),
-                            fontSize: 16,
-                            fontFamily: 'Barlow',
-                            fontWeight: FontWeight.w400,
-                            height: 0,
-                          ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        // contentPadding: EdgeInsets.symmetric(vertical: 8),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 1, color: Color(0xFFBBD0FF)),
                         ),
-                      ],
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 1, color: Color(0xFFBBD0FF)),
+                        ),
+                        hintText: 'mohamedkhaled22@gmail.com',
+                        hintStyle: TextStyle(
+                          color: Color(0xFF6C757D),
+                          fontSize: 16,
+                          fontFamily: 'Barlow',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 12),
                   Container(
                     width: 355,
                     height: 46,
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(width: 1, color: Color(0xFFBBD0FF)),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'mohamedkhaled22@gmail.com',
-                          style: TextStyle(
-                            color: Color(0xFF6C757D),
-                            fontSize: 16,
-                            fontFamily: 'Barlow',
-                            fontWeight: FontWeight.w400,
-                            height: 0,
-                          ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        // contentPadding: EdgeInsets.symmetric(vertical: 8),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 1, color: Color(0xFFBBD0FF)),
                         ),
-                      ],
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 1, color: Color(0xFFBBD0FF)),
+                        ),
+                        hintText: 'moahmed khaled',
+                        hintStyle: TextStyle(
+                          color: Color(0xFF6C757D),
+                          fontSize: 16,
+                          fontFamily: 'Barlow',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 12),
                   Container(
                     width: 355,
                     height: 46,
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(width: 1, color: Color(0xFFBBD0FF)),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          '01012131415',
-                          style: TextStyle(
-                            color: Color(0xFF6C757D),
-                            fontSize: 16,
-                            fontFamily: 'Barlow',
-                            fontWeight: FontWeight.w400,
-                            height: 0,
-                          ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        // contentPadding: EdgeInsets.symmetric(vertical: 8),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 1, color: Color(0xFFBBD0FF)),
                         ),
-                      ],
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 1, color: Color(0xFFBBD0FF)),
+                        ),
+                        hintText: '01012131415',
+                        hintStyle: TextStyle(
+                          color: Color(0xFF6C757D),
+                          fontSize: 16,
+                          fontFamily: 'Barlow',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 12),
                   Container(
                     width: 355,
                     height: 46,
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(width: 1, color: Color(0xFFBBD0FF)),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          '5th Settlement, egypt',
-                          style: TextStyle(
-                            color: Color(0xFF6C757D),
-                            fontSize: 16,
-                            fontFamily: 'Barlow',
-                            fontWeight: FontWeight.w400,
-                            height: 0,
-                          ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        // contentPadding: EdgeInsets.symmetric(vertical: 8),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 1, color: Color(0xFFBBD0FF)),
                         ),
-                      ],
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 1, color: Color(0xFFBBD0FF)),
+                        ),
+                        hintText: '5th Settlement, egypt',
+                        hintStyle: TextStyle(
+                          color: Color(0xFF6C757D),
+                          fontSize: 16,
+                          fontFamily: 'Barlow',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
                     ),
                   ),
                 ],
               ),
-            )
+            ),
+            SizedBox(height: 50),
+            Center(
+              child: Container(
+                width: 350,
+                height: 50,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFFFD90429),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    '   Save   ',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 22,
+                      fontFamily: 'Barlow',
+                      fontWeight: FontWeight.w600,
+                      height: 0,
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
