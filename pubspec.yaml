@@ -107,6 +107,8 @@ flutter:
     - asseets/Smiley.png
     - asseets/ToggleLeft.png
     - asseets/UserCircle.png
+    - asseets/BellB.png
+    - asseets/mingcute_edit-line.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

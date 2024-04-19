@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:relief/SettingsS/billing.dart';
+import 'package:relief/SettingsS/changePass.dart';
+import 'package:relief/SettingsS/profile.dart';
 
 class sittings extends StatelessWidget {
   const sittings({super.key});
@@ -61,182 +64,209 @@ class sittings extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              width: 361,
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 12),
-                              decoration: BoxDecoration(
-                                color: Color(0xFFF6F3EF),
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(15),
-                                  topRight: Radius.circular(15),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => profile()));
+                              },
+                              child: Container(
+                                width: 361,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 12),
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFF6F3EF),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(15),
+                                    topRight: Radius.circular(15),
+                                  ),
+                                  border: Border(
+                                    bottom: BorderSide(
+                                        width: 1, color: Color(0xFFCED4DA)),
+                                  ),
                                 ),
-                                border: Border(
-                                  bottom: BorderSide(
-                                      width: 1, color: Color(0xFFCED4DA)),
-                                ),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          width: 24,
-                                          height: 24,
-                                          clipBehavior: Clip.antiAlias,
-                                          decoration: BoxDecoration(),
-                                          child: Image.asset(
-                                              'asseets/UserCircle.png'),
-                                        ),
-                                        const SizedBox(width: 10),
-                                        Text(
-                                          'Profile ',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            color: Color(0xFF343A40),
-                                            fontSize: 18,
-                                            fontFamily: 'Barlow',
-                                            fontWeight: FontWeight.w500,
-                                            height: 0,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            width: 24,
+                                            height: 24,
+                                            clipBehavior: Clip.antiAlias,
+                                            decoration: BoxDecoration(),
+                                            child: Image.asset(
+                                                'asseets/UserCircle.png'),
                                           ),
-                                        ),
-                                      ],
+                                          const SizedBox(width: 10),
+                                          Text(
+                                            'Profile ',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Color(0xFF343A40),
+                                              fontSize: 18,
+                                              fontFamily: 'Barlow',
+                                              fontWeight: FontWeight.w500,
+                                              height: 0,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Container(
-                                    width: 24,
-                                    height: 24,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: BoxDecoration(),
-                                    child: Image.asset('asseets/CaretDown.png'),
-                                  ),
-                                ],
+                                    Container(
+                                      width: 24,
+                                      height: 24,
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: BoxDecoration(),
+                                      child:
+                                          Image.asset('asseets/CaretDown.png'),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                            Container(
-                              width: 361,
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 12),
-                              decoration: BoxDecoration(
-                                color: Color(0xFFF6F3EF),
-                                border: Border(
-                                  bottom: BorderSide(
-                                      width: 1, color: Color(0xFFCED4DA)),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => changePass()));
+                              },
+                              child: Container(
+                                width: 361,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 12),
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFF6F3EF),
+                                  border: Border(
+                                    bottom: BorderSide(
+                                        width: 1, color: Color(0xFFCED4DA)),
+                                  ),
                                 ),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          width: 24,
-                                          height: 24,
-                                          clipBehavior: Clip.antiAlias,
-                                          decoration: BoxDecoration(),
-                                          child:
-                                              Image.asset('asseets/Lock.png'),
-                                        ),
-                                        const SizedBox(width: 10),
-                                        Text(
-                                          'Change Password',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            color: Color(0xFF343A40),
-                                            fontSize: 18,
-                                            fontFamily: 'Barlow',
-                                            fontWeight: FontWeight.w500,
-                                            height: 0,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            width: 24,
+                                            height: 24,
+                                            clipBehavior: Clip.antiAlias,
+                                            decoration: BoxDecoration(),
+                                            child:
+                                                Image.asset('asseets/Lock.png'),
                                           ),
-                                        ),
-                                      ],
+                                          const SizedBox(width: 10),
+                                          Text(
+                                            'Change Password',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Color(0xFF343A40),
+                                              fontSize: 18,
+                                              fontFamily: 'Barlow',
+                                              fontWeight: FontWeight.w500,
+                                              height: 0,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Container(
-                                    width: 24,
-                                    height: 24,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: BoxDecoration(),
-                                    child: Image.asset('asseets/CaretDown.png'),
-                                  ),
-                                ],
+                                    Container(
+                                      width: 24,
+                                      height: 24,
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: BoxDecoration(),
+                                      child:
+                                          Image.asset('asseets/CaretDown.png'),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                            Container(
-                              width: 361,
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 12),
-                              decoration: BoxDecoration(
-                                color: Color(0xFFF6F3EF),
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(15),
-                                  bottomRight: Radius.circular(15),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => billing()));
+                              },
+                              child: Container(
+                                width: 361,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 12),
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFF6F3EF),
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(15),
+                                    bottomRight: Radius.circular(15),
+                                  ),
                                 ),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          width: 24,
-                                          height: 24,
-                                          clipBehavior: Clip.antiAlias,
-                                          decoration: BoxDecoration(),
-                                          child: Image.asset(
-                                              'asseets/CreditCard.png'),
-                                        ),
-                                        const SizedBox(width: 10),
-                                        Text(
-                                          'Billing',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            color: Color(0xFF343A40),
-                                            fontSize: 18,
-                                            fontFamily: 'Barlow',
-                                            fontWeight: FontWeight.w500,
-                                            height: 0,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            width: 24,
+                                            height: 24,
+                                            clipBehavior: Clip.antiAlias,
+                                            decoration: BoxDecoration(),
+                                            child: Image.asset(
+                                                'asseets/CreditCard.png'),
                                           ),
-                                        ),
-                                      ],
+                                          const SizedBox(width: 10),
+                                          Text(
+                                            'Billing',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Color(0xFF343A40),
+                                              fontSize: 18,
+                                              fontFamily: 'Barlow',
+                                              fontWeight: FontWeight.w500,
+                                              height: 0,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Container(
-                                    width: 24,
-                                    height: 24,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: BoxDecoration(),
-                                    child: Image.asset('asseets/CaretDown.png'),
-                                  ),
-                                ],
+                                    Container(
+                                      width: 24,
+                                      height: 24,
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: BoxDecoration(),
+                                      child:
+                                          Image.asset('asseets/CaretDown.png'),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
@@ -305,7 +335,7 @@ class sittings extends StatelessWidget {
                                           clipBehavior: Clip.antiAlias,
                                           decoration: BoxDecoration(),
                                           child:
-                                              Image.asset('asseets/Bell.png'),
+                                              Image.asset('asseets/BellB.png'),
                                         ),
                                         const SizedBox(width: 6),
                                         Text(
