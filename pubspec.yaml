@@ -98,6 +98,15 @@ flutter:
     - asseets/NotificationOff.png
     - asseets/Headset.png
     - asseets/call.png
+    - asseets/CaretDown.png
+    - asseets/CreditCard.png
+    - asseets/Lifebuoy.png
+    - asseets/Lock.png
+    - asseets/Question.png
+    - asseets/SignOut.png
+    - asseets/Smiley.png
+    - asseets/ToggleLeft.png
+    - asseets/UserCircle.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

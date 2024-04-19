@@ -312,61 +312,32 @@ class liveInPrice extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      Container(
-                        width: 324,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xFFFD90429),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(25),
-                                  side: BorderSide(
-                                    color: Color(0xFF8D99AE),
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
-                              onPressed: () {},
-                              child: Text(
-                                '   Get Started   ',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14,
-                                  fontFamily: 'Barlow',
-                                  fontWeight: FontWeight.w600,
-                                  height: 0,
+                      Center(
+                        child: Container(
+                          width: 290,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xFFFD90429),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25),
+                                side: BorderSide(
+                                  color: Color(0xFF8D99AE),
+                                  width: 1,
                                 ),
                               ),
                             ),
-                            const SizedBox(width: 10),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xFFF6F3EF),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(25),
-                                  side: BorderSide(
-                                    color: Color(0xFF8D99AE),
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
-                              onPressed: () {},
-                              child: Text(
-                                '   Learn More   ',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14,
-                                  fontFamily: 'Barlow',
-                                  fontWeight: FontWeight.w600,
-                                  height: 0,
-                                ),
+                            onPressed: () {},
+                            child: Text(
+                              '   Get Started   ',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 14,
+                                fontFamily: 'Barlow',
+                                fontWeight: FontWeight.w600,
+                                height: 0,
                               ),
                             ),
-                          ],
+                          ),
                         ),
                       )
                     ],
