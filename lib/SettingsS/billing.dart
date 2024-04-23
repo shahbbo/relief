@@ -106,9 +106,10 @@ class billing extends StatelessWidget {
                                     decoration: InputDecoration(
                                       contentPadding:
                                           EdgeInsets.symmetric(vertical: 8),
-                                      border: OutlineInputBorder(
-                                        borderSide:
-                                            BorderSide(color: Colors.blue),
+                                      border: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.black,
+                                        ),
                                         borderRadius: BorderRadius.vertical(
                                           bottom: Radius.circular(15),
                                         ),
