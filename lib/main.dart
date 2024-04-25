@@ -36,19 +36,18 @@ class relief extends StatelessWidget {
             //     nextScreen: logIn(),
             //     splashTransition: SplashTransition.fadeTransition,
             //     backgroundColor: Colors.white)
-            home: LoginScreen(),
-            // Scaffold(
-            //   body: Column(
-            //     children: [
-            //       Container(
-            //         // height: 627,
-            //         child: inCareHeaderCubit.get(context).mainScreens[
-            //             inCareHeaderCubit.get(context).currentIndex],
-            //       ),
-            //       Center(child: navBar())
-            //     ],
-            //   ),
-            // ),
+            home: Scaffold(
+              body: Column(
+                children: [
+                  Container(
+                    // height: 627,
+                    child: inCareHeaderCubit.get(context).mainScreens[
+                        inCareHeaderCubit.get(context).currentIndex],
+                  ),
+                  Center(child: navBar())
+                ],
+              ),
+            ),
           );
         },
       ),

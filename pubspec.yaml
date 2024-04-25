@@ -112,6 +112,23 @@ flutter:
     - asseets/plus.png
     - asseets/card.png
     - asseets/Cvv.png
+    - asseets/download.png
+    - asseets/Ellipse 19.png
+    - asseets/Ellipse 21.png
+    - asseets/logo2.jpg
+    - asseets/MapPin.png
+    - asseets/my_logo.jpg
+    - asseets/review.png
+    - asseets/review2.png
+    - asseets/Star 3.png
+    - asseets/Star 6.png
+    - asseets/Star 6 (1).png
+    - asseets/Star 7.png
+    - asseets/Star 7 (1).png
+    - asseets/Vector.png
+    - asseets/Vector (1).png
+    - asseets/Vector (2).png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

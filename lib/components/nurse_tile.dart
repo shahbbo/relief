@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:relief/careGiverS/care_giver.dart';
 import 'package:relief/models/NurseModel.dart';
 
 class nurse extends StatelessWidget {
@@ -107,27 +108,33 @@ class nurse extends StatelessWidget {
                       ]))
             ],
           ),
-          Container(
-            width: 247,
-            height: 32,
-            decoration: ShapeDecoration(
-              color: Color(0xFFFFFFFC),
-              shape: RoundedRectangleBorder(
-                side: BorderSide(width: 1, color: Color(0xFFADB5BD)),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(25),
-                  bottomRight: Radius.circular(25),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const CareGiver()));
+            },
+            child: Container(
+              width: 247,
+              height: 32,
+              decoration: ShapeDecoration(
+                color: Color(0xFFFFFFFC),
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(width: 1, color: Color(0xFFADB5BD)),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(25),
+                    bottomRight: Radius.circular(25),
+                  ),
                 ),
               ),
-            ),
-            child: Center(
-              child: Text(
-                'view details ',
-                style: TextStyle(
-                  color: Color(0xFF3E5C76),
-                  fontSize: 14,
-                  fontFamily: 'Barlow',
-                  fontWeight: FontWeight.w500,
+              child: Center(
+                child: Text(
+                  'view details ',
+                  style: TextStyle(
+                    color: Color(0xFF3E5C76),
+                    fontSize: 14,
+                    fontFamily: 'Barlow',
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ),
