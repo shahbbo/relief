@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:relief/register/logInScreen.dart';
+import 'package:relief/register/registerN2.dart';
+import 'package:relief/register/registerP2.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -48,7 +50,7 @@ class _RegisterState extends State<Register> {
                     decoration: InputDecoration(
                       hintText: 'Enter Your Name',
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15)),
+                          borderRadius: BorderRadius.circular(25)),
                     ),
                   ),
                   const SizedBox(height: 5),
@@ -65,7 +67,7 @@ class _RegisterState extends State<Register> {
                     decoration: InputDecoration(
                       hintText: 'Enter Your Email Address',
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15)),
+                          borderRadius: BorderRadius.circular(25)),
                     ),
                   ),
                   const SizedBox(height: 5),
@@ -97,7 +99,39 @@ class _RegisterState extends State<Register> {
                         },
                       ),
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15)),
+                          borderRadius: BorderRadius.circular(25)),
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  const Text(
+                    'Confirm Password',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  TextFormField(
+                    obscureText: _obscureText,
+                    keyboardType: TextInputType.visiblePassword,
+                    obscuringCharacter: '*',
+                    decoration: InputDecoration(
+                      hintText: 'Retype The Password',
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _obscureText
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Colors.grey,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _obscureText = !_obscureText;
+                          });
+                        },
+                      ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25)),
                     ),
                   ),
                   const SizedBox(height: 5),
@@ -115,7 +149,7 @@ class _RegisterState extends State<Register> {
                       labelText: '+02',
                       hintText: 'Enter Your Phone Number',
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15)),
+                          borderRadius: BorderRadius.circular(25)),
                     ),
                   ),
                   const SizedBox(height: 5),
@@ -193,13 +227,18 @@ class _RegisterState extends State<Register> {
                     width: double.infinity,
                     height: 50,
                     child: MaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const RegisterN2()));
+                      },
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: BorderRadius.circular(25),
                       ),
                       color: const Color(0xFFB91A13),
                       child: const Text(
-                        'Create Account',
+                        'Next',
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w500,

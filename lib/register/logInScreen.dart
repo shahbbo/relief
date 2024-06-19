@@ -56,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: InputDecoration(
                     hintText: 'Enter Your Email Address',
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15)),
+                        borderRadius: BorderRadius.circular(25)),
                   ),
                 ),
                 const SizedBox(height: 15),
@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                     ),
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15)),
+                        borderRadius: BorderRadius.circular(25)),
                   ),
                 ),
                 Row(
@@ -129,9 +129,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: MaterialButton(
                     onPressed: () {},
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                      borderRadius: BorderRadius.circular(25),
                     ),
-                    color: const Color(0xFF212529),
+                    color: Colors.redAccent,
                     child: const Text(
                       'Log In',
                       style: TextStyle(
