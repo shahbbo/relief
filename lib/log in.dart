@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:relief/register/logInScreen.dart';
+import 'package:relief/register/register.dart';
 
 class logIn extends StatelessWidget {
   const logIn({super.key});
@@ -21,37 +23,47 @@ class logIn extends StatelessWidget {
           const SizedBox(
             height: 157,
           ),
-          Container(
-            width: 300,
-            height: 56,
-            padding: const EdgeInsets.all(12),
-            decoration: ShapeDecoration(
-              shape: RoundedRectangleBorder(
-                side: BorderSide(
-                  width: 1,
-                  strokeAlign: BorderSide.strokeAlignCenter,
-                  color: Color(0xFFF8F9FA),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Register(),
                 ),
-                borderRadius: BorderRadius.circular(25),
-              ),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'sign up',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
+              );
+            },
+            child: Container(
+              width: 300,
+              height: 56,
+              padding: const EdgeInsets.all(12),
+              decoration: ShapeDecoration(
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                    width: 1,
+                    strokeAlign: BorderSide.strokeAlignCenter,
                     color: Color(0xFFF8F9FA),
-                    fontSize: 22,
-                    fontFamily: 'Barlow',
-                    fontWeight: FontWeight.w500,
-                    height: 0,
                   ),
+                  borderRadius: BorderRadius.circular(25),
                 ),
-              ],
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'sign up',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Color(0xFFF8F9FA),
+                      fontSize: 22,
+                      fontFamily: 'Barlow',
+                      fontWeight: FontWeight.w500,
+                      height: 0,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           const SizedBox(
@@ -67,33 +79,43 @@ class logIn extends StatelessWidget {
               fontWeight: FontWeight.w400,
             ),
           ),
-          Container(
-            width: 300,
-            height: 56,
-            padding: const EdgeInsets.all(12),
-            decoration: ShapeDecoration(
-              color: Color(0xFFD90429),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25),
-              ),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'log in',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color(0xFFF8F9FA),
-                    fontSize: 22,
-                    fontFamily: 'Barlow',
-                    fontWeight: FontWeight.w500,
-                    height: 0,
-                  ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LoginScreen(),
                 ),
-              ],
+              );
+            },
+            child: Container(
+              width: 300,
+              height: 56,
+              padding: const EdgeInsets.all(12),
+              decoration: ShapeDecoration(
+                color: Color(0xFFD90429),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25),
+                ),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'log in',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Color(0xFFF8F9FA),
+                      fontSize: 22,
+                      fontFamily: 'Barlow',
+                      fontWeight: FontWeight.w500,
+                      height: 0,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           const SizedBox(
