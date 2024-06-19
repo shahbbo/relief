@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:relief/arrange/arrange_care.dart';
 
 class liveInPrice extends StatelessWidget {
   liveInPrice({Key? key});
@@ -326,7 +327,12 @@ class liveInPrice extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ArrangeCare()));
+                            },
                             child: Text(
                               '   Get Started   ',
                               style: TextStyle(

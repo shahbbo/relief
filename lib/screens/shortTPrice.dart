@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:relief/arrange/arrange_care.dart';
 
 class shortTPrice extends StatelessWidget {
   shortTPrice({Key? key});
@@ -383,7 +384,12 @@ class shortTPrice extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ArrangeCare()));
+                            },
                             child: Text(
                               '   Get Started   ',
                               style: TextStyle(
