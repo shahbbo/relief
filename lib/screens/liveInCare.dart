@@ -17,14 +17,16 @@ class liveInCare extends StatelessWidget {
           var cubit = inCareHeaderCubit.get(context);
           return Scaffold(
             body: SafeArea(
-              child: Column(
-                children: [
-                  inCareHeader(),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  incareBody(),
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    inCareHeader(),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    incareBody(),
+                  ],
+                ),
               ),
             ),
           );

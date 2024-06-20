@@ -211,8 +211,8 @@ class CareGiver extends StatelessWidget {
                       width: 20,
                     ),
                     SizedBox(
-                      width: 160,
-                      height: 104,
+                  /*    width: 160,
+                      height: 104,*/
                       child: Stack(
                         children: [
                           Column(
