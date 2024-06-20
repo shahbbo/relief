@@ -352,10 +352,6 @@ class shortTPrice extends StatelessWidget {
                               backgroundColor: Color(0xFFFD90429),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25),
-                                side: BorderSide(
-                                  color: Color(0xFF8D99AE),
-                                  width: 1,
-                                ),
                               ),
                             ),
                             onPressed: () {
@@ -367,7 +363,7 @@ class shortTPrice extends StatelessWidget {
                             child: Text(
                               '   Get Started   ',
                               style: TextStyle(
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontSize: 14,
                                 fontFamily: 'Barlow',
                                 fontWeight: FontWeight.w600,
