@@ -37,17 +37,18 @@ class relief extends StatelessWidget {
             //     splashTransition: SplashTransition.fadeTransition,
             //     backgroundColor: Colors.white)
             home: Scaffold(
-              body: Column(
-                children: [
-                  Container(
-                    // height: 627,
-                    child: inCareHeaderCubit.get(context).mainScreens[
-                        inCareHeaderCubit.get(context).currentIndex],
-                  ),
-                  Spacer(flex: 1),
-                  Center(child: navBar()),
-                  Spacer(flex: 1),
-                ],
+              body: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      child: inCareHeaderCubit.get(context).mainScreens[inCareHeaderCubit.get(context).currentIndex],
+                    ),
+                    // Spacer(flex: 1),
+                    Center(child: navBar()),
+                    SizedBox(height: 10),
+                    // Spacer(flex: 1),
+                  ],
+                ),
               ),
             ),
           );
