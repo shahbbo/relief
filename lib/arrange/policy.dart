@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:relief/arrange/arrange_care.dart';
 import 'package:relief/arrange/type_of_care.dart';
 
 class Policy extends StatelessWidget {
@@ -91,11 +92,10 @@ class Policy extends StatelessWidget {
                     height: 50,
                     child: MaterialButton(
                       onPressed: () {
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) =>
-                        //         const ForSomeoneElseInfo()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ArrangeCare()));
                       },
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25.0),

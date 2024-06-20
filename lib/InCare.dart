@@ -11,7 +11,7 @@ class Incare extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      height: 412,
+      height: 440,
       child: ListView(
         physics: NeverScrollableScrollPhysics(),
         scrollDirection: Axis.vertical,
@@ -19,7 +19,7 @@ class Incare extends StatelessWidget {
           Container(
             margin: const EdgeInsets.symmetric(vertical: 5),
             width: 361,
-            height: 196,
+            height: 210,
             padding: const EdgeInsets.all(20),
             clipBehavior: Clip.antiAlias,
             decoration: ShapeDecoration(
@@ -66,10 +66,10 @@ class Incare extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(width: 6),
+                      Spacer(),
                       Container(
-                        width: 97,
-                        height: 100,
+                        width: 95,
+                        height: 105,
                         decoration: ShapeDecoration(
                           image: DecorationImage(
                             image: AssetImage("asseets/LiveInCare.png"),
@@ -82,7 +82,7 @@ class Incare extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 14),
+                Spacer(),
                 Container(
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -98,7 +98,7 @@ class Incare extends StatelessWidget {
                           );
                         },
                         child: Container(
-                          width: 151,
+                          // width: 151,
                           padding: const EdgeInsets.symmetric(
                               horizontal: 16, vertical: 12),
                           decoration: ShapeDecoration(
@@ -126,7 +126,9 @@ class Incare extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(width: 25),
+                      Spacer(
+                        flex: 3,
+                      ),
                       GestureDetector(
                         onTap: () {
                           inCareHeaderCubit
@@ -140,7 +142,7 @@ class Incare extends StatelessWidget {
                           );
                         },
                         child: Container(
-                          width: 101,
+                          // width: 101,
                           padding: const EdgeInsets.symmetric(
                               horizontal: 16, vertical: 12),
                           decoration: ShapeDecoration(
@@ -169,17 +171,19 @@ class Incare extends StatelessWidget {
                           ),
                         ),
                       ),
+                      Spacer(
+                        flex: 2,
+                      ),
                     ],
                   ),
                 ),
-                const SizedBox(width: 8),
               ],
             ),
           ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 5),
             width: 361,
-            height: 196,
+            height: 210,
             padding: const EdgeInsets.all(20),
             clipBehavior: Clip.antiAlias,
             decoration: ShapeDecoration(
@@ -226,9 +230,9 @@ class Incare extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(width: 6),
+                      Spacer(),
                       Container(
-                        width: 97,
+                        width: 95,
                         height: 100,
                         decoration: ShapeDecoration(
                           image: DecorationImage(
@@ -242,7 +246,7 @@ class Incare extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 14),
+                Spacer(),
                 Container(
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -258,7 +262,7 @@ class Incare extends StatelessWidget {
                           );
                         },
                         child: Container(
-                          width: 151,
+                          // width: 151,
                           padding: const EdgeInsets.symmetric(
                               horizontal: 16, vertical: 12),
                           decoration: ShapeDecoration(
@@ -300,7 +304,7 @@ class Incare extends StatelessWidget {
                           );
                         },
                         child: Container(
-                          width: 101,
+                          // width: 101,
                           padding: const EdgeInsets.symmetric(
                               horizontal: 16, vertical: 12),
                           decoration: ShapeDecoration(

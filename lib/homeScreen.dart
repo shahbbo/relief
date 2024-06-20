@@ -10,10 +10,10 @@ class homeScreen extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: [
-          const SizedBox(height: 4),
+          SizedBox(height: 4),
           Container(
-              // width: 361,
-              height: 51,
+            width: 361,
+            height: 51,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -40,8 +40,8 @@ class homeScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 4),
-                        Text(
+                      Spacer(),
+                      Text(
                           '5th Settlement, egypt',
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -55,8 +55,8 @@ class homeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(width: 152),
-                  Container(
+                Spacer(),
+                Container(
                     width: 50,
                     height: 50,
                     decoration: ShapeDecoration(
@@ -72,41 +72,60 @@ class homeScreen extends StatelessWidget {
             ),
           SizedBox(height: 4),
           SizedBox(
-              width: 325,
-              height: 44,
-              child: TextField(
-                onSubmitted: (value) {
-                  print(value);
-                },
-                textAlign: TextAlign.start,
-                decoration: InputDecoration(
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
-                  hintText: 'Search',
-                  hintStyle: TextStyle(
+            width: 325,
+            height: 44,
+            child: TextField(
+              onSubmitted: (value) {
+                print(value);
+              },
+              textAlign: TextAlign.start,
+              decoration: InputDecoration(
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
+                hintText: 'Search',
+                hintStyle: TextStyle(
+                  color: Color(0xFFADB5BD),
+                  fontSize: 18,
+                  fontFamily: 'Barlow',
+                  fontWeight: FontWeight.w400,
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
                     color: Color(0xFFADB5BD),
-                    fontSize: 18,
-                    fontFamily: 'Barlow',
-                    fontWeight: FontWeight.w400,
+                    width: 1,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0xFFADB5BD),
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color(0xFFADB5BD),
+                    width: 1,
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0xFFADB5BD),
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(25),
-                  ),
+                  borderRadius: BorderRadius.circular(25),
                 ),
               ),
             ),
-          SizedBox(height: 15),
+          ),
+          SizedBox(height: 4),
+          Row(
+            children: [
+              const SizedBox(
+                width: 10,
+              ),
+              Image.asset('asseets/Ellipse 20.png'),
+              const SizedBox(
+                width: 8,
+              ),
+              const Text(
+                'Available For Work',
+                style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 12,
+                    color: Color(0xff38b000)),
+              ),
+            ],
+          ),
+          SizedBox(height: 5),
           nurseBuilder(),
           Incare(),
         ],

@@ -519,7 +519,7 @@ class _HomeState extends State<RequestCaregiver> {
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: TextFormField(
-                  keyboardType: TextInputType.datetime,
+                  keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                     hintText: 'Enter Your Address',
                     hintStyle: TextStyle(color: Colors.black),

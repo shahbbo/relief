@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:relief/arrange/policy.dart';
+import 'package:relief/screens/liveInCare.dart';
 
 class ArrangeCare extends StatefulWidget {
   const ArrangeCare({super.key});
@@ -546,7 +547,10 @@ class _HomeState extends State<ArrangeCare> {
                               height: 50,
                               child: MaterialButton(
                                 onPressed: () {
-                                  Navigator.pop(context);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => liveInCare()));
                                 },
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(25.0),
