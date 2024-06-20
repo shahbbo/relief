@@ -7,7 +7,7 @@ class howItWorks extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 361,
-      height: 627,
+      height: 700,
       padding: const EdgeInsets.only(
         top: 15,
         bottom: 15,
@@ -16,7 +16,7 @@ class howItWorks extends StatelessWidget {
         children: [
           Container(
             width: 361,
-            height: 187,
+            height: 190,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: ShapeDecoration(
               color: Color(0xFFF6F3EF),
@@ -60,7 +60,7 @@ class howItWorks extends StatelessWidget {
                               ' Give us a call or get started online. Well ask you some simple questions and based on your answers well begin to match you with carers over the next 24 hours, for you to review in your MyRelief account.',
                           style: TextStyle(
                             color: Color(0xFF8D99AE),
-                            fontSize: 16,
+                            fontSize: 14,
                             fontFamily: 'Barlow',
                             fontWeight: FontWeight.w400,
                             height: 0,
@@ -77,7 +77,7 @@ class howItWorks extends StatelessWidget {
           Spacer(),
           Container(
             width: 361,
-            height: 187,
+            height: 190,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: ShapeDecoration(
               color: Color(0xFFF6F3EF),
@@ -121,7 +121,7 @@ class howItWorks extends StatelessWidget {
                               'Complete your care profile this allows our clinical team to confirm whether care can go ahead safely. At this step youll also receive details of the most suitable carers. ',
                           style: TextStyle(
                             color: Color(0xFF8D99AE),
-                            fontSize: 16,
+                            fontSize: 14,
                             fontFamily: 'Barlow',
                             fontWeight: FontWeight.w400,
                             height: 0,
@@ -138,7 +138,7 @@ class howItWorks extends StatelessWidget {
           Spacer(),
           Container(
             width: 361,
-            height: 187,
+            height: 190,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: ShapeDecoration(
               color: Color(0xFFF6F3EF),
@@ -182,7 +182,7 @@ class howItWorks extends StatelessWidget {
                               ' Once care is in place you and your family can manage it from anywhere with your MyRelief account. And if you ever need to speak to someone, youll be assigned your own Family Support Specialist wholl happily answer any questions.',
                           style: TextStyle(
                             color: Color(0xFF8D99AE),
-                            fontSize: 16,
+                            fontSize: 14,
                             fontFamily: 'Barlow',
                             fontWeight: FontWeight.w400,
                             height: 0,

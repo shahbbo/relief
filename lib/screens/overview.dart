@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:relief/arrange/arrange_care.dart';
 import 'package:relief/screens/speakToAnExp.dart';
 
 class overview extends StatelessWidget {
@@ -13,7 +14,7 @@ class overview extends StatelessWidget {
       ),
       child: Container(
         width: 360,
-        height: 627,
+        height: 650,
         padding: const EdgeInsets.symmetric(vertical: 15),
         child: Column(children: [
           Container(
@@ -175,7 +176,7 @@ class overview extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 30,
+            height: 44,
           ),
           Row(
             children: [
@@ -190,7 +191,7 @@ class overview extends StatelessWidget {
                   'Speak To An Expert',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 13,
+                    fontSize: 11,
                     fontFamily: 'Barlow',
                     fontWeight: FontWeight.w500,
                   ),
@@ -205,16 +206,19 @@ class overview extends StatelessWidget {
                   )),
                 ),
               ),
-              const SizedBox(
-                width: 15,
-              ),
+              Spacer(),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ArrangeCare()),
+                  );
+                },
                 child: Text(
                   'Get Started Online',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 13,
+                    fontSize: 11,
                     fontFamily: 'Barlow',
                     fontWeight: FontWeight.w500,
                   ),

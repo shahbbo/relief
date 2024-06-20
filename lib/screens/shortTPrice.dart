@@ -46,7 +46,7 @@ class shortTPrice extends StatelessWidget {
             Center(
               child: Container(
                   width: 361,
-                  height: 502,
+                  height: 550,
                   padding: const EdgeInsets.all(15),
                   clipBehavior: Clip.antiAlias,
                   decoration: ShapeDecoration(
@@ -89,7 +89,7 @@ class shortTPrice extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      Spacer(),
                       Container(
                         width: 220,
                         height: 41,
@@ -105,7 +105,7 @@ class shortTPrice extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '3 days from',
+                                    'From',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Color(0xFF8D99AE),
@@ -115,84 +115,33 @@ class shortTPrice extends StatelessWidget {
                                       height: 0,
                                     ),
                                   ),
-                                  const SizedBox(height: 5),
-                                  Text(
-                                    '650 EGP',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Color(0xFF0096C7),
-                                      fontSize: 16,
-                                      fontFamily: 'Barlow',
-                                      fontWeight: FontWeight.w500,
-                                      height: 0,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(width: 35),
-                            Container(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Container(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'from',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            color: Color(0xFF8D99AE),
-                                            fontSize: 14,
-                                            fontFamily: 'Barlow',
-                                            fontWeight: FontWeight.w400,
-                                            height: 0,
-                                          ),
+                                  Spacer(),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        '200 EGP',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Color(0xFF0096C7),
+                                          fontSize: 16,
+                                          fontFamily: 'Barlow',
+                                          fontWeight: FontWeight.w500,
+                                          height: 0,
                                         ),
-                                        const SizedBox(height: 5),
-                                        Container(
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.min,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.end,
-                                            children: [
-                                              Text(
-                                                '1400 EGP',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  color: Color(0xFF0096C7),
-                                                  fontSize: 16,
-                                                  fontFamily: 'Barlow',
-                                                  fontWeight: FontWeight.w500,
-                                                  height: 0,
-                                                ),
-                                              ),
-                                              const SizedBox(width: 5),
-                                              Text(
-                                                'p/w',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  color: Color(0xFF8D99AE),
-                                                  fontSize: 14,
-                                                  fontFamily: 'Barlow',
-                                                  fontWeight: FontWeight.w400,
-                                                  height: 0,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
+                                      ),
+                                      const SizedBox(width: 5),
+                                      Text(
+                                        'P/D',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Color(0xFF8D99AE),
+                                          fontSize: 14,
+                                          fontFamily: 'Barlow',
+                                          fontWeight: FontWeight.w500,
+                                          height: 0,
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
@@ -200,7 +149,7 @@ class shortTPrice extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      Spacer(),
                       SizedBox(
                         width: double.infinity,
                         child: Text(
@@ -214,7 +163,7 @@ class shortTPrice extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      Spacer(),
                       Container(
                         width: double.infinity,
                         height: 220,
@@ -236,21 +185,26 @@ class shortTPrice extends StatelessWidget {
                                       decoration: BoxDecoration(),
                                       child: Image.asset(
                                           'asseets/CheckCircle (2).png')),
-                                  const SizedBox(width: 10),
+                                  Spacer(
+                                    flex: 1,
+                                  ),
                                   Text(
                                     'Fast turnaround ',
                                     style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 16,
+                                      fontSize: 15,
                                       fontFamily: 'Barlow',
                                       fontWeight: FontWeight.w500,
                                       height: 0,
                                     ),
                                   ),
+                                  Spacer(
+                                    flex: 16,
+                                  ),
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 25),
+                            Spacer(),
                             Container(
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -265,21 +219,26 @@ class shortTPrice extends StatelessWidget {
                                     child: Image.asset(
                                         'asseets/CheckCircle (2).png'),
                                   ),
-                                  const SizedBox(width: 10),
+                                  Spacer(
+                                    flex: 1,
+                                  ),
                                   Text(
                                     'No weekend or bank holiday surcharge',
                                     style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 16,
+                                      fontSize: 15,
                                       fontFamily: 'Barlow',
                                       fontWeight: FontWeight.w500,
                                       height: 0,
                                     ),
                                   ),
+                                  Spacer(
+                                    flex: 1,
+                                  ),
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 25),
+                            Spacer(),
                             Container(
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -294,21 +253,26 @@ class shortTPrice extends StatelessWidget {
                                     child: Image.asset(
                                         'asseets/CheckCircle (2).png'),
                                   ),
-                                  const SizedBox(width: 10),
+                                  Spacer(
+                                    flex: 1,
+                                  ),
                                   Text(
                                     '2x nightly wake-ups included',
                                     style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 16,
+                                      fontSize: 15,
                                       fontFamily: 'Barlow',
                                       fontWeight: FontWeight.w500,
                                       height: 0,
                                     ),
                                   ),
+                                  Spacer(
+                                    flex: 8,
+                                  ),
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 25),
+                            Spacer(),
                             Container(
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -323,21 +287,26 @@ class shortTPrice extends StatelessWidget {
                                     child: Image.asset(
                                         'asseets/CheckCircle (2).png'),
                                   ),
-                                  const SizedBox(width: 10),
+                                  Spacer(
+                                    flex: 1,
+                                  ),
                                   Text(
                                     'No lengthy contracts',
                                     style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 16,
+                                      fontSize: 15,
                                       fontFamily: 'Barlow',
                                       fontWeight: FontWeight.w500,
                                       height: 0,
                                     ),
                                   ),
+                                  Spacer(
+                                    flex: 10,
+                                  ),
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 25),
+                            Spacer(),
                             Container(
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -352,16 +321,21 @@ class shortTPrice extends StatelessWidget {
                                     child: Image.asset(
                                         'asseets/CheckCircle (2).png'),
                                   ),
-                                  const SizedBox(width: 10),
+                                  Spacer(
+                                    flex: 1,
+                                  ),
                                   Text(
                                     'No joining fees ',
                                     style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 16,
+                                      fontSize: 15,
                                       fontFamily: 'Barlow',
                                       fontWeight: FontWeight.w500,
                                       height: 0,
                                     ),
+                                  ),
+                                  Spacer(
+                                    flex: 12,
                                   ),
                                 ],
                               ),
@@ -369,7 +343,7 @@ class shortTPrice extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      Spacer(),
                       Center(
                         child: Container(
                           width: 290,

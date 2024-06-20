@@ -46,7 +46,7 @@ class liveInPrice extends StatelessWidget {
             Center(
               child: Container(
                   width: 361,
-                  height: 501,
+                  height: 550,
                   padding: const EdgeInsets.all(15),
                   clipBehavior: Clip.antiAlias,
                   decoration: ShapeDecoration(
@@ -115,7 +115,7 @@ class liveInPrice extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 5),
                                   Text(
-                                    '1999 EGP',
+                                    '4000 EGP',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Color(0xFF0096C7),
@@ -130,7 +130,7 @@ class liveInPrice extends StatelessWidget {
                             ),
                             const SizedBox(width: 5),
                             Text(
-                              'p/w',
+                              'P/M',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Color(0xFF8D99AE),
@@ -143,7 +143,7 @@ class liveInPrice extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      Spacer(),
                       SizedBox(
                         width: double.infinity,
                         child: Text(
@@ -157,7 +157,7 @@ class liveInPrice extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      Spacer(),
                       Container(
                         width: double.infinity,
                         height: 220,
@@ -179,21 +179,26 @@ class liveInPrice extends StatelessWidget {
                                       decoration: BoxDecoration(),
                                       child: Image.asset(
                                           'asseets/CheckCircle (2).png')),
-                                  const SizedBox(width: 10),
+                                  Spacer(
+                                    flex: 1,
+                                  ),
                                   Text(
                                     'One week trial ',
                                     style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 16,
+                                      fontSize: 15,
                                       fontFamily: 'Barlow',
                                       fontWeight: FontWeight.w500,
                                       height: 0,
                                     ),
                                   ),
+                                  Spacer(
+                                    flex: 13,
+                                  ),
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 25),
+                            Spacer(),
                             Container(
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -208,12 +213,14 @@ class liveInPrice extends StatelessWidget {
                                     child: Image.asset(
                                         'asseets/CheckCircle (2).png'),
                                   ),
-                                  const SizedBox(width: 10),
+                                  Spacer(
+                                    flex: 1,
+                                  ),
                                   Text(
                                     'No weekend or bank holiday surcharge',
                                     style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 16,
+                                      fontSize: 15,
                                       fontFamily: 'Barlow',
                                       fontWeight: FontWeight.w500,
                                       height: 0,
@@ -222,7 +229,7 @@ class liveInPrice extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 25),
+                            Spacer(),
                             Container(
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -237,21 +244,26 @@ class liveInPrice extends StatelessWidget {
                                     child: Image.asset(
                                         'asseets/CheckCircle (2).png'),
                                   ),
-                                  const SizedBox(width: 10),
+                                  Spacer(
+                                    flex: 1,
+                                  ),
                                   Text(
                                     '2x nightly wake-ups included',
                                     style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 16,
+                                      fontSize: 15,
                                       fontFamily: 'Barlow',
                                       fontWeight: FontWeight.w500,
                                       height: 0,
                                     ),
                                   ),
+                                  Spacer(
+                                    flex: 7,
+                                  ),
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 25),
+                            Spacer(),
                             Container(
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -266,7 +278,9 @@ class liveInPrice extends StatelessWidget {
                                     child: Image.asset(
                                         'asseets/CheckCircle (2).png'),
                                   ),
-                                  const SizedBox(width: 10),
+                                  Spacer(
+                                    flex: 1,
+                                  ),
                                   Text(
                                     'No lengthy contracts',
                                     style: TextStyle(
@@ -277,10 +291,13 @@ class liveInPrice extends StatelessWidget {
                                       height: 0,
                                     ),
                                   ),
+                                  Spacer(
+                                    flex: 11,
+                                  ),
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 25),
+                            Spacer(),
                             Container(
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -295,7 +312,9 @@ class liveInPrice extends StatelessWidget {
                                     child: Image.asset(
                                         'asseets/CheckCircle (2).png'),
                                   ),
-                                  const SizedBox(width: 10),
+                                  Spacer(
+                                    flex: 1,
+                                  ),
                                   Text(
                                     'No joining fees ',
                                     style: TextStyle(
@@ -306,13 +325,16 @@ class liveInPrice extends StatelessWidget {
                                       height: 0,
                                     ),
                                   ),
+                                  Spacer(
+                                    flex: 14,
+                                  ),
                                 ],
                               ),
                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      Spacer(),
                       Center(
                         child: Container(
                           width: 290,
