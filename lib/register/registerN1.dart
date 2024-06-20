@@ -3,14 +3,14 @@ import 'package:relief/register/logInScreen.dart';
 import 'package:relief/register/registerN2.dart';
 import 'package:relief/register/registerP2.dart';
 
-class Register extends StatefulWidget {
-  const Register({super.key});
+class RegisterN1 extends StatefulWidget {
+  const RegisterN1({super.key});
 
   @override
-  State<Register> createState() => _RegisterState();
+  State<RegisterN1> createState() => _RegisterState();
 }
 
-class _RegisterState extends State<Register> {
+class _RegisterState extends State<RegisterN1> {
   bool _obscureText = true;
   var dropdownvalue = "10";
 
@@ -231,7 +231,7 @@ class _RegisterState extends State<Register> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const RegisterP2()));
+                                builder: (context) => const RegisterN2()));
                       },
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25),

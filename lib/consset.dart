@@ -1,1 +1,3 @@
 bool? priceActice;
+
+bool? NorP;

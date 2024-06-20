@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:relief/register/N_or_P.dart';
 import 'package:relief/register/forgot_password.dart';
 import 'package:relief/register/register.dart';
 
@@ -156,7 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Register()));
+                                  builder: (context) => const NorP()));
                         },
                         child: const Text(
                           'Register',
