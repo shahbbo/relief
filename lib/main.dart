@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:relief/components/navBar.dart';
 import 'package:relief/cubits/incareCubit/inCareCubit.dart';
-
+import 'package:relief/shared/elderApp.dart';
+import 'package:relief/sittings/detailesScreen/Aboutdetailes.dart';
+import 'package:relief/sittings/detailesScreen/Paymentdetailes.dart';
+import 'package:relief/sittings/detailesScreen/changepassworddetails.dart';
 import 'caregiver_view_details_edit_profile/caregiver_view_details_edit_profile_view.dart';
 import 'shared/bloc_observer.dart';
+import 'package:relief/carerApp.dart';
 
 void main() {
   runApp(const relief());
@@ -24,6 +28,17 @@ class relief extends StatelessWidget {
         },
         builder: (context, state) {
           return MaterialApp(
+            theme: ThemeData(
+              fontFamily: 'Barlow-Regular',
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              useMaterial3: true,
+            ),
+            routes: {
+              PaymentDetailes.id: (context) => PaymentDetailes(),
+              changepassworddetails.id: (context) => changepassworddetails(),
+              Aboutdetailes.id: (context) => Aboutdetailes(),
+              //  seamanEdit.id:(context) => seamanEdit(),
+            },
             debugShowCheckedModeBanner: false,
             // home: AnimatedSplashScreen(
             //     duration: 5000,
@@ -33,24 +48,8 @@ class relief extends StatelessWidget {
             //     nextScreen: logIn(),
             //     splashTransition: SplashTransition.fadeTransition,
             //     backgroundColor: Colors.white)
-
-           /* home: Scaffold(
-              body: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Container(
-                      child: inCareHeaderCubit.get(context).mainScreens[inCareHeaderCubit.get(context).currentIndex],
-                    ),
-                    // Spacer(flex: 1),
-                    Center(child: navBar()),
-                    SizedBox(height: 10),
-                    // Spacer(flex: 1),
-                  ],
-                ),
-              ),
-            ),*/
-
-            home: CaregiverViewDetailsEditProfileView(),
+            home: elderApp(),
+            // home: CaregiverViewDetailsEditProfileView(),
           );
         },
       ),

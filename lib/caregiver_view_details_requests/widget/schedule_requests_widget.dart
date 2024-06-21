@@ -150,7 +150,7 @@ class ScheduleRequestsWidget extends StatelessWidget {
               ),
               onPressed: () {},
               child: Text(
-                '  Cancel  ',
+                '    Cancel    ',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 16,
@@ -162,7 +162,7 @@ class ScheduleRequestsWidget extends StatelessWidget {
             ElevatedButton(
               onPressed: () {},
               child: Text(
-                '  Approve  ',
+                '    Approve    ',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16,
