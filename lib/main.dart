@@ -38,7 +38,7 @@ class relief extends StatelessWidget {
             //     nextScreen: logIn(),
             //     splashTransition: SplashTransition.fadeTransition,
             //     backgroundColor: Colors.white)
-            /*home: Scaffold(
+            home: Scaffold(
               body: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -46,15 +46,18 @@ class relief extends StatelessWidget {
                       child: inCareHeaderCubit.get(context).mainScreens[inCareHeaderCubit.get(context).currentIndex],
                     ),
                     // Spacer(flex: 1),
-                    Center(child: navBar()),
-                    SizedBox(height: 10),
+                    // navBar(),
+                    //
                     // Spacer(flex: 1),
                   ],
                 ),
               ),
-            ),*/
-
-            home: CaregiverViewDetailsScreen(),
+              bottomNavigationBar: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: navBar(),
+              ),
+            ),
+            // home: CaregiverViewDetailsScreen(),
           );
         },
       ),

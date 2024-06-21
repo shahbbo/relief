@@ -10,17 +10,17 @@ class Incare extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(2.0),
+      padding: const EdgeInsets.all(8.0),
       child: Container(
         // margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-        height: 440,
+        height: 450,
         child: ListView(
           physics: NeverScrollableScrollPhysics(),
           scrollDirection: Axis.vertical,
           children: [
             Container(
               margin: const EdgeInsets.symmetric(vertical: 5),
-              height: 210,
+              height: 215,
               padding: const EdgeInsets.all(20),
               clipBehavior: Clip.antiAlias,
               decoration: ShapeDecoration(
@@ -54,13 +54,16 @@ class Incare extends StatelessWidget {
                           const SizedBox(height: 8),
                           SizedBox(
                             width: 209,
-                            child: Text(
-                              'Live-in care preserves your lifestyle while providing necessary assistance.',
-                              style: TextStyle(
-                                color: Color(0xFFCED4DA),
-                                fontSize: 11,
-                                fontFamily: 'Barlow',
-                                fontWeight: FontWeight.w400,
+                            child: Text.rich(
+                              TextSpan(
+                                text:
+                                    'Live-in care preserves your lifestyle while providing necessary assistance.',
+                                style: TextStyle(
+                                  color: Color(0xFFCED4DA),
+                                  fontSize: 14,
+                                  fontFamily: 'Barlow',
+                                  fontWeight: FontWeight.w400,
+                                ),
                               ),
                             ),
                           ),
@@ -78,7 +81,6 @@ class Incare extends StatelessWidget {
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
                         ),
                       ),
-
                     ],
                   ),
                   Spacer(),
@@ -181,8 +183,7 @@ class Incare extends StatelessWidget {
             ),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 5),
-              width: 361,
-              height: 210,
+              height: 220,
               padding: const EdgeInsets.all(20),
               clipBehavior: Clip.antiAlias,
               decoration: ShapeDecoration(
@@ -217,15 +218,18 @@ class Incare extends StatelessWidget {
                             const SizedBox(height: 8),
                             SizedBox(
                               width: 209,
-                              child: Text(
-                                'Relief connects you to the needs of trusted respite caregivers.',
-                                style: TextStyle(
+                              child: Text.rich(
+                                TextSpan(
+                                  text:
+                                      'Short-term care provides the same level of care as live-in care, but for a shorter period of time.',
+                                  style: TextStyle(
                                   color: Color(0xFFCED4DA),
-                                  fontSize: 11,
-                                  fontFamily: 'Barlow',
+                                    fontSize: 14,
+                                    fontFamily: 'Barlow',
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
+                            ),
                             ),
                           ],
                         ),
@@ -289,7 +293,9 @@ class Incare extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const SizedBox(width: 25),
+                        Spacer(
+                          flex: 3,
+                        ),
                         GestureDetector(
                           onTap: () {
                             inCareHeaderCubit
@@ -331,6 +337,9 @@ class Incare extends StatelessWidget {
                               ],
                             ),
                           ),
+                        ),
+                        Spacer(
+                          flex: 2,
                         ),
                       ],
                     ),
