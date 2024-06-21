@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:relief/components/navBar.dart';
 import 'package:relief/cubits/incareCubit/inCareCubit.dart';
-import 'package:relief/log in.dart';
-import 'package:relief/homeScreen.dart';
-import 'package:relief/register/logInScreen.dart';
 
-import 'caregiver_view_details/caregiver_view_details_screen.dart';
-import 'caregiver_view_details_requests/caregiver_view_details_requests_viwe.dart';
-import 'caregiver_view_details_review/caregiver_view_details_review.dart';
+import 'caregiver_view_details_edit_profile/caregiver_view_details_edit_profile_view.dart';
 import 'shared/bloc_observer.dart';
 
 void main() {
@@ -41,7 +34,7 @@ class relief extends StatelessWidget {
             //     splashTransition: SplashTransition.fadeTransition,
             //     backgroundColor: Colors.white)
 
-        /*    home: Scaffold(
+           /* home: Scaffold(
               body: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -57,7 +50,7 @@ class relief extends StatelessWidget {
               ),
             ),*/
 
-            home: CaregiverViewDetailsReview(),
+            home: CaregiverViewDetailsEditProfileView(),
           );
         },
       ),
