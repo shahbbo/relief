@@ -117,20 +117,12 @@ class CareGiver extends StatelessWidget {
                     const SizedBox(
                       width: 8,
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Reviews()));
-                      },
-                      child: const Text(
-                        '32 Reviews',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18,
-                          color: Colors.black26,
-                        ),
+                    const Text(
+                      '32 Reviews',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18,
+                        color: Colors.black26,
                       ),
                     ),
                   ],
@@ -167,12 +159,11 @@ class CareGiver extends StatelessWidget {
                                     Image.asset('asseets/review.png'),
                                   ],
                                 ),
-                                const SizedBox(
-                                  height: 15,
-                                ),
+                                Spacer(),
                                 const Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
+                                    Spacer(),
                                     Text(
                                       'Reviews',
                                       style: TextStyle(
@@ -180,9 +171,7 @@ class CareGiver extends StatelessWidget {
                                         fontSize: 18,
                                       ),
                                     ),
-                                    SizedBox(
-                                      width: 35,
-                                    ),
+                                    Spacer(),
                                     Text(
                                       '32',
                                       style: TextStyle(
@@ -191,8 +180,10 @@ class CareGiver extends StatelessWidget {
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
+                                    Spacer(),
                                   ],
                                 ),
+                                Spacer(),
                               ],
                             ),
                             Container(
@@ -207,65 +198,65 @@ class CareGiver extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    SizedBox(
-                  /*    width: 160,
-                      height: 104,*/
-                      child: Stack(
-                        children: [
-                          Column(
-                            children: [
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  const SizedBox(
-                                    width: 15,
-                                  ),
-                                  Image.asset('asseets/review2.png'),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              const Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Accolades',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18,
+                    Spacer(),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Reviews()));
+                      },
+                      child: SizedBox(
+                        width: 160,
+                        height: 104,
+                        child: Stack(
+                          children: [
+                            Column(
+                              children: [
+                                const SizedBox(
+                                  height: 15,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const SizedBox(
+                                      width: 15,
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: 35,
-                                  ),
-                                  Text(
-                                    '4',
-                                    style: TextStyle(
-                                      color: Color(0xff6c757d),
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600,
+                                    Image.asset('asseets/about.png'),
+                                  ],
+                                ),
+                                Spacer(),
+                                const Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Spacer(
+                                      flex: 1,
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: const Color(0xffbbd0ff),
-                              ),
-                              borderRadius: BorderRadius.circular(25),
+                                    Text(
+                                      'About',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                    Spacer(
+                                      flex: 4,
+                                    ),
+                                  ],
+                                ),
+                                Spacer(),
+                              ],
                             ),
-                          ),
-                        ],
+                            Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: const Color(0xffbbd0ff),
+                                ),
+                                borderRadius: BorderRadius.circular(25),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -279,11 +270,11 @@ class CareGiver extends StatelessWidget {
                     SizedBox(
                       width: 5,
                     ),
-                    Text('Ismailia,'),
+                    Text('Ismailia, Egypt'),
                     SizedBox(
                       width: 2,
                     ),
-                    Text('Egypt'),
+                    Text(''),
                   ],
                 ),
                 const SizedBox(
@@ -295,15 +286,15 @@ class CareGiver extends StatelessWidget {
                     SizedBox(
                       width: 5,
                     ),
-                    Text('Since'),
-                    SizedBox(
-                      width: 3,
-                    ),
-                    Text('Nov'),
-                    SizedBox(
-                      width: 2,
-                    ),
-                    Text('2020'),
+                    Text('Since Nov 2020'),
+                    // SizedBox(
+                    //   width: 3,
+                    // ),
+                    // Text(''),
+                    // SizedBox(
+                    //   width: 2,
+                    // ),
+                    // Text(''),
                   ],
                 ),
                 const SizedBox(
@@ -345,7 +336,7 @@ class CareGiver extends StatelessWidget {
                     ),
                     color: const Color(0xFFD90429),
                     child: const Text(
-                      'schedule a meeting',
+                      'Book Appointment',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
