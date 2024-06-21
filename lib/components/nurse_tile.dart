@@ -50,7 +50,7 @@ class nurse extends StatelessWidget {
                           style: TextStyle(
                             color:
                                 Colors.black.withOpacity(0.20000000298023224),
-                            fontSize: 16,
+                            fontSize: 15,
                             fontFamily: 'Barlow',
                             fontWeight: FontWeight.w500,
                             height: 0,

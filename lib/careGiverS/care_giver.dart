@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:relief/careGiverS/AboutCr.dart';
 import 'package:relief/careGiverS/reviews.dart';
 
 class CareGiver extends StatelessWidget {
@@ -204,7 +205,7 @@ class CareGiver extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const Reviews()));
+                                builder: (context) => const AboutCare()));
                       },
                       child: SizedBox(
                         width: 160,
