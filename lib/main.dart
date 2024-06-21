@@ -45,10 +45,6 @@ class relief extends StatelessWidget {
                     Container(
                       child: inCareHeaderCubit.get(context).mainScreens[inCareHeaderCubit.get(context).currentIndex],
                     ),
-                    // Spacer(flex: 1),
-                    // navBar(),
-                    //
-                    // Spacer(flex: 1),
                   ],
                 ),
               ),

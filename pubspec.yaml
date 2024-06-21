@@ -129,6 +129,7 @@ flutter:
     - asseets/Vector (1).png
     - asseets/Vector (2).png
     - asseets/Ellipse 20.png
+    - asseets/about.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
