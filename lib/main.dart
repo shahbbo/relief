@@ -10,6 +10,7 @@ import 'package:relief/homeScreen.dart';
 import 'package:relief/register/logInScreen.dart';
 
 import 'caregiver_view_details/caregiver_view_details_screen.dart';
+import 'caregiver_view_details_requests/caregiver_view_details_requests_viwe.dart';
 
 void main() {
   runApp(const relief());
@@ -38,6 +39,7 @@ class relief extends StatelessWidget {
             //     nextScreen: logIn(),
             //     splashTransition: SplashTransition.fadeTransition,
             //     backgroundColor: Colors.white)
+
             /*home: Scaffold(
               body: SingleChildScrollView(
                 child: Column(
@@ -54,7 +56,7 @@ class relief extends StatelessWidget {
               ),
             ),*/
 
-            home: CaregiverViewDetailsScreen(),
+            home: CaregiverViewDetailsRequestsView(),
           );
         },
       ),
