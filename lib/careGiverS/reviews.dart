@@ -127,16 +127,20 @@ class Reviews extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
+            Divider(
+              color: const Color(0xffdee2e6),
+            ),
+         /*   Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
                   width: 360,
                   height: 1.0,
-                  color: const Color(0xffdee2e6),
+                  color: Colors.black,
+                  // color: const Color(0xffdee2e6),
                 ),
               ],
-            ),
+            ),*/
             const SizedBox(
               height: 25,
             ),
