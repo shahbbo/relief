@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:page_transition/page_transition.dart';
-import 'package:relief/bloc_obv.dart';
 import 'package:relief/components/navBar.dart';
 import 'package:relief/cubits/incareCubit/inCareCubit.dart';
-import 'package:relief/log in.dart';
-import 'package:relief/homeScreen.dart';
-import 'package:relief/register/logInScreen.dart';
-
-import 'caregiver_view_details/caregiver_view_details_screen.dart';
+import 'package:relief/shared/elderApp.dart';
+import 'package:relief/sittings/detailesScreen/Aboutdetailes.dart';
+import 'package:relief/sittings/detailesScreen/Paymentdetailes.dart';
+import 'package:relief/sittings/detailesScreen/changepassworddetails.dart';
+import 'caregiver_view_details_edit_profile/caregiver_view_details_edit_profile_view.dart';
+import 'shared/bloc_observer.dart';
+import 'package:relief/carerApp.dart';
 
 void main() {
   runApp(const relief());
@@ -29,6 +28,17 @@ class relief extends StatelessWidget {
         },
         builder: (context, state) {
           return MaterialApp(
+            theme: ThemeData(
+              fontFamily: 'Barlow-Regular',
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              useMaterial3: true,
+            ),
+            routes: {
+              PaymentDetailes.id: (context) => PaymentDetailes(),
+              changepassworddetails.id: (context) => changepassworddetails(),
+              Aboutdetailes.id: (context) => Aboutdetailes(),
+              //  seamanEdit.id:(context) => seamanEdit(),
+            },
             debugShowCheckedModeBanner: false,
             // home: AnimatedSplashScreen(
             //     duration: 5000,
@@ -38,22 +48,8 @@ class relief extends StatelessWidget {
             //     nextScreen: logIn(),
             //     splashTransition: SplashTransition.fadeTransition,
             //     backgroundColor: Colors.white)
-            home: Scaffold(
-              body: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Container(
-                      child: inCareHeaderCubit.get(context).mainScreens[inCareHeaderCubit.get(context).currentIndex],
-                    ),
-                  ],
-                ),
-              ),
-              bottomNavigationBar: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: navBar(),
-              ),
-            ),
-            // home: CaregiverViewDetailsScreen(),
+            home: elderApp(),
+            // home: CaregiverViewDetailsEditProfileView(),
           );
         },
       ),

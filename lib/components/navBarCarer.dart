@@ -2,23 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 
-class navBar extends StatelessWidget {
-  navBar({
+class navBarCarer extends StatelessWidget {
+  navBarCarer({
     super.key,
   });
 
   final List<String> iconsOn = [
     'asseets/HouseOn.png',
-    'asseets/CalendarBlankOn.png',
+    'asseets/notificationOn.png',
+    'asseets/reviewOn.png',
     'asseets/profileOn.png',
-    'asseets/SittingOn.png',
   ];
-
   final List<String> iconsOff = [
     'asseets/HouseOff.png',
-    'asseets/CalendarBlankOff.png',
+    'asseets/notificationOff.png',
+    'asseets/reviewOff.png',
     'asseets/profileOff.png',
-    'asseets/SittingOff.png',
   ];
 
   @override

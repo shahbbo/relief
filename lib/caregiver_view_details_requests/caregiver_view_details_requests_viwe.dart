@@ -8,9 +8,8 @@ class CaregiverViewDetailsRequestsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
+    return SafeArea(
+      child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SingleChildScrollView(
             child: Column(
@@ -24,8 +23,8 @@ class CaregiverViewDetailsRequestsView extends StatelessWidget {
                   height: 20,
                 ),
                 Text(
-                  'Requests',
-                  style: TextStyle(
+                ' Requests  ',
+                style: TextStyle(
                     color: Colors.black,
                     fontSize: 22,
                     fontFamily: 'Barlow',
@@ -48,7 +47,6 @@ class CaregiverViewDetailsRequestsView extends StatelessWidget {
             ),
           ),
         ),
-      ),
     );
   }
 }

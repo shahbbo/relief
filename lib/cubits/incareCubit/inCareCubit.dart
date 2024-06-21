@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:relief/caregiver_view_details/caregiver_view_details_screen.dart';
+import 'package:relief/caregiver_view_details_edit_profile/caregiver_view_details_edit_profile_view.dart';
+import 'package:relief/caregiver_view_details_requests/caregiver_view_details_requests_viwe.dart';
+import 'package:relief/caregiver_view_details_review/caregiver_view_details_review.dart';
 import 'package:relief/homeScreen.dart';
 import 'package:relief/screens/benefits.dart';
 import 'package:relief/screens/howItWorks.dart';
@@ -7,8 +11,8 @@ import 'package:relief/screens/overview.dart';
 import 'package:relief/screens/pricing.dart';
 import 'package:relief/calendar.dart';
 import 'package:relief/events.dart';
-import 'package:relief/sittings.dart';
 import 'package:relief/consset.dart';
+import 'package:relief/sittings/SittingSS.dart';
 part 'inCareStates.dart';
 
 class inCareHeaderCubit extends Cubit<headerState> {
@@ -42,25 +46,13 @@ class inCareHeaderCubit extends Cubit<headerState> {
     homeScreen(),
     calender(),
     events(),
-    sittings(),
+    sittingSS(),
   ];
-// void changeContent ({required int index}){
-//   switch(index){
-//     case 0:
-//       emit(InitialState());
-//       break;
-//     case 1:
-//       emit(howItWorksST());
-//       break;
-//     case 2:
-//       emit(benefitsST());
-//       break;
-//     case 3:
-//       emit(pricingST());
-//       break;
-//     case 4:
-//       emit(fqaST());
-//       break;
-//   }
-// }
+
+  List<Widget> mainScreensC = [
+    CaregiverViewDetailsScreen(),
+    CaregiverViewDetailsRequestsView(),
+    CaregiverViewDetailsReview(),
+    CaregiverViewDetailsEditProfileView(),
+  ];
 }

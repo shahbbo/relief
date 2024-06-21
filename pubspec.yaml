@@ -95,7 +95,6 @@ flutter:
     - asseets/HouseOn.png
     - asseets/SittingOff.png
     - asseets/SittingOn.png
-    - asseets/NotificationOff.png
     - asseets/Headset.png
     - asseets/call.png
     - asseets/CaretDown.png
@@ -130,6 +129,14 @@ flutter:
     - asseets/Vector (2).png
     - asseets/Ellipse 20.png
     - asseets/about.png
+    - asseets/profileOff.png
+    - asseets/profileOn.png
+    - asseets/notificationOn.png
+    - asseets/notificationOff.png
+    - asseets/reviewOff.png
+    - asseets/reviewOn.png
+    - assets/images/
+    - assets/images/Logo.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
