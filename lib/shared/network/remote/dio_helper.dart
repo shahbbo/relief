@@ -6,19 +6,11 @@ import '../local/cache_helper.dart';
 class DioHelper {
   static late Dio dio ;
 
-  static late Dio dioChat ;
   static inti()
   {
     dio = Dio(
       BaseOptions(
         baseUrl: 'AppStrings.baseUrl',
-        receiveDataWhenStatusError: true,
-      ),
-    );
-
-    dioChat = Dio(
-      BaseOptions(
-        baseUrl: 'https://pynearshop.codepeak.live/',
         receiveDataWhenStatusError: true,
       ),
     );
@@ -107,14 +99,4 @@ class DioHelper {
   }
 
 
-  static Future<Response> postDataChat({
-    required String url,
-    required dynamic data ,
-  }) async
-  {
-    return dioChat.post(
-      url ,
-      data: data,
-    );
-  }
 }

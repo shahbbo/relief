@@ -1,18 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:location/location.dart';
 import 'package:relief/components/navBar.dart';
 import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 import 'package:relief/elderApp.dart';
+import 'package:relief/register/logInScreen.dart';
 import 'package:relief/shared/bloc_observer.dart';
+import 'package:relief/shared/network/local/cache_helper.dart';
+import 'package:relief/shared/network/remote/dio_helper.dart';
 import 'package:relief/sittings/detailesScreen/Aboutdetailes.dart';
 import 'package:relief/sittings/detailesScreen/Paymentdetailes.dart';
 import 'package:relief/sittings/detailesScreen/changepassworddetails.dart';
 import 'caregiver_view_details_edit_profile/caregiver_view_details_edit_profile_view.dart';
 import 'package:relief/carerApp.dart';
 
-void main() {
+Future<void> main() async {
   runApp(const relief());
   Bloc.observer = MyBlocObserver();
+  await DioHelper.inti();
+  await CacheHelper.init();
+
+  Location location =  Location();
+
+  bool serviceEnabled;
+  PermissionStatus permissionGranted;
+
+
+  try{
+    serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+      if (!serviceEnabled) {
+        return;
+      }
+    }
+  }catch(e){
+    print(e.toString());
+  }
+
+  permissionGranted = await location.hasPermission();
+  if (permissionGranted == PermissionStatus.denied) {
+    permissionGranted = await location.requestPermission();
+    if (permissionGranted != PermissionStatus.granted) {
+      return;
+    }
+  }
 }
 
 class relief extends StatelessWidget {
@@ -48,8 +80,8 @@ class relief extends StatelessWidget {
             //     nextScreen: logIn(),
             //     splashTransition: SplashTransition.fadeTransition,
             //     backgroundColor: Colors.white)
-            home: elderApp(),
-            // home: CaregiverViewDetailsEditProfileView(),
+            home: LoginScreen(),
+            // home: carerApp(),
           );
         },
       ),

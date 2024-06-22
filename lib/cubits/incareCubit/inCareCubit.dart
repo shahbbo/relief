@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:relief/caregiver_view_details/caregiver_view_details_screen.dart';
@@ -13,6 +14,8 @@ import 'package:relief/calendar.dart';
 import 'package:relief/events.dart';
 import 'package:relief/consset.dart';
 import 'package:relief/sittings/SittingSS.dart';
+
+import '../../shared/network/remote/dio_helper.dart';
 part 'inCareStates.dart';
 
 class inCareHeaderCubit extends Cubit<headerState> {
@@ -55,4 +58,26 @@ class inCareHeaderCubit extends Cubit<headerState> {
     CaregiverViewDetailsReview(),
     CaregiverViewDetailsEditProfileView(),
   ];
+
+
+  TextEditingController addressController = TextEditingController();
+  Future<void> getPlace({
+    required dynamic lat,
+    required dynamic lon ,
+  }) async {
+    emit(LoadingPlace());
+    await DioHelper.getPlace(url: 'lat=$lat&lon=$lon').then((value) {
+  /*    lats = lat ;
+      lons = lon;*/
+      addressController.text = value.data['display_name'] ;
+      emit(SuccessPlace());
+    }).catchError((onError) {
+      if(onError is DioException){
+        print('error : ${onError.response!.data}');
+      }
+      print('error : $onError');
+      emit(ErrorPlace());
+    });
+
+  }
 }

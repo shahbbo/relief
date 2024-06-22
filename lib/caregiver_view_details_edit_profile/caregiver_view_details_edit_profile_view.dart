@@ -93,6 +93,11 @@ class _CaregiverViewDetailsEditProfileViewState
                               borderRadius: BorderRadius.circular(15),
                             ),
                           ),
+                          onEditingComplete: () {
+                            setState(() {
+                              isUserName = true;
+                            });
+                          },
                         ),
                       ],
                     ),
@@ -146,6 +151,11 @@ class _CaregiverViewDetailsEditProfileViewState
                               borderRadius: BorderRadius.circular(15),
                             ),
                           ),
+                          onEditingComplete: () {
+                            setState(() {
+                              isEmail = true;
+                            });
+                          },
                         ),
                       ],
                     ),
@@ -202,6 +212,11 @@ class _CaregiverViewDetailsEditProfileViewState
                               borderRadius: BorderRadius.circular(15),
                             ),
                           ),
+                          onEditingComplete: () {
+                            setState(() {
+                              isBio = true;
+                            });
+                          },
                         ),
                       ],
                     ),
@@ -262,6 +277,11 @@ class _CaregiverViewDetailsEditProfileViewState
                               borderRadius: BorderRadius.circular(15),
                             ),
                           ),
+                          onEditingComplete: () {
+                            setState(() {
+                              isPhone = true;
+                            });
+                          },
                         ),
                       ],
                     ),
@@ -323,6 +343,11 @@ class _CaregiverViewDetailsEditProfileViewState
                               borderRadius: BorderRadius.circular(15),
                             ),
                           ),
+                          onEditingComplete: () {
+                            setState(() {
+                              isLocation = true;
+                            });
+                          },
                         ),
                       ],
                     ),
