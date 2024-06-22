@@ -28,7 +28,7 @@ class Aboutdetailes extends StatelessWidget {
                     'The elder care system is a crucial component of any society, reflecting its values and commitments to its older population. As demographics shift towards an aging population globally, the importance of robust elder care systems becomes increasingly evident. These systems encompass a wide range of services and support mechanisms designed to ensure the well-being, dignity, and quality of life of elderly individuals.',
               ),
               SizedBox(
-                height: 20,
+                height: 19,
               ),
               Question(
                 text: 'Our Mission',
