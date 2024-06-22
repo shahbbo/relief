@@ -135,8 +135,10 @@ flutter:
     - asseets/notificationOff.png
     - asseets/reviewOff.png
     - asseets/reviewOn.png
-    - assets/images/
-    - assets/images/Logo.png
+    #    - assets/images/
+    #    - assets/images/Logo.png
+    - asseets/Logoo.png
+    - asseets/Hands Cash.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
