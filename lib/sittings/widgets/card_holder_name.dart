@@ -1,19 +1,15 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
 
-class textfieldPayment extends StatelessWidget {
+class CardHolderName extends StatelessWidget {
   String? text;
-  bool obscureText;
 
-  textfieldPayment({this.text, this.obscureText = false});
+  CardHolderName({required this.text});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       obscuringCharacter: '*',
-      obscureText: obscureText,
-      keyboardType: TextInputType.number,
+      keyboardType: TextInputType.name,
       decoration: InputDecoration(
           labelText: text,
           labelStyle: TextStyle(color: Color(0xffADB5BD)),

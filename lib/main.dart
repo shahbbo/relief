@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:relief/components/navBar.dart';
 import 'package:relief/cubits/incareCubit/inCareCubit.dart';
-import 'package:relief/shared/elderApp.dart';
+import 'package:relief/elderApp.dart';
+import 'package:relief/shared/bloc_observer.dart';
 import 'package:relief/sittings/detailesScreen/Aboutdetailes.dart';
 import 'package:relief/sittings/detailesScreen/Paymentdetailes.dart';
 import 'package:relief/sittings/detailesScreen/changepassworddetails.dart';
 import 'caregiver_view_details_edit_profile/caregiver_view_details_edit_profile_view.dart';
-import 'shared/bloc_observer.dart';
 import 'package:relief/carerApp.dart';
 
 void main() {

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:relief/InCare.dart';
+import 'package:relief/components/erlder_name_photo.dart';
+import 'package:relief/components/incareBody.dart';
 import 'package:relief/nurse_builder.dart';
 
 class homeScreen extends StatelessWidget {
@@ -10,66 +12,8 @@ class homeScreen extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: [
-          SizedBox(height: 4),
-          Container(
-            width: 361,
-            height: 51,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(4),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          // width: 148,
-                          child: Text(
-                            'Hello Mr. Mohamed ',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.black,
-                            fontSize: 18,
-                              fontFamily: 'Barlow',
-                              fontWeight: FontWeight.w500,
-                              height: 0,
-                            ),
-                          ),
-                        ),
-                      Spacer(),
-                      Text(
-                          '5th Settlement, egypt',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color(0xFF3E5C76),
-                            fontSize: 14,
-                            fontFamily: 'Barlow',
-                            fontWeight: FontWeight.w400,
-                            height: 0,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                Spacer(),
-                Container(
-                    width: 50,
-                    height: 50,
-                    decoration: ShapeDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("asseets/Ellipse 1.png"),
-                        fit: BoxFit.fill,
-                      ),
-                      shape: OvalBorder(),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+          SizedBox(height: 8),
+          elderNamePhoto(),
           SizedBox(height: 4),
           SizedBox(
             width: 325,

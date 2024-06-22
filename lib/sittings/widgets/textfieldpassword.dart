@@ -16,7 +16,7 @@ class _textfieldpasswordState extends State<textfieldpassword> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      obscuringCharacter: '♡',
+      obscuringCharacter: '*',
       obscureText: _isObscure3,
       decoration: InputDecoration(
           suffixIcon: IconButton(

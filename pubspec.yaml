@@ -41,7 +41,7 @@ dependencies:
   dio: ^5.4.3+1
   shared_preferences: ^2.2.3
 dev_dependencies:
-  flutter_native_splash: ^2.4.0
+  flutter_native_splash: ^2.3.10
 flutter_native_splash:
   image: asseets/logo.jpg
   color: "#ffffff"
@@ -137,8 +137,8 @@ flutter:
     - asseets/notificationOff.png
     - asseets/reviewOff.png
     - asseets/reviewOn.png
-    - assets/images/
-    - assets/images/Logo.png
+    - asseets/Logoo.png
+    - asseets/Hands Cash.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -23,7 +23,7 @@ class changepassworddetails extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(child: Image.asset('assets/images/Logo.png')),
+              Center(child: Image.asset('asseets/Logoo.png')),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:relief/sittings/widgets/button.dart';
+import 'package:relief/sittings/widgets/card_holder_name.dart';
 import 'package:relief/sittings/widgets/textfieldPayment.dart';
 
 class PaymentDetailes extends StatefulWidget {
@@ -27,7 +28,7 @@ class _PaymentDetailesState extends State<PaymentDetailes> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset('assets/images/Hands Cash.png'),
+          Image.asset('asseets/Hands Cash.png'),
           const SizedBox(
             height: 30,
           ),
@@ -41,7 +42,7 @@ class _PaymentDetailesState extends State<PaymentDetailes> {
           Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
-              'Ddd these in at checkout for a smoother experience!',
+              'Add these in at checkout for a smoother experience!',
               style: TextStyle(fontSize: 18, color: Color(0xffADB5BD)),
             ),
           ),
@@ -78,35 +79,58 @@ class _PaymentDetailesState extends State<PaymentDetailes> {
                                       fontWeight: FontWeight.w600),
                                 ),
                               ),
-                              textfieldPayment(
-                                text: '**** **** **** ****',
+                              Container(
+                                height: 55,
+                                width: 300,
+                                child: textfieldPayment(
+                                  text: '**** **** **** ****',
+                                ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 8.0),
-                                      child: Text(
-                                        'Expiration',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w600),
-                                      ),
+                                    Column(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              bottom: 8.0),
+                                          child: Text(
+                                            'Expiration',
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 55,
+                                          width: 105,
+                                          child: textfieldPayment(
+                                            text: 'MM/YY',
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                    SizedBox(
-                                      width: 70,
-                                    ),
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 8.0),
-                                      child: Text(
-                                        'CVC',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w600),
-                                      ),
+                                    Spacer(),
+                                    Column(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(bottom: 8.0),
+                                          child: Text(
+                                            'CVV',
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 55,
+                                          width: 105,
+                                          child: textfieldPayment(
+                                            text: 'CVV',
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
@@ -120,8 +144,12 @@ class _PaymentDetailesState extends State<PaymentDetailes> {
                                       fontWeight: FontWeight.w600),
                                 ),
                               ),
-                              textfieldPayment(
-                                text: 'Enter Cardholder’s Name',
+                              Container(
+                                height: 55,
+                                width: 300,
+                                child: CardHolderName(
+                                  text: 'Cardholder Name',
+                                ),
                               ),
                               Button(
                                 text: 'Save',
