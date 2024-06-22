@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:relief/consset.dart';
-import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 import 'package:relief/screens/liveInPrice.dart';
 import 'package:relief/screens/shortTPrice.dart';
 

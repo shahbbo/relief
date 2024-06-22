@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CardHolderName extends StatelessWidget {
-  String? text;
+  final String? text;
 
   CardHolderName({required this.text});
 

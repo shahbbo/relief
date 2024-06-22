@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:relief/register/N_or_P.dart';
 import 'package:relief/register/forgot_password.dart';
-import 'package:relief/register/register.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

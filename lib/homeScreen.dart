@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:relief/InCare.dart';
 import 'package:relief/components/erlder_name_photo.dart';
-import 'package:relief/components/incareBody.dart';
 import 'package:relief/nurse_builder.dart';
 
 class homeScreen extends StatelessWidget {

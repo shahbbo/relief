@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class contentContainer extends StatelessWidget {
-  String? text;
-  IconData? prefixicon;
-  IconData? endicon;
-  Color colortext;
+  final String? text;
+  final IconData? prefixicon;
+  final IconData? endicon;
+  final Color colortext;
 
-  Color coloricon;
+  final Color coloricon;
 
-  VoidCallback? onpressed;
+  final VoidCallback? onpressed;
 
   contentContainer(
       {this.text,

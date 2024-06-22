@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class textfieldpassword extends StatefulWidget {
-  String? text;
-  bool obscureText;
+  final String? text;
+  final bool obscureText;
 
   textfieldpassword({this.text, this.obscureText = false});
 

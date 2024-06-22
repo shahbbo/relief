@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:relief/register/logInScreen.dart';
-import 'package:relief/register/registerN2.dart';
 import 'package:relief/register/registerP2.dart';
 
 class Register extends StatefulWidget {

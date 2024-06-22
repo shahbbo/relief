@@ -14,7 +14,7 @@ class liveInCare extends StatelessWidget {
       child: BlocConsumer<inCareHeaderCubit, headerState>(
         listener: (context, state) {},
         builder: (context, state) {
-          var cubit = inCareHeaderCubit.get(context);
+          // var cubit = inCareHeaderCubit.get(context);
           return Scaffold(
             body: SafeArea(
               child: SingleChildScrollView(

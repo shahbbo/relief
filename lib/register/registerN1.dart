@@ -5,7 +5,6 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 import 'package:relief/register/logInScreen.dart';
 import 'package:relief/register/registerN2.dart';
-import 'package:relief/register/registerP2.dart';
 
 class RegisterN1 extends StatefulWidget {
   const RegisterN1({super.key});

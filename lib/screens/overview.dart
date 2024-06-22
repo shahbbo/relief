@@ -197,10 +197,10 @@ class overview extends StatelessWidget {
                   ),
                 ),
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.white),
-                  padding: MaterialStateProperty.all(
+                  backgroundColor: WidgetStateProperty.all(Colors.white),
+                  padding: WidgetStateProperty.all(
                       EdgeInsets.symmetric(horizontal: 30, vertical: 15)),
-                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                  shape: WidgetStateProperty.all(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25),
                     side: BorderSide(width: 1, color: Color(0xFF8D99AE)),
                   )),
@@ -224,10 +224,10 @@ class overview extends StatelessWidget {
                   ),
                 ),
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.red),
-                  padding: MaterialStateProperty.all(
+                  backgroundColor: WidgetStateProperty.all(Colors.red),
+                  padding: WidgetStateProperty.all(
                       EdgeInsets.symmetric(horizontal: 30, vertical: 15)),
-                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                  shape: WidgetStateProperty.all(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25),
                     side: BorderSide(width: 1, color: Color(0xFF8D99AE)),
                   )),
