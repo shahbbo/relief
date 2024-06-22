@@ -15,7 +15,6 @@ class RegisterN1 extends StatefulWidget {
 
 class _RegisterState extends State<RegisterN1> {
   bool _obscureText = true;
-  var dropdownvalue = "10";
   Location location = Location();
 
   @override
@@ -176,56 +175,6 @@ class _RegisterState extends State<RegisterN1> {
                                   ),
                                 ),
                                 const SizedBox(height: 5),
-                                /*  DropdownButtonFormField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                        ),
-                        value: dropdownvalue,
-                        items: const <DropdownMenuItem<String>>[
-                          DropdownMenuItem(
-                            value: "8",
-                            child: Text("Cairo"),
-                          ),
-                          DropdownMenuItem(
-                            value: "1",
-                            child: Text("Alexandria"),
-                          ),
-                          DropdownMenuItem(
-                            value: "2",
-                            child: Text("Ismailia"),
-                          ),
-                          DropdownMenuItem(
-                            value: "3",
-                            child: Text("Suez"),
-                          ),
-                          DropdownMenuItem(
-                            value: "4",
-                            child: Text("PortSaid"),
-                          ),
-                          DropdownMenuItem(
-                            value: "5",
-                            child: Text("Sohag"),
-                          ),
-                          DropdownMenuItem(
-                            value: "6",
-                            child: Text("Aswan"),
-                          ),
-                          DropdownMenuItem(
-                            value: "7",
-                            child: Text("Damitta"),
-                          ),
-                          DropdownMenuItem(
-                            value: "10",
-                            child: Text(
-                                style: TextStyle(
-                                  color: Color(0xFF494C56),
-                                ),
-                                "Tap To Select Your Location"),
-                          ),
-                        ],
-                        onChanged: (v) {}),*/
                                 TextFormField(
                                   controller: inCareHeaderCubit.get(context).addressController,
                                   keyboardType: TextInputType.streetAddress,

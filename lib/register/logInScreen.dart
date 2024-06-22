@@ -15,6 +15,9 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _obscureText = true;
   TextEditingController passwordController = TextEditingController();
 
+  RegExp regex =
+      RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,6 +106,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter your password';
+                      } else if (value.length < 8) {
+                        return 'Password must be at least 8 characters';
+                      } else if (regex.hasMatch(value) == false) {
+                        return 'Password must contain at least one uppercase letter, \n one lowercase letter, one number and one special character';
                       }
                       return null;
                     },

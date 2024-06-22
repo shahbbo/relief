@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:location/location.dart';
+import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 
 import 'wigdet/ProfileEditWidget.dart';
 
@@ -29,9 +32,16 @@ class _CaregiverViewDetailsEditProfileViewState
   TextEditingController locationController = TextEditingController();
   bool isLocation = true;
 
+  Location location = Location();
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return BlocConsumer<inCareHeaderCubit, headerState>(
+      listener: (context, state) {
+        // TODO: implement listener
+      },
+      builder: (context, state) {
+        return SafeArea(
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -300,32 +310,25 @@ class _CaregiverViewDetailsEditProfileViewState
                           ),
                         ),
                         TextFormField(
-                          controller: locationController,
-                          keyboardType: TextInputType.streetAddress,
-                          readOnly: isLocation,
-                          decoration: InputDecoration(
-                            hintText: '5th Settlement, egypt',
-                            hintStyle: TextStyle(
-                              color: Color(0xFF343A40),
-                              fontSize: 16,
-                              fontFamily: 'Barlow',
-                              fontWeight: FontWeight.w400,
-                            ),
-                            prefixIcon: Image.asset('asseets/call.png'),
-                            prefixText: '| ',
-                            prefixStyle: TextStyle(
-                              color: Color(0xFF6C757D),
-                              fontSize: 16,
-                              fontFamily: 'Barlow',
-                              fontWeight: FontWeight.w400,
-                            ),
-                            suffixIcon: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  isPhone = false;
-                                });
-                              },
-                              icon: Icon(Icons.edit, color: Color(0xFF00B4D8)),
+                              controller: inCareHeaderCubit
+                                  .get(context)
+                                  .addressController,
+                              keyboardType: TextInputType.streetAddress,
+                              readOnly: true,
+                              decoration: InputDecoration(
+                                hintText: '',
+                                suffixIcon: IconButton(
+                                  icon: const Icon(
+                                      color: Color(0xFF00B4D8),
+                                      Icons.location_searching_sharp),
+                                  onPressed: () async {
+                                    LocationData locationData;
+                                    locationData = await location.getLocation();
+                                    inCareHeaderCubit.get(context).getPlace(
+                                          lat: locationData.latitude,
+                                          lon: locationData.longitude,
+                                        );
+                                  },
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -343,11 +346,6 @@ class _CaregiverViewDetailsEditProfileViewState
                               borderRadius: BorderRadius.circular(15),
                             ),
                           ),
-                          onEditingComplete: () {
-                            setState(() {
-                              isLocation = true;
-                            });
-                          },
                         ),
                       ],
                     ),
@@ -359,6 +357,8 @@ class _CaregiverViewDetailsEditProfileViewState
           ],
         ),
       ),
+    );
+      },
     );
   }
 }

@@ -11,8 +11,8 @@ import 'package:relief/screens/howItWorks.dart';
 import 'package:relief/screens/overview.dart';
 import 'package:relief/screens/pricing.dart';
 import 'package:relief/calendar.dart';
-import 'package:relief/events.dart';
 import 'package:relief/consset.dart';
+import 'package:relief/screens/profileElder.dart';
 import 'package:relief/sittings/SittingSS.dart';
 
 import '../../shared/network/remote/dio_helper.dart';
@@ -48,7 +48,7 @@ class inCareHeaderCubit extends Cubit<headerState> {
   List<Widget> mainScreens = [
     homeScreen(),
     calender(),
-    events(),
+    elderprofile(),
     sittingSS(),
   ];
 
@@ -78,6 +78,5 @@ class inCareHeaderCubit extends Cubit<headerState> {
       print('error : $onError');
       emit(ErrorPlace());
     });
-
   }
 }
