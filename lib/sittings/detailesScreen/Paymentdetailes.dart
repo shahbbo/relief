@@ -140,7 +140,7 @@ class _PaymentDetailesState extends State<PaymentDetailes> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(bottom: 0),
+                                  padding: const EdgeInsets.all(8.0),
                                   child: Text(
                                     'Cardholder Name',
                                     style: TextStyle(
