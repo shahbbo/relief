@@ -10,12 +10,24 @@ class RegisterN1 extends StatefulWidget {
   const RegisterN1({super.key});
 
   @override
-  State<RegisterN1> createState() => _RegisterState();
+  State<RegisterN1> createState() => _RegisterN1State();
 }
 
-class _RegisterState extends State<RegisterN1> {
+class _RegisterN1State extends State<RegisterN1> {
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   bool _obscureText = true;
   Location location = Location();
+
+  TextEditingController nameCarerController = TextEditingController();
+  TextEditingController emailCarerController = TextEditingController();
+  TextEditingController passwordCarerController = TextEditingController();
+  TextEditingController phoneCarerController = TextEditingController();
+
+  RegExp regex = RegExp(r'^(?=.[A-Za-z])(?=.[0-9])(?=.[!#?%$@]).{8,}$');
+  RegExp regexx = RegExp(r'[a-zA-Z0-9.%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$');
+  RegExp regexn = RegExp('[a-zA-Z]');
+  RegExp regexp = RegExp('^(?:[+01]8)?[0-9]{10}');
 
   @override
   Widget build(BuildContext context) {
@@ -44,225 +56,287 @@ class _RegisterState extends State<RegisterN1> {
                   padding: const EdgeInsets.all(20.0),
                   child: Center(
                       child: SingleChildScrollView(
-                          child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Row(
-                                  children: [],
+                          child: Form(
+                    key: formKey,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Row(
+                            children: [],
+                          ),
+                          const Text(
+                            'Name',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          TextFormField(
+                            controller: nameCarerController,
+                            keyboardType: TextInputType.name,
+                            decoration: InputDecoration(
+                              hintText: 'Enter Your Name',
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25)),
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter your name';
+                              } else if (regexn.hasMatch(value) == false) {
+                                return 'Name must contain only letters';
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 5),
+                          const Text(
+                            'Email Address',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          TextFormField(
+                            controller: emailCarerController,
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                              hintText: 'Enter Your Email Address',
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25)),
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter your email address';
+                              } else if (regexx.hasMatch(value) == false) {
+                                return 'Please enter a valid email address';
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 5),
+                          const Text(
+                            'Password',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          TextFormField(
+                            controller: passwordCarerController,
+                            obscureText: _obscureText,
+                            keyboardType: TextInputType.visiblePassword,
+                            obscuringCharacter: '*',
+                            decoration: InputDecoration(
+                              hintText: 'Enter Your Password',
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _obscureText
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: Colors.grey,
                                 ),
-                                const Text(
-                                  'Username',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                                onPressed: () {
+                                  setState(() {
+                                    _obscureText = !_obscureText;
+                                  });
+                                },
+                              ),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25)),
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter your password';
+                              } else if (value.length < 8) {
+                                return 'Password must be at least 8 characters';
+                              } else if (regex.hasMatch(value) == false) {
+                                return 'Password must contain at least one uppercase letter, \n one lowercase letter, one number and one special character';
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 5),
+                          const Text(
+                            'Confirm Password',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          TextFormField(
+                            controller: passwordCarerController,
+                            obscureText: _obscureText,
+                            keyboardType: TextInputType.visiblePassword,
+                            obscuringCharacter: '*',
+                            decoration: InputDecoration(
+                              hintText: 'Retype The Password',
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _obscureText
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: Colors.grey,
                                 ),
-                                const SizedBox(height: 5),
-                                TextFormField(
-                                  keyboardType: TextInputType.name,
-                                  decoration: InputDecoration(
-                                    hintText: 'Enter Your Name',
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(25)),
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                const Text(
-                                  'Email Address',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                TextFormField(
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: InputDecoration(
-                                    hintText: 'Enter Your Email Address',
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(25)),
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                const Text(
-                                  'Password',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                TextFormField(
-                                  obscureText: _obscureText,
-                                  keyboardType: TextInputType.visiblePassword,
-                                  obscuringCharacter: '*',
-                                  decoration: InputDecoration(
-                                    hintText: 'Enter Your Password',
-                                    suffixIcon: IconButton(
-                                      icon: Icon(
-                                        _obscureText
-                                            ? Icons.visibility
-                                            : Icons.visibility_off,
-                                        color: Colors.grey,
-                                      ),
-                                      onPressed: () {
-                                        setState(() {
-                                          _obscureText = !_obscureText;
-                                        });
-                                      },
-                                    ),
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(25)),
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                const Text(
-                                  'Confirm Password',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                TextFormField(
-                                  obscureText: _obscureText,
-                                  keyboardType: TextInputType.visiblePassword,
-                                  obscuringCharacter: '*',
-                                  decoration: InputDecoration(
-                                    hintText: 'Retype The Password',
-                                    suffixIcon: IconButton(
-                                      icon: Icon(
-                                        _obscureText
-                                            ? Icons.visibility
-                                            : Icons.visibility_off,
-                                        color: Colors.grey,
-                                      ),
-                                      onPressed: () {
-                                        setState(() {
-                                          _obscureText = !_obscureText;
-                                        });
-                                      },
-                                    ),
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(25)),
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                const Text(
-                                  'Phone Number',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                TextFormField(
-                                  keyboardType: TextInputType.phone,
-                                  decoration: InputDecoration(
-                                    labelText: '+02',
-                                    hintText: 'Enter Your Phone Number',
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(25)),
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                const Text(
-                                  'Location',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                TextFormField(
-                                  controller: inCareHeaderCubit.get(context).addressController,
-                                  keyboardType: TextInputType.streetAddress,
-                                  readOnly: true,
-                                  decoration: InputDecoration(
-                                    hintText: '',
-                                    suffixIcon: IconButton(
-                                      icon: const Icon(
-                                          Icons.location_searching_sharp),
-                                      onPressed: () async {
-                                        LocationData locationData;
-                                        locationData = await location.getLocation();
-                                        inCareHeaderCubit.get(context).getPlace(
-                                            lat: locationData.latitude,
+                                onPressed: () {
+                                  setState(() {
+                                    _obscureText = !_obscureText;
+                                  });
+                                },
+                              ),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25)),
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter your password';
+                              } else if (value.length < 8) {
+                                return 'Password must be at least 8 characters';
+                              } else if (regex.hasMatch(value) == false) {
+                                return 'Password must contain at least one uppercase letter, \n one lowercase letter, one number and one special character';
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 5),
+                          const Text(
+                            'Phone Number',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          TextFormField(
+                            controller: phoneCarerController,
+                            keyboardType: TextInputType.phone,
+                            decoration: InputDecoration(
+                              labelText: '+02',
+                              hintText: 'Enter Your Phone Number',
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25)),
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter your phone number';
+                              } else if (regexp.hasMatch(value) == false) {
+                                return 'Please enter a valid phone number';
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 5),
+                          const Text(
+                            'Location',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          TextFormField(
+                            controller: inCareHeaderCubit
+                                .get(context)
+                                .addressController,
+                            keyboardType: TextInputType.streetAddress,
+                            readOnly: true,
+                            decoration: InputDecoration(
+                              hintText: '',
+                              suffixIcon: IconButton(
+                                icon:
+                                    const Icon(Icons.location_searching_sharp),
+                                onPressed: () async {
+                                  LocationData locationData;
+                                  locationData = await location.getLocation();
+                                  inCareHeaderCubit.get(context).getPlace(
+                                        lat: locationData.latitude,
                                             lon: locationData.longitude,
-                                        );
-                                      },
-                                    ),
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(25)),
-                                  ),
+                                      );
+                                },
+                              ),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25)),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 256.0,
+                                height: 1.0,
+                                color: Colors.black, // Line color
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 10),
+                          SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: MaterialButton(
+                              onPressed: () {
+                                if (formKey.currentState!.validate()) {
+                                  print('Name: ${nameCarerController.text}');
+                                  print('Email: ${emailCarerController.text}');
+                                  print(
+                                      'Password: ${passwordCarerController.text}');
+                                  print(
+                                      'Phone Number: ${phoneCarerController.text}');
+                                }
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const RegisterN2()));
+                              },
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25),
+                              ),
+                              color: const Color(0xFFB91A13),
+                              child: const Text(
+                                'Next',
+                                style: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white,
                                 ),
-                                const SizedBox(height: 10),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      width: 256.0,
-                                      height: 1.0,
-                                      color: Colors.black, // Line color
-                                    ),
-                                  ],
+                              ),
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                'Already Have An Account?',
+                                style: TextStyle(
+                                  fontSize: 18,
                                 ),
-                                const SizedBox(height: 10),
-                                SizedBox(
-                                  width: double.infinity,
-                                  height: 50,
-                                  child: MaterialButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (
-                                                  context) => const RegisterN2()));
-                                    },
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(25),
+                              ),
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const LoginScreen()));
+                                  },
+                                  child: const Text(
+                                    'Log In',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.red,
+                                      fontWeight: FontWeight.w700,
                                     ),
-                                    color: const Color(0xFFB91A13),
-                                    child: const Text(
-                                      'Next',
-                                      style: TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      'Already Have An Account?',
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                    TextButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (
-                                                      context) => const LoginScreen()));
-                                        },
-                                        child: const Text(
-                                          'Log In',
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            color: Colors.red,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ))
-                                  ],
-                                ),
-                                const SizedBox(height: 30),
-                              ]))))),
+                                  ))
+                            ],
+                          ),
+                          const SizedBox(height: 30),
+                        ]),
+                  ))))),
         );
       },
     );

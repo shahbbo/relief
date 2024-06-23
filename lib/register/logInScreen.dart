@@ -11,12 +11,16 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  TextEditingController emailController = TextEditingController();
+
   bool _obscureText = true;
+
+  TextEditingController emailController = TextEditingController();
+
   TextEditingController passwordController = TextEditingController();
 
-  RegExp regex =
-      RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+  RegExp regex = RegExp(r'^(?=.[A-Za-z])(?=.[0-9])(?=.[!#?%$@]).{8,}$');
+
+  RegExp regexx = RegExp(r'[a-zA-Z0-9.%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$');
 
   @override
   Widget build(BuildContext context) {
@@ -67,8 +71,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter your email address';
-                      }else if(value.isValidEmail(value) == false){
-                          return 'Please enter a valid email address';
+                      } else if (regexx.hasMatch(value) == false) {
+                        return 'Please enter a valid email address';
                         }
                       return null;
                     },
@@ -210,8 +214,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
 extension EmailValidator on String {
   bool isValidEmail(String value) {
-    return RegExp(
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+    return RegExp(r'[a-zA-Z0-9.%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$')
         .hasMatch(value);
   }
 }
