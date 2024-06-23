@@ -14,13 +14,13 @@ void singOut(context) {
     }*/
   });
 
-  if (token != null || uid != null) {
+/*  if (token != null || uid != null) {
     token = null;
     uid = null;
     debugPrint("token in side if condition: $token uid : $uid");
   }
   debugPrint('token : $token');
-  debugPrint('uid: $uid');
+  debugPrint('uid: $uid');*/
 }
 
 /*void navigateFish(context, widget) => Navigator.pushAndRemoveUntil(
@@ -54,7 +54,9 @@ void navigateFish(BuildContext context, Widget widget) {
   );
 }
 
-String? token = CacheHelper.getData(key: 'TokenId');
+String? tokenPatient = CacheHelper.getData(key: 'tokenPatient');
+
+String? tokenCaregiver = CacheHelper.getData(key: 'tokenCaregiver');
 
 String? uid = CacheHelper.getData(key: 'ID');
 

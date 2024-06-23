@@ -7,6 +7,7 @@ import 'package:relief/register/logInScreen.dart';
 import 'package:relief/register/registerN2.dart';
 
 import 'cubit/register_cubit.dart';
+import 'registerP2.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -23,7 +24,7 @@ class _RegisterState extends State<Register> {
 
 
 
-  RegExp regex = RegExp(r'^(?=.[A-Za-z])(?=.[0-9])(?=.[!#?%$@]).{8,}$');
+  // RegExp regex = RegExp(r'^(?=.[A-Za-z])(?=.[0-9])(?=.[!#?%$@]).{8,}$');
   RegExp regexx = RegExp(r'[a-zA-Z0-9.%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$');
   RegExp regexn = RegExp('[a-zA-Z]');
   RegExp regexp = RegExp('^(?:[+01]8)?[0-9]{10}');
@@ -151,9 +152,9 @@ class _RegisterState extends State<Register> {
                                 return 'Please enter your password';
                               } else if (value.length < 8) {
                                 return 'Password must be at least 8 characters';
-                              } else if (regex.hasMatch(value) == false) {
+                              } /*else if (regex.hasMatch(value) == false) {
                                 return 'Password must contain at least one uppercase letter, \n one lowercase letter, one number and one special character';
-                              }
+                              }*/
                               return null;
                             },
                           ),
@@ -194,9 +195,9 @@ class _RegisterState extends State<Register> {
                                 return 'Please enter your password';
                               } else if (value.length < 8) {
                                 return 'Password must be at least 8 characters';
-                              } else if (regex.hasMatch(value) == false) {
+                              } /*else if (regex.hasMatch(value) == false) {
                                 return 'Password must contain at least one uppercase letter, \n one lowercase letter, one number and one special character';
-                              }
+                              }*/
                               return null;
                             },
                           ),
@@ -282,7 +283,7 @@ class _RegisterState extends State<Register> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                          const RegisterN2()));
+                                          const RegisterP2()));
                                 }
 
                               },

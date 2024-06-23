@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 
 import '../../shared/network/remote/dio_helper.dart';
 import '../../shared/resources/string_manager.dart';
@@ -22,39 +21,63 @@ class RegisterCubit extends Cubit<RegisterState> {
   Future<void> patientRegister({
     required String username,
     required String email,
-    required dateOfBirth,
+    required String dateOfBirth,
     required String phone,
     required String password,
-    required String re_password,
+    required String rePassword,
     required String healthRecordText,
     required String gender,
-    var longitude ,
-    var latitude,
+    dynamic longitude ,
+    dynamic latitude ,
   }) async {
     emit(RegisterPatientLoadingState());
     await DioHelper.postData(
       url: AppStrings.registerPatient,
       data:
       {
-        'username': username,
+        'userName': username,
         'email': email,
         'dateOfBirth': dateOfBirth,
         'phone': phone,
         'password': password,
-        're_password': re_password,
+        're_password': rePassword,
         'healthRecordText': healthRecordText,
         'gender' : gender,
         'longitude' : longitude,
         'latitude' : latitude,
       },
     ).then((value) {
-      print(value.data);
       emit(RegisterPatientSuccessState(value.data));
     }).catchError((onError) {
       if (onError is DioException) {
         debugPrint(onError.response!.data['message']);
         debugPrint(onError.message);
         emit(RegisterPatientErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+
+  Future<void> patientLogin({
+    required String email,
+    required String password,
+  }) async {
+    emit(LoginPatientLoadingState());
+    await DioHelper.postData(
+      url: AppStrings.loginPatient,
+      data:
+      {
+        'email': email,
+        'password': password,
+      },
+    ).then((value) {
+      print(value.data);
+      emit(LoginPatientSuccessState(value.data));
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(LoginPatientErrorState(onError.response!.data['message']));
       }
     });
   }
