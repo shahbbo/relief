@@ -154,17 +154,6 @@ class _RegisterP2State extends State<RegisterP2> {
                   ),
                 ),
               ),
-              // TextFormField(
-              //   controller: DateOfBirthElderController,
-              //   keyboardType: TextInputType.datetime,
-              //   decoration: InputDecoration(
-              //     hintText: 'DD/MM/YYYY',
-              //     hintStyle: TextStyle(color: Color(0xffadb5bd)),
-              //     border: OutlineInputBorder(
-              //       borderRadius: BorderRadius.circular(25),
-              //     ),
-              //   ),
-              // ),
               const SizedBox(
                 height: 12,
               ),
@@ -184,6 +173,7 @@ class _RegisterP2State extends State<RegisterP2> {
                 height: 8,
               ),
               TextFormField(
+                maxLines: null,
                 controller: recordElderController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(

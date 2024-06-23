@@ -34,6 +34,11 @@ class _CaregiverViewDetailsEditProfileViewState
 
   Location location = Location();
 
+  RegExp regex = RegExp(r'^(?=.[A-Za-z])(?=.[0-9])(?=.[!#?%$@]).{8,}$');
+  RegExp regexx = RegExp(r'[a-zA-Z0-9.%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$');
+  RegExp regexn = RegExp('[a-zA-Z]');
+  RegExp regexp = RegExp('^(?:[+01]8)?[0-9]{10}');
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<inCareHeaderCubit, headerState>(
@@ -103,8 +108,16 @@ class _CaregiverViewDetailsEditProfileViewState
                               borderRadius: BorderRadius.circular(15),
                             ),
                           ),
-                          onEditingComplete: () {
-                            setState(() {
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your name';
+                                } else if (regexn.hasMatch(value) == false) {
+                                  return 'Name must contain only letters';
+                                }
+                                return null;
+                              },
+                              onEditingComplete: () {
+                                setState(() {
                               isUserName = true;
                             });
                           },
@@ -161,8 +174,16 @@ class _CaregiverViewDetailsEditProfileViewState
                               borderRadius: BorderRadius.circular(15),
                             ),
                           ),
-                          onEditingComplete: () {
-                            setState(() {
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your email';
+                                } else if (regexx.hasMatch(value) == false) {
+                                  return 'Please enter a valid email';
+                                }
+                                return null;
+                              },
+                              onEditingComplete: () {
+                                setState(() {
                               isEmail = true;
                             });
                           },
@@ -287,8 +308,16 @@ class _CaregiverViewDetailsEditProfileViewState
                               borderRadius: BorderRadius.circular(15),
                             ),
                           ),
-                          onEditingComplete: () {
-                            setState(() {
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your phone number';
+                                } else if (regexp.hasMatch(value) == false) {
+                                  return 'Please enter a valid phone number';
+                                }
+                                return null;
+                              },
+                              onEditingComplete: () {
+                                setState(() {
                               isPhone = true;
                             });
                           },

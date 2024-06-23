@@ -32,6 +32,11 @@ class _elderprofileState extends State<elderprofile> {
 
   Location location = Location();
 
+  RegExp regex = RegExp(r'^(?=.[A-Za-z])(?=.[0-9])(?=.[!#?%$@]).{8,}$');
+  RegExp regexx = RegExp(r'[a-zA-Z0-9.%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$');
+  RegExp regexn = RegExp('[a-zA-Z]');
+  RegExp regexp = RegExp('^(?:[+01]8)?[0-9]{10}');
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<inCareHeaderCubit, headerState>(
@@ -105,6 +110,14 @@ class _elderprofileState extends State<elderprofile> {
                                   borderRadius: BorderRadius.circular(15),
                                 ),
                               ),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your name';
+                                } else if (regexn.hasMatch(value) == false) {
+                                  return 'Name must contain only letters';
+                                }
+                                return null;
+                              },
                               onEditingComplete: () {
                                 setState(() {
                                   isUserName = true;
@@ -165,6 +178,14 @@ class _elderprofileState extends State<elderprofile> {
                                   borderRadius: BorderRadius.circular(15),
                                 ),
                               ),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your email address';
+                                } else if (regexx.hasMatch(value) == false) {
+                                  return 'Please enter a valid email address';
+                                }
+                                return null;
+                              },
                               onEditingComplete: () {
                                 setState(() {
                                   isEmail = true;
@@ -173,67 +194,6 @@ class _elderprofileState extends State<elderprofile> {
                             ),
                           ],
                         ),
-                        // SizedBox(height: 20),
-                        // Column(
-                        //   crossAxisAlignment: CrossAxisAlignment.start,
-                        //   mainAxisAlignment: MainAxisAlignment.start,
-                        //   children: [
-                        //     Text(
-                        //       'Biography ',
-                        //       style: TextStyle(
-                        //         color: Color(0xFF000814),
-                        //         fontSize: 18,
-                        //         fontFamily: 'Barlow',
-                        //         fontWeight: FontWeight.w600,
-                        //       ),
-                        //     ),
-                        //     TextFormField(
-                        //       maxLines: null,
-                        //       textAlignVertical: TextAlignVertical.top,
-                        //       controller: bioController,
-                        //       keyboardType: TextInputType.multiline,
-                        //       readOnly: isBio,
-                        //       decoration: InputDecoration(
-                        //         hintText:
-                        //         'I am a compassionate caregiver with over 5 years of experience, dedicated to providing personalized and empathetic care. ',
-                        //         hintStyle: TextStyle(
-                        //           color: Color(0xFF343A40),
-                        //           fontSize: 16,
-                        //           fontFamily: 'Barlow',
-                        //           fontWeight: FontWeight.w400,
-                        //         ),
-                        //         suffixIcon: IconButton(
-                        //           onPressed: () {
-                        //             setState(() {
-                        //               isBio = false;
-                        //             });
-                        //           },
-                        //           icon: Icon(Icons.edit, color: Color(0xFF00B4D8)),
-                        //         ),
-                        //         enabledBorder: OutlineInputBorder(
-                        //           borderSide: BorderSide(
-                        //               width: 1, color: Color(0xFFBBD0FF)),
-                        //           borderRadius: BorderRadius.circular(15),
-                        //         ),
-                        //         border: OutlineInputBorder(
-                        //           borderSide: BorderSide(
-                        //               width: 1, color: Color(0xFFBBD0FF)),
-                        //           borderRadius: BorderRadius.circular(15),
-                        //         ),
-                        //         focusedBorder: OutlineInputBorder(
-                        //           borderSide: BorderSide(
-                        //               width: 1, color: Color(0xFF00B4D8)),
-                        //           borderRadius: BorderRadius.circular(15),
-                        //         ),
-                        //       ),
-                        //       onEditingComplete: () {
-                        //         setState(() {
-                        //           isBio = true;
-                        //         });
-                        //       },
-                        //     ),
-                        //   ],
-                        // ),
                         SizedBox(height: 20),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -263,7 +223,7 @@ class _elderprofileState extends State<elderprofile> {
                                 ),
                                 prefixText: ' +20 |  ',
                                 prefixStyle: TextStyle(
-                                  color: Color(0xFF6C757D),
+                                  color: Colors.black,
                                   fontSize: 16,
                                   fontFamily: 'Barlow',
                                   fontWeight: FontWeight.w400,
@@ -293,6 +253,14 @@ class _elderprofileState extends State<elderprofile> {
                                   borderRadius: BorderRadius.circular(15),
                                 ),
                               ),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your phone number';
+                                } else if (regexp.hasMatch(value) == false) {
+                                  return 'Please enter a valid phone number';
+                                }
+                                return null;
+                              },
                               onEditingComplete: () {
                                 setState(() {
                                   isPhone = true;

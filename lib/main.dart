@@ -78,9 +78,9 @@ class relief extends StatelessWidget {
             //     nextScreen: logIn(),
             //     splashTransition: SplashTransition.fadeTransition,
             //     backgroundColor: Colors.white)
-            home: LoginScreen(),
+            // home: LoginScreen(),
             // home: carerApp(),
-            // home: elderApp(),
+            home: elderApp(),
           );
         },
       ),

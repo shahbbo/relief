@@ -189,6 +189,7 @@ class _RegisterN2State extends State<RegisterN2> {
                 height: 8,
               ),
               TextFormField(
+                maxLines: null,
                 controller: BiographyCarerController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
