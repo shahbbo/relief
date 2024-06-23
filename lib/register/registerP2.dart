@@ -171,10 +171,10 @@ class _RegisterP2State extends State<RegisterP2> {
                       lastDate: DateTime.now(),
                       showLabel: true,
                       showCursor: true,
-                      dateFormatType: DateFormatType.YYYYMMDD,
-                      autovalidateMode: AutovalidateMode.always,
-                      fieldLabelText: "YYYY/MM/DD",
-                      onDateSubmitted: (value) {
+                          dateFormatType: DateFormatType.DDMMYYYY,
+                          autovalidateMode: AutovalidateMode.always,
+                          fieldLabelText: "DD/MM/YYYY",
+                          onDateSubmitted: (value) {
                         DateOfBirthElderController = '${value.year}/${value.month}/${value.day}';
                         },
                       inputDecoration: InputDecoration(
@@ -231,21 +231,24 @@ class _RegisterP2State extends State<RegisterP2> {
                       height: 50,
                       child: MaterialButton(
                         onPressed: () async {
-                          LocationData locationData;
-                          locationData = await location.getLocation();
-                          cubit.patientRegister(
-                            username: cubit.nameElderController.text,
-                            email: cubit.emailElderController.text,
-                            dateOfBirth: DateOfBirthElderController,
-                            phone: cubit.phoneElderController.text,
-                            password: cubit.passwordElderController.text,
-                            rePassword: cubit.passwordElderController.text,
-                            healthRecordText: recordElderController.text,
-                            gender: GenderElderController.text,
-                            latitude: locationData.longitude,
-                            longitude: locationData.latitude,
-                          );
-                        },
+                              if (formKey.currentState!.validate()) {
+                                LocationData locationData;
+                                locationData = await location.getLocation();
+                                cubit.patientRegister(
+                                  username: cubit.nameElderController.text,
+                                  email: cubit.emailElderController.text,
+                                  dateOfBirth: DateOfBirthElderController,
+                                  phone: cubit.phoneElderController.text,
+                                  password: cubit.passwordElderController.text,
+                                  rePassword:
+                                      cubit.passwordElderController.text,
+                                  healthRecordText: recordElderController.text,
+                                  gender: GenderElderController.text,
+                                  latitude: locationData.longitude,
+                                  longitude: locationData.latitude,
+                                );
+                              }
+                            },
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
                         ),

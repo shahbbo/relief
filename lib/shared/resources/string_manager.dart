@@ -7,4 +7,6 @@ class AppStrings{
   static const String registerPatient = 'patient/signup';
 
   static const String loginCaregiver = 'caregiver/signin';
+
+  static const String registerCarer = 'caregiver/signup';
 }

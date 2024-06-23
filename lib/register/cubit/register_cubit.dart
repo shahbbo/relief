@@ -17,6 +17,10 @@ class RegisterCubit extends Cubit<RegisterState> {
   TextEditingController passwordElderController = TextEditingController();
   TextEditingController phoneElderController = TextEditingController();
 
+  TextEditingController nameCaregiverController = TextEditingController();
+  TextEditingController emailCaregiverController = TextEditingController();
+  TextEditingController passwordCaregiverController = TextEditingController();
+  TextEditingController phoneCaregiverController = TextEditingController();
 
   Future<void> patientRegister({
     required String username,
@@ -57,6 +61,47 @@ class RegisterCubit extends Cubit<RegisterState> {
     });
   }
 
+  Future<void> carerRegister({
+    required String username,
+    required String email,
+    required String password,
+    required String rePassword,
+    required String gender,
+    required String dateOfBirth,
+    required String phone,
+    required String doYouSmoke,
+    required String canYouDrive,
+    required String biography,
+    dynamic longitude,
+    dynamic latitude,
+  }) async {
+    emit(RegisterCarerLoadingState());
+    await DioHelper.postData(
+      url: AppStrings.registerCarer,
+      data: {
+        'userName': username,
+        'email': email,
+        'password': password,
+        're_password': rePassword,
+        'gender': gender,
+        'dateOfBirth': dateOfBirth,
+        'phone': phone,
+        'doYouSmoke': doYouSmoke,
+        'canYouDrive': canYouDrive,
+        'biography': biography,
+        'longitude': longitude,
+        'latitude': latitude,
+      },
+    ).then((value) {
+      emit(RegisterCarerSuccessState(value.data));
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(RegisterCarerErrorState(onError.response!.data['message']));
+      }
+    });
+  }
 
   Future<void> patientLogin({
     required String email,

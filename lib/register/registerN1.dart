@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:location/location.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:relief/cubits/incareCubit/inCareCubit.dart';
+import 'package:relief/register/cubit/register_cubit.dart';
 import 'package:relief/register/logInScreen.dart';
 import 'package:relief/register/registerN2.dart';
 
@@ -19,23 +20,18 @@ class _RegisterN1State extends State<RegisterN1> {
   bool _obscureText = true;
   Location location = Location();
 
-  TextEditingController nameCarerController = TextEditingController();
-  TextEditingController emailCarerController = TextEditingController();
-  TextEditingController passwordCarerController = TextEditingController();
-  TextEditingController phoneCarerController = TextEditingController();
-
-  RegExp regex = RegExp(r'^(?=.[A-Za-z])(?=.[0-9])(?=.[!#?%$@]).{8,}$');
+  RegExp regex = RegExp(r'^(?=.[A-Za-z])(?=.[0-9])(?=.[!@#$%^&]).+$');
   RegExp regexx = RegExp(r'[a-zA-Z0-9.%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$');
   RegExp regexn = RegExp('[a-zA-Z]');
   RegExp regexp = RegExp('^(?:[+01]8)?[0-9]{10}');
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<inCareHeaderCubit, headerState>(
+    return BlocConsumer<RegisterCubit, RegisterState>(
       listener: (context, state) {
-        // TODO: implement listener
       },
       builder: (context, state) {
+        var cubit = RegisterCubit.get(context);
         return ModalProgressHUD(
           inAsyncCall: state is LoadingPlace,
           color: Colors.transparent,
@@ -74,7 +70,7 @@ class _RegisterN1State extends State<RegisterN1> {
                           ),
                           const SizedBox(height: 5),
                           TextFormField(
-                            controller: nameCarerController,
+                            controller: cubit.nameCaregiverController,
                             keyboardType: TextInputType.name,
                             decoration: InputDecoration(
                               hintText: 'Enter Your Name',
@@ -100,7 +96,7 @@ class _RegisterN1State extends State<RegisterN1> {
                           ),
                           const SizedBox(height: 5),
                           TextFormField(
-                            controller: emailCarerController,
+                            controller: cubit.emailCaregiverController,
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               hintText: 'Enter Your Email Address',
@@ -126,7 +122,7 @@ class _RegisterN1State extends State<RegisterN1> {
                           ),
                           const SizedBox(height: 5),
                           TextFormField(
-                            controller: passwordCarerController,
+                            controller: cubit.passwordCaregiverController,
                             obscureText: _obscureText,
                             keyboardType: TextInputType.visiblePassword,
                             obscuringCharacter: '*',
@@ -153,7 +149,7 @@ class _RegisterN1State extends State<RegisterN1> {
                                 return 'Please enter your password';
                               } else if (value.length < 8) {
                                 return 'Password must be at least 8 characters';
-                              } else if (regex.hasMatch(value) == false) {
+                              } else if (regex.hasMatch(value)) {
                                 return 'Password must contain at least one uppercase letter, \n one lowercase letter, one number and one special character';
                               }
                               return null;
@@ -169,7 +165,7 @@ class _RegisterN1State extends State<RegisterN1> {
                           ),
                           const SizedBox(height: 5),
                           TextFormField(
-                            controller: passwordCarerController,
+                            controller: cubit.passwordCaregiverController,
                             obscureText: _obscureText,
                             keyboardType: TextInputType.visiblePassword,
                             obscuringCharacter: '*',
@@ -196,7 +192,7 @@ class _RegisterN1State extends State<RegisterN1> {
                                 return 'Please enter your password';
                               } else if (value.length < 8) {
                                 return 'Password must be at least 8 characters';
-                              } else if (regex.hasMatch(value) == false) {
+                              } else if (regex.hasMatch(value)) {
                                 return 'Password must contain at least one uppercase letter, \n one lowercase letter, one number and one special character';
                               }
                               return null;
@@ -212,7 +208,7 @@ class _RegisterN1State extends State<RegisterN1> {
                           ),
                           const SizedBox(height: 5),
                           TextFormField(
-                            controller: phoneCarerController,
+                            controller: cubit.phoneCaregiverController,
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
                               labelText: '+02',
@@ -280,18 +276,12 @@ class _RegisterN1State extends State<RegisterN1> {
                             child: MaterialButton(
                               onPressed: () {
                                 if (formKey.currentState!.validate()) {
-                                  print('Name: ${nameCarerController.text}');
-                                  print('Email: ${emailCarerController.text}');
-                                  print(
-                                      'Password: ${passwordCarerController.text}');
-                                  print(
-                                      'Phone Number: ${phoneCarerController.text}');
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const RegisterN2()));
                                 }
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const RegisterN2()));
                               },
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25),

@@ -19,6 +19,20 @@ final class RegisterPatientErrorState extends RegisterState {
   RegisterPatientErrorState(this.error);
 }
 
+final class RegisterCarerLoadingState extends RegisterState {}
+
+final class RegisterCarerSuccessState extends RegisterState {
+  final dynamic data;
+
+  RegisterCarerSuccessState(this.data);
+}
+
+final class RegisterCarerErrorState extends RegisterState {
+  final String error;
+
+  RegisterCarerErrorState(this.error);
+}
+
 final class LoginPatientLoadingState extends RegisterState {}
 
 final class LoginPatientSuccessState extends RegisterState {
