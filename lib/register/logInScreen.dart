@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:relief/carerApp.dart';
 import 'package:relief/register/N_or_P.dart';
 import 'package:relief/register/cubit/register_cubit.dart';
 import 'package:relief/register/forgot_password.dart';
@@ -36,7 +37,21 @@ class _LoginScreenState extends State<LoginScreen> {
           CacheHelper.saveData(key: 'tokenPatient', value: state.data['token']);
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => const elderApp()));
-        } else if (state is LoginPatientErrorState) {
+        }
+        else if (state is LoginPatientErrorState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.error),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+        else if(state is LoginCaregiverSuccessState) {
+          CacheHelper.saveData(key: 'tokenCaregiver', value: state.data['token']);
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => const carerApp()));
+        }
+        else if (state is LoginCaregiverErrorState) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.error),
@@ -48,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
       builder: (context, state) {
         var cubit = RegisterCubit.get(context);
         return ModalProgressHUD(
-          inAsyncCall: state is LoginPatientLoadingState,
+          inAsyncCall: state is LoginPatientLoadingState || state is LoginCaregiverLoadingState,
           child: Scaffold(
             body: Padding(
               padding: const EdgeInsets.all(20.0),
@@ -187,6 +202,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                 print('Password: ${passwordController.text}');
 
                                 cubit.patientLogin(
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                );
+
+                                cubit.caregiverLogin(
                                   email: emailController.text,
                                   password: passwordController.text,
                                 );

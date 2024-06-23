@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:relief/sittings/widgets/contentContainer.dart';
 
+import '../shared/components/constants.dart';
+
 void main() {
   runApp(const sittingSS());
 }
@@ -111,6 +113,9 @@ class sittingSS extends StatelessWidget {
                   text: 'Log Out',
                   prefixicon: Icons.logout_sharp,
                   endicon: Icons.arrow_forward_ios,
+                  onpressed: () {
+                    singOut(context);
+                  },
                   coloricon: Color(0xffD9163A),
                   colortext: Color(0xffD9163A),
                 ),

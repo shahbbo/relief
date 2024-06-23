@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:location/location.dart';
 import 'package:relief/carerApp.dart';
@@ -13,18 +14,34 @@ import 'package:relief/sittings/detailesScreen/Paymentdetailes.dart';
 import 'package:relief/sittings/detailesScreen/changepassworddetails.dart';
 
 import 'register/cubit/register_cubit.dart';
+import 'shared/components/constants.dart';
 
 Future<void> main() async {
-  runApp(const relief());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   Bloc.observer = MyBlocObserver();
   await DioHelper.inti();
   await CacheHelper.init();
-
+  Widget widget;
   Location location =  Location();
 
   bool serviceEnabled;
   PermissionStatus permissionGranted;
+  tokenPatient = CacheHelper.getData(key: 'tokenPatient');
 
+  tokenCaregiver = CacheHelper.getData(key: 'tokenCaregiver');
+
+  print('tokenPatient : ${tokenPatient}');
+  print('tokenCaregiver : ${tokenCaregiver}');
+  if(tokenPatient != null) {
+    widget = elderApp();
+  }else if(tokenCaregiver != null){
+    widget = carerApp();
+  }else {
+    widget = LoginScreen();
+  }
 
   try{
     serviceEnabled = await location.serviceEnabled();
@@ -45,11 +62,13 @@ Future<void> main() async {
       return;
     }
   }
+
+  runApp(relief(startWidget: widget,));
 }
 
 class relief extends StatelessWidget {
-  const relief({super.key});
-
+  const relief({super.key, required this.startWidget});
+  final Widget startWidget;
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -84,7 +103,7 @@ class relief extends StatelessWidget {
             //     nextScreen: logIn(),
             //     splashTransition: SplashTransition.fadeTransition,
             //     backgroundColor: Colors.white)
-            home: LoginScreen(),
+            home: startWidget,
             // home: carerApp(),
             // home: elderApp(),
           );

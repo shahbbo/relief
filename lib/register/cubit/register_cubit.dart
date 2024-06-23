@@ -71,7 +71,6 @@ class RegisterCubit extends Cubit<RegisterState> {
         'password': password,
       },
     ).then((value) {
-      print(value.data);
       emit(LoginPatientSuccessState(value.data));
     }).catchError((onError) {
       if (onError is DioException) {
@@ -81,4 +80,30 @@ class RegisterCubit extends Cubit<RegisterState> {
       }
     });
   }
+
+
+  Future<void> caregiverLogin({
+    required String email,
+    required String password,
+  }) async {
+    emit(LoginCaregiverLoadingState());
+    await DioHelper.postData(
+      url: AppStrings.loginCaregiver,
+      data:
+      {
+        'email': email,
+        'password': password,
+      },
+    ).then((value) {
+      print(value.data);
+      emit(LoginCaregiverSuccessState(value.data));
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(LoginCaregiverErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
 }

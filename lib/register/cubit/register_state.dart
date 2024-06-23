@@ -33,4 +33,18 @@ final class LoginPatientErrorState extends RegisterState {
   LoginPatientErrorState(this.error);
 }
 
+final class LoginCaregiverLoadingState extends RegisterState {}
+
+final class LoginCaregiverSuccessState extends RegisterState {
+  final dynamic data;
+
+  LoginCaregiverSuccessState(this.data);
+}
+
+final class LoginCaregiverErrorState extends RegisterState {
+  final String error;
+
+  LoginCaregiverErrorState(this.error);
+}
+
 

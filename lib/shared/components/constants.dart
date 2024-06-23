@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:relief/register/logInScreen.dart';
 
 import '../network/local/cache_helper.dart';
 
 void singOut(context) {
-  CacheHelper.clearData(key: 'ID').then((value) {
-    CacheHelper.clearData(key: 'TokenId');
-/*    if (value == true) {
-       HomeCubit.get(context).userData = UserData(name: 'name', email: 'email',
+  CacheHelper.clearData(key: 'tokenPatient').then((value) {
+    CacheHelper.clearData(key: 'tokenCaregiver');
+    if (value == true) {
+       /*HomeCubit.get(context).userData = UserData(name: 'name', email: 'email',
            address: 'address', weight: 0, height: 0,gender: '',
-           phone: 'phone', id: 'id', photo: '', wishlist: []);
-      navigateFish(context, const SignInScreen()); // add Login Screen here because singOut and login again
-      debugPrint("token inside clear data : $token uid : $uid");
-    }*/
+           phone: 'phone', id: 'id', photo: '', wishlist: []);*/
+      navigateFish(context, const LoginScreen()); // add Login Screen here because singOut and login again
+    }
   });
 
-/*  if (token != null || uid != null) {
-    token = null;
-    uid = null;
-    debugPrint("token in side if condition: $token uid : $uid");
+  if (tokenPatient != null || tokenCaregiver != null) {
+   tokenPatient = null ;
+   tokenCaregiver = null ;
   }
-  debugPrint('token : $token');
-  debugPrint('uid: $uid');*/
 }
 
 /*void navigateFish(context, widget) => Navigator.pushAndRemoveUntil(
