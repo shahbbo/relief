@@ -6,6 +6,8 @@ import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 import 'package:relief/register/logInScreen.dart';
 import 'package:relief/register/registerN2.dart';
 
+import 'cubit/register_cubit.dart';
+
 class Register extends StatefulWidget {
   const Register({super.key});
 
@@ -19,10 +21,7 @@ class _RegisterState extends State<Register> {
   bool _obscureText = true;
   Location location = Location();
 
-  TextEditingController nameElderController = TextEditingController();
-  TextEditingController emailElderController = TextEditingController();
-  TextEditingController passwordElderController = TextEditingController();
-  TextEditingController phoneElderController = TextEditingController();
+
 
   RegExp regex = RegExp(r'^(?=.[A-Za-z])(?=.[0-9])(?=.[!#?%$@]).{8,}$');
   RegExp regexx = RegExp(r'[a-zA-Z0-9.%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$');
@@ -31,11 +30,10 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<inCareHeaderCubit, headerState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+    return BlocConsumer<RegisterCubit, RegisterState>(
+      listener: (context, state) {},
       builder: (context, state) {
+        var cubit = RegisterCubit.get(context);
         return ModalProgressHUD(
           inAsyncCall: state is LoadingPlace,
           color: Colors.transparent,
@@ -74,7 +72,7 @@ class _RegisterState extends State<Register> {
                           ),
                           const SizedBox(height: 5),
                           TextFormField(
-                            controller: nameElderController,
+                            controller: cubit.nameElderController,
                             keyboardType: TextInputType.name,
                             decoration: InputDecoration(
                               hintText: 'Enter Your Name',
@@ -100,7 +98,7 @@ class _RegisterState extends State<Register> {
                           ),
                           const SizedBox(height: 5),
                           TextFormField(
-                            controller: emailElderController,
+                            controller: cubit.emailElderController,
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               hintText: 'Enter Your Email Address',
@@ -126,7 +124,7 @@ class _RegisterState extends State<Register> {
                           ),
                           const SizedBox(height: 5),
                           TextFormField(
-                            controller: passwordElderController,
+                            controller: cubit.passwordElderController,
                             obscureText: _obscureText,
                             keyboardType: TextInputType.visiblePassword,
                             obscuringCharacter: '*',
@@ -169,7 +167,7 @@ class _RegisterState extends State<Register> {
                           ),
                           const SizedBox(height: 5),
                           TextFormField(
-                            controller: passwordElderController,
+                            controller: cubit.passwordElderController,
                             obscureText: _obscureText,
                             keyboardType: TextInputType.visiblePassword,
                             obscuringCharacter: '*',
@@ -212,7 +210,7 @@ class _RegisterState extends State<Register> {
                           ),
                           const SizedBox(height: 5),
                           TextFormField(
-                            controller: phoneElderController,
+                            controller: cubit.phoneElderController,
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
                               labelText: '+02',
@@ -280,18 +278,13 @@ class _RegisterState extends State<Register> {
                             child: MaterialButton(
                               onPressed: () {
                                 if (formKey.currentState!.validate()) {
-                                  print('Name: ${nameElderController.text}');
-                                  print('Email: ${emailElderController.text}');
-                                  print(
-                                      'Password: ${passwordElderController.text}');
-                                  print(
-                                      'Phone Number: ${phoneElderController.text}');
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                          const RegisterN2()));
                                 }
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const RegisterN2()));
+
                               },
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25),

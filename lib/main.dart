@@ -12,6 +12,8 @@ import 'package:relief/sittings/detailesScreen/Aboutdetailes.dart';
 import 'package:relief/sittings/detailesScreen/Paymentdetailes.dart';
 import 'package:relief/sittings/detailesScreen/changepassworddetails.dart';
 
+import 'register/cubit/register_cubit.dart';
+
 Future<void> main() async {
   runApp(const relief());
   Bloc.observer = MyBlocObserver();
@@ -50,8 +52,12 @@ class relief extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => inCareHeaderCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<inCareHeaderCubit>(create: (context) => inCareHeaderCubit(),),
+        BlocProvider<RegisterCubit>(create: (context) => RegisterCubit(),),
+      ],
+      // create: (context) => inCareHeaderCubit(),
       child: BlocConsumer<inCareHeaderCubit, headerState>(
         listener: (context, state) {
           // TODO: implement listener
@@ -78,9 +84,9 @@ class relief extends StatelessWidget {
             //     nextScreen: logIn(),
             //     splashTransition: SplashTransition.fadeTransition,
             //     backgroundColor: Colors.white)
-            // home: LoginScreen(),
+            home: LoginScreen(),
             // home: carerApp(),
-            home: elderApp(),
+            // home: elderApp(),
           );
         },
       ),

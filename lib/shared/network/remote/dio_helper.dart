@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 
+import '../../resources/string_manager.dart';
+
 
 
 class DioHelper {
@@ -9,7 +11,7 @@ class DioHelper {
   {
     dio = Dio(
       BaseOptions(
-        baseUrl: 'AppStrings.baseUrl',
+        baseUrl: AppStrings.baseUrl,
         receiveDataWhenStatusError: true,
       ),
     );
@@ -96,6 +98,5 @@ class DioHelper {
       )
     ).get(url);
   }
-
 
 }
