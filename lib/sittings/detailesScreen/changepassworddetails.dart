@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:relief/register/forgot_password.dart';
 import 'package:relief/sittings/widgets/button.dart';
 import 'package:relief/sittings/widgets/textfieldpassword.dart';
 
@@ -46,13 +47,21 @@ class changepassworddetails extends StatelessWidget {
                   ),
                   child: textfieldpassword(
                     text: 'Enter your current Password',
+                    obscureText: true,
+                    controller: oldPasswordElderController,
                   ),
                 ),
                 Row(
                   children: [
                     Spacer(),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const ForgotPassword()));
+                        },
                         child: Text(
                           'Forgot Password?',
                           style: TextStyle(
@@ -77,6 +86,7 @@ class changepassworddetails extends StatelessWidget {
                   child: textfieldpassword(
                     text: 'Enter new Password',
                     obscureText: true,
+                    controller: newPasswordElderController,
                   ),
                 ),
                 Padding(
@@ -92,13 +102,14 @@ class changepassworddetails extends StatelessWidget {
                   child: textfieldpassword(
                     text: 'Retype the Password',
                     obscureText: true,
+                    controller: newPasswordElderController,
                   ),
                 ),
                 Button(
                   text: 'Save',
-                  // onpressed: () {
-                  //   print('Password: ${passwordElderController.text}')
-                  // },
+                  onpressed: () {
+                    print('Password: ${oldPasswordElderController.text}');
+                  },
                 )
               ],
             ),
