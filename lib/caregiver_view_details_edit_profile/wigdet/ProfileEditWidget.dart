@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../shared/components/constants.dart';
+
 class ProfileEditWidget extends StatelessWidget {
   const ProfileEditWidget({super.key});
 
@@ -7,7 +9,17 @@ class ProfileEditWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 20),
+        SizedBox(height: 30),
+        Row(
+          children: [
+            IconButton(
+              onPressed: (){
+                singOut(context);
+              },
+              icon: Icon(Icons.logout_outlined,color: Colors.red,),
+            ),
+          ],
+        ),
         Center(
           child: Stack(
             alignment: AlignmentDirectional.bottomCenter,

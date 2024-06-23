@@ -13,7 +13,6 @@ void singOut(context) {
       navigateFish(context, const LoginScreen()); // add Login Screen here because singOut and login again
     }
   });
-
   if (tokenPatient != null || tokenCaregiver != null) {
    tokenPatient = null ;
    tokenCaregiver = null ;

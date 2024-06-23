@@ -38,27 +38,27 @@ class _LoginScreenState extends State<LoginScreen> {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => const elderApp()));
         }
-        else if (state is LoginPatientErrorState) {
+        /*else if (state is LoginPatientErrorState) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.error),
               backgroundColor: Colors.red,
             ),
           );
-        }
+        }*/
         else if(state is LoginCaregiverSuccessState) {
           CacheHelper.saveData(key: 'tokenCaregiver', value: state.data['token']);
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => const carerApp()));
         }
-        else if (state is LoginCaregiverErrorState) {
+      /*  else if (state is LoginCaregiverErrorState) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.error),
               backgroundColor: Colors.red,
             ),
           );
-        }
+        }*/
       },
       builder: (context, state) {
         var cubit = RegisterCubit.get(context);
