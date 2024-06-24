@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:location/location.dart';
 import 'package:relief/cubits/incareCubit/inCareCubit.dart';
+import 'package:relief/shared/components/constants.dart';
 
 import 'wigdet/ProfileEditWidget.dart';
 
@@ -32,6 +33,7 @@ class _CaregiverViewDetailsEditProfileViewState
   TextEditingController locationController = TextEditingController();
   bool isLocation = true;
 
+  bool isChange = false;
   Location location = Location();
 
   RegExp regex = RegExp(r'^(?=.[A-Za-z])(?=.[0-9])(?=.[!#?%$@]).{8,}$');
@@ -53,9 +55,26 @@ class _CaregiverViewDetailsEditProfileViewState
   Widget build(BuildContext context) {
     return BlocConsumer<inCareHeaderCubit, headerState>(
       listener: (context, state) {
-        // TODO: implement listener
+        if (state is CarerEditProfileSuccessState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Profile Updated Successfully'),
+              backgroundColor: Colors.green,
+            ),
+          );
+
+          inCareHeaderCubit.get(context).getUserCaregiver(token: tokenCaregiver.toString());
+        } else if (state is CarerEditProfileErrorState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.error),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
       },
       builder: (context, state) {
+        var cubit = inCareHeaderCubit.get(context);
         return SafeArea(
       child: SingleChildScrollView(
         child: Column(
@@ -131,6 +150,15 @@ class _CaregiverViewDetailsEditProfileViewState
                               isUserName = true;
                             });
                           },
+                            onChanged: (value) {
+                              setState(() {
+                                if(value != cubit.userDataCaregiver?.userData?.userName) {
+                                  isChange = true;
+                                } else {
+                                  isChange = false;
+                                }
+                              });
+                            }
                         ),
                       ],
                     ),
@@ -184,7 +212,7 @@ class _CaregiverViewDetailsEditProfileViewState
                               borderRadius: BorderRadius.circular(15),
                             ),
                           ),
-                              validator: (value) {
+                          validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'Please enter your email';
                                 } else if (regexx.hasMatch(value) == false) {
@@ -192,11 +220,20 @@ class _CaregiverViewDetailsEditProfileViewState
                                 }
                                 return null;
                               },
-                              onEditingComplete: () {
+                          onEditingComplete: () {
                                 setState(() {
                               isEmail = true;
                             });
                           },
+                            onChanged: (value) {
+                              setState(() {
+                                if(value != cubit.userDataCaregiver?.userData?.userName) {
+                                  isChange = true;
+                                } else {
+                                  isChange = false;
+                                }
+                              });
+                            }
                         ),
                       ],
                     ),
@@ -258,6 +295,16 @@ class _CaregiverViewDetailsEditProfileViewState
                               isBio = true;
                             });
                           },
+
+                            onChanged: (value) {
+                              setState(() {
+                                if(value != cubit.userDataCaregiver?.userData?.biography) {
+                                  isChange = true;
+                                } else {
+                                  isChange = false;
+                                }
+                              });
+                            }
                         ),
                       ],
                     ),
@@ -331,6 +378,15 @@ class _CaregiverViewDetailsEditProfileViewState
                               isPhone = true;
                             });
                           },
+                            onChanged: (value) {
+                              setState(() {
+                                if(value != cubit.userDataCaregiver?.userData?.phone) {
+                                  isChange = true;
+                                } else {
+                                  isChange = false;
+                                }
+                              });
+                            }
                         ),
                       ],
                     ),
@@ -389,6 +445,35 @@ class _CaregiverViewDetailsEditProfileViewState
                       ],
                     ),
                     SizedBox(height: 20),
+
+                    ElevatedButton(
+                      onPressed: isChange == false? null : () {
+                        if (formKey.currentState!.validate()) {
+                          cubit.carerEditProfile(
+                            name: usernameController.text,
+                            biography: bioController.text,
+                            email: emailController.text,
+                            phone: phoneController.text,
+                          );
+                        }
+                      },
+                      child: Text(
+                        'Save Changes',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontFamily: 'Barlow',
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.redAccent,
+                        minimumSize: Size(double.infinity, 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

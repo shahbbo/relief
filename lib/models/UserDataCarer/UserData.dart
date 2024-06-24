@@ -1,4 +1,3 @@
-
 import 'Location.dart';
 
 class UserData {
@@ -9,8 +8,9 @@ class UserData {
       this.phone, 
       this.gender, 
       this.availability, 
-      this.doYouSmoke, 
-      this.canYouDrive, 
+      this.doYouSmoke,
+      this.canYouDrive,
+      this.profilePhoto,
       this.biography, 
       this.location,});
 
@@ -24,6 +24,7 @@ class UserData {
     doYouSmoke = json['doYouSmoke'];
     canYouDrive = json['canYouDrive'];
     biography = json['biography'];
+    profilePhoto = json['profilePhoto'];
     location = json['location'] != null ? Location.fromJson(json['location']) : null;
   }
   String? userName;
@@ -35,23 +36,7 @@ class UserData {
   String? doYouSmoke;
   String? canYouDrive;
   String? biography;
+  String? profilePhoto;
   Location? location;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['userName'] = userName;
-    map['email'] = email;
-    map['dateOfBirth'] = dateOfBirth;
-    map['phone'] = phone;
-    map['gender'] = gender;
-    map['availability'] = availability;
-    map['doYouSmoke'] = doYouSmoke;
-    map['canYouDrive'] = canYouDrive;
-    map['biography'] = biography;
-    if (location != null) {
-      map['location'] = location?.toJson();
-    }
-    return map;
-  }
 
 }

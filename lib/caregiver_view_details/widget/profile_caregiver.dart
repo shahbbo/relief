@@ -16,8 +16,39 @@ class ProfileCaregiver extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 50,
-                backgroundImage: AssetImage('assets/images/caregiver.jpg'),
+                backgroundColor: Colors.black,
+                child: CircleAvatar(
+                  radius: 45,
+                  backgroundImage: cubit.userDataCaregiver?.userData
+                      ?.profilePhoto !=
+                      null
+                      ? NetworkImage(cubit.userDataCaregiver?.userData
+                      ?.profilePhoto
+                      .toString() ??
+                      '')
+                      : const NetworkImage(
+                    'https://t3.ftcdn.net/jpg/03/29/17/78/360_F_329177878_ij7ooGdwU9EKqBFtyJQvWsDmYSfI1evZ.jpg',
+                  ),
+                  child: cubit.userDataCaregiver?.userData
+                      ?.profilePhoto !=
+                      null
+                      ? null
+                      : Text(
+                    cubit.userDataCaregiver?.userData
+                        ?.userName?[0]
+                        .toUpperCase() ??
+                        '',
+                    style: TextStyle(
+                      fontSize: 35,
+                      color: Colors.red,
+                    ),
+                  ),
+                ),
               ),
+             /* CircleAvatar(
+                radius: 50,
+                backgroundImage: ,
+              ),*/
               Text(
                 cubit.userDataCaregiver?.userData?.userName ?? '',
                 style: TextStyle(

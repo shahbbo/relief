@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:location/location.dart';
 import 'package:relief/caregiver_view_details/caregiver_view_details_screen.dart';
 import 'package:relief/caregiver_view_details_edit_profile/caregiver_view_details_edit_profile_view.dart';
@@ -151,4 +154,58 @@ class inCareHeaderCubit extends Cubit<headerState> {
       }
     });
   }
+
+
+  Future<void> carerEditProfile({
+    required String name,
+    required String email,
+    required String biography,
+    File? image,
+    required String phone,}) async {
+    emit(CarerEditProfileLoadingState());
+    uid = CacheHelper.getData(key: 'ID');
+    await DioHelper.putData(
+      url: '${AppStrings.carerEditProfile}/$uid',
+      data: image == null  ? {
+        'userName': name,
+        'email': email,
+        'biography': biography,
+        'phone': phone,
+      } : FormData.fromMap({
+        'userName': name,
+        'email': email,
+        'biography': biography,
+        'phone': phone,
+        'profilePhoto': await MultipartFile.fromFile(image.path,),
+      })
+    ).then((value) {
+      emit(CarerEditProfileSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(CarerEditProfileErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+  File? newPostImage;
+  var newPicker = ImagePicker();
+  Future<void> getNewPostImage(ImageSource imageSource) async {
+    final pickedFile = await newPicker.pickImage(source: imageSource);
+    if (pickedFile != null) {
+      newPostImage = File(pickedFile.path);
+      print('New Post Image : ${newPostImage.toString()}');
+      emit(NewPostImagePickedSuccessState());
+    } else {
+      print('No image selected');
+      emit(NewPostImagePickedErrorState());
+    }
+  }
+
+  Future<void> discardChange() async {
+    newPostImage = null ;
+    emit(DiscardChange());
+  }
+
 }

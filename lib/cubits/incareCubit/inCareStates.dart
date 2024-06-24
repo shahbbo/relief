@@ -43,3 +43,19 @@ final class PatientEditProfileErrorState extends headerState {
 
   PatientEditProfileErrorState(this.error);
 }
+
+final class CarerEditProfileLoadingState extends headerState {}
+
+final class CarerEditProfileSuccessState extends headerState {}
+
+final class CarerEditProfileErrorState extends headerState {
+  final String error;
+
+  CarerEditProfileErrorState(this.error);
+}
+
+final class NewPostImagePickedSuccessState extends headerState {}
+
+final class NewPostImagePickedErrorState extends headerState {}
+
+final class DiscardChange extends headerState {}

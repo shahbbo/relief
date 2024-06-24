@@ -9,12 +9,5 @@ class UserDataCaregiver {
   }
   UserData? userData;
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    if (userData != null) {
-      map['UserData'] = userData?.toJson();
-    }
-    return map;
-  }
 
 }

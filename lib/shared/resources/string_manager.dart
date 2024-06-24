@@ -29,4 +29,6 @@ class AppStrings{
   static const String carerGetUser = 'caregiver/getCaregiverByToken';
 
   static const String patientEditProfile = 'patient/editProfile';
+
+  static const String carerEditProfile = 'caregiver/editProfile';
 }
