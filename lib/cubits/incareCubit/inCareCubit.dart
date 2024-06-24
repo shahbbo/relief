@@ -15,9 +15,11 @@ import 'package:relief/screens/pricing.dart';
 import 'package:relief/calendar.dart';
 import 'package:relief/consset.dart';
 import 'package:relief/screens/profileElder.dart';
+import 'package:relief/shared/components/constants.dart';
 import 'package:relief/sittings/SittingSS.dart';
 
 import '../../models/UserDataPatient/UserDataPatient.dart';
+import '../../shared/network/local/cache_helper.dart';
 import '../../shared/network/remote/dio_helper.dart';
 import '../../shared/resources/string_manager.dart';
 part 'inCareStates.dart';
@@ -121,6 +123,31 @@ class inCareHeaderCubit extends Cubit<headerState> {
         debugPrint(onError.response!.data['message']);
         debugPrint(onError.message);
         emit(CaregiverGetUserErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+
+  Future<void> patientEditProfile({
+    required String name,
+    required String email,
+    required String phone,}) async {
+    emit(PatientEditProfileLoadingState());
+    uid = CacheHelper.getData(key: 'ID');
+    await DioHelper.putData(
+      url: '${AppStrings.patientEditProfile}/$uid',
+      data: {
+        'userName': name,
+        'email': email,
+        'phone': phone,
+        },
+    ).then((value) {
+      emit(PatientEditProfileSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(PatientEditProfileErrorState(onError.response!.data['message']));
       }
     });
   }

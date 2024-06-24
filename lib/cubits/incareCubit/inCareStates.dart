@@ -33,3 +33,13 @@ final class CaregiverGetUserErrorState extends headerState {
 
   CaregiverGetUserErrorState(this.error);
 }
+
+final class PatientEditProfileLoadingState  extends headerState {}
+
+final class PatientEditProfileSuccessState extends headerState {}
+
+final class PatientEditProfileErrorState extends headerState {
+  final String error;
+
+  PatientEditProfileErrorState(this.error);
+}
