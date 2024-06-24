@@ -39,10 +39,9 @@ class _elderprofileState extends State<elderprofile> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<inCareHeaderCubit, headerState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+      listener: (context, state) {},
       builder: (context, state) {
+        var cubit = inCareHeaderCubit.get(context);
         return SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -77,7 +76,7 @@ class _elderprofileState extends State<elderprofile> {
                               keyboardType: TextInputType.text,
                               readOnly: isUserName,
                               decoration: InputDecoration(
-                                hintText: 'Mohamed Khaled',
+                                hintText: cubit.userDataPatient?.userData?.userName ?? '',
                                 hintStyle: TextStyle(
                                   color: Color(0xFF343A40),
                                   fontSize: 16,
@@ -145,7 +144,7 @@ class _elderprofileState extends State<elderprofile> {
                               keyboardType: TextInputType.emailAddress,
                               readOnly: isEmail,
                               decoration: InputDecoration(
-                                hintText: 'mohamedkhaled22@gmail.com',
+                                hintText: cubit.userDataPatient?.userData?.email ?? '',
                                 hintStyle: TextStyle(
                                   color: Color(0xFF343A40),
                                   fontSize: 16,
@@ -213,7 +212,7 @@ class _elderprofileState extends State<elderprofile> {
                               keyboardType: TextInputType.phone,
                               readOnly: isPhone,
                               decoration: InputDecoration(
-                                hintText: '01012131415',
+                                hintText: cubit.userDataPatient?.userData?.phone ?? '',
                                 hintStyle: TextStyle(
                                   color: Color(0xFF343A40),
                                   fontSize: 16,
@@ -290,7 +289,7 @@ class _elderprofileState extends State<elderprofile> {
                               keyboardType: TextInputType.streetAddress,
                               readOnly: true,
                               decoration: InputDecoration(
-                                hintText: '',
+                                hintText: cubit.addressController.text ?? '',
                                 suffixIcon: IconButton(
                                   icon: const Icon(
                                       color: Color(0xFF00B4D8),
