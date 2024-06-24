@@ -3,15 +3,11 @@ import 'package:flutter/material.dart';
 class textfieldpassword extends StatefulWidget {
   final String? text;
   final bool obscureText;
-
-  final TextEditingController oldPasswordElderController = TextEditingController();
-  final TextEditingController newPasswordElderController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-
+  final TextEditingController controller;
   textfieldpassword({
     this.text,
     this.obscureText = false,
-    required TextEditingController? controller,
+    required this.controller,
   });
 
   @override
@@ -21,12 +17,13 @@ class textfieldpassword extends StatefulWidget {
 class _textfieldpasswordState extends State<textfieldpassword> {
   bool _isObscure3 = true;
 
-  RegExp regex = RegExp(r'^(?=.[A-Za-z])(?=.[0-9])(?=.[!#?%$@]).{8,}$');
+  // RegExp regex = RegExp(r'^(?=.[A-Za-z])(?=.[0-9])(?=.[!#?%$@]).{8,}$');
 
   @override
   Widget build(BuildContext context) {
     // var oldPasswordElderController;
     return TextFormField(
+      controller: widget.controller,
       obscuringCharacter: '*',
       obscureText: _isObscure3,
       decoration: InputDecoration(
@@ -52,9 +49,9 @@ class _textfieldpasswordState extends State<textfieldpassword> {
           return 'Please enter your password';
         } else if (value.length < 8) {
           return 'Password must be at least 8 characters';
-        } else if (regex.hasMatch(value) == false) {
+        }/* else if (regex.hasMatch(value) == false) {
           return 'Password must contain at least one uppercase letter, \n one lowercase letter, one number and one special character';
-        }
+        }*/
         return null;
       },
     );

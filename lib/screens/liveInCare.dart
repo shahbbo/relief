@@ -9,29 +9,26 @@ class liveInCare extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => inCareHeaderCubit(),
-      child: BlocConsumer<inCareHeaderCubit, headerState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          // var cubit = inCareHeaderCubit.get(context);
-          return Scaffold(
-            body: SafeArea(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    inCareHeader(),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    incareBody(),
-                  ],
-                ),
+    return BlocConsumer<inCareHeaderCubit, headerState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        // var cubit = inCareHeaderCubit.get(context);
+        return Scaffold(
+          body: SafeArea(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  inCareHeader(),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  incareBody(),
+                ],
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

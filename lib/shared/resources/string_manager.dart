@@ -15,4 +15,8 @@ class AppStrings{
   static const String patientVerifyCode = 'patient/verify-code';
 
   static const String patientResetPassword = 'patient/reset-password';
+
+  static const String patientChangePassword = 'patient/changePassword';
+
+  static const String patientGetUser = 'patient/getPatientByToken';
 }

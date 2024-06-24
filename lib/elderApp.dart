@@ -8,27 +8,24 @@ class elderApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => inCareHeaderCubit(),
-      child: BlocConsumer<inCareHeaderCubit, headerState>(
-          listener: (context, state) {
-        // TODO: implement listener
-      }, builder: (context, state) {
-        return Scaffold(
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  child: inCareHeaderCubit
-                      .get(context)
-                      .mainScreens[inCareHeaderCubit.get(context).currentIndex],
-                ),
-              ],
-            ),
+    return BlocConsumer<inCareHeaderCubit, headerState>(
+        listener: (context, state) {
+      // TODO: implement listener
+    }, builder: (context, state) {
+      return Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                child: inCareHeaderCubit
+                    .get(context)
+                    .mainScreens[inCareHeaderCubit.get(context).currentIndex],
+              ),
+            ],
           ),
-          bottomNavigationBar: navBar(),
-        );
-      }),
-    );
+        ),
+        bottomNavigationBar: navBar(),
+      );
+    });
   }
 }

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:location/location.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:relief/carerApp.dart';
 import 'package:relief/register/cubit/register_cubit.dart';
 import 'package:relief/register/logInScreen.dart';
 import 'package:dob_input_field/dob_input_field.dart';
+import 'package:relief/shared/network/local/cache_helper.dart';
 
 class RegisterN2 extends StatefulWidget {
   const RegisterN2({super.key});
@@ -79,7 +81,19 @@ class _RegisterN2State extends State<RegisterN2> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<RegisterCubit, RegisterState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if(state is RegisterCarerSuccessState) {
+          CacheHelper.saveData(key: 'tokenCaregiver', value: state.data['token']);
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Registered Successfully'),
+              backgroundColor: Colors.green,
+            ),
+          );
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => const carerApp()));
+        }
+      },
       builder: (context, state) {
         var cubit = RegisterCubit.get(context);
         return ModalProgressHUD(

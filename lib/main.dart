@@ -25,7 +25,7 @@ Future<void> main() async {
   await DioHelper.inti();
   await CacheHelper.init();
   Widget widget;
-  Location location =  Location();
+  Location location = Location();
 
   bool serviceEnabled;
   PermissionStatus permissionGranted;
@@ -35,15 +35,15 @@ Future<void> main() async {
 
   print('tokenPatient : ${tokenPatient}');
   print('tokenCaregiver : ${tokenCaregiver}');
-  if(tokenPatient != null) {
+  if (tokenPatient != null) {
     widget = elderApp();
-  }else if(tokenCaregiver != null){
+  } else if (tokenCaregiver != null) {
     widget = carerApp();
-  }else {
+  } else {
     widget = LoginScreen();
   }
 
-  try{
+  try {
     serviceEnabled = await location.serviceEnabled();
     if (!serviceEnabled) {
       serviceEnabled = await location.requestService();
@@ -51,7 +51,7 @@ Future<void> main() async {
         return;
       }
     }
-  }catch(e){
+  } catch (e) {
     print(e.toString());
   }
 
@@ -63,7 +63,9 @@ Future<void> main() async {
     }
   }
 
-  runApp(relief(startWidget: widget,));
+  runApp(relief(
+    startWidget: widget,
+  ));
 }
 
 class relief extends StatelessWidget {
@@ -73,14 +75,14 @@ class relief extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<inCareHeaderCubit>(create: (context) => inCareHeaderCubit(),),
-        BlocProvider<RegisterCubit>(create: (context) => RegisterCubit(),),
+        BlocProvider<inCareHeaderCubit>(
+            create: (context) => inCareHeaderCubit()
+              ..getUserDataPatient(token: tokenPatient.toString())
+              ..getPlace(lat: 0, lon: 0)),
+        BlocProvider<RegisterCubit>(create: (context) => RegisterCubit()),
       ],
-      // create: (context) => inCareHeaderCubit(),
       child: BlocConsumer<inCareHeaderCubit, headerState>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           return MaterialApp(
             theme: ThemeData(

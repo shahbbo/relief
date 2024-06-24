@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:location/location.dart';
 import 'package:relief/caregiver_view_details/caregiver_view_details_screen.dart';
 import 'package:relief/caregiver_view_details_edit_profile/caregiver_view_details_edit_profile_view.dart';
 import 'package:relief/caregiver_view_details_requests/caregiver_view_details_requests_viwe.dart';
@@ -15,7 +16,9 @@ import 'package:relief/consset.dart';
 import 'package:relief/screens/profileElder.dart';
 import 'package:relief/sittings/SittingSS.dart';
 
+import '../../models/UserDataPatient/UserDataPatient.dart';
 import '../../shared/network/remote/dio_helper.dart';
+import '../../shared/resources/string_manager.dart';
 part 'inCareStates.dart';
 
 class inCareHeaderCubit extends Cubit<headerState> {
@@ -66,9 +69,10 @@ class inCareHeaderCubit extends Cubit<headerState> {
     required dynamic lon ,
   }) async {
     emit(LoadingPlace());
-    await DioHelper.getPlace(url: 'lat=$lat&lon=$lon').then((value) {
-  /*    lats = lat ;
-      lons = lon;*/
+    Location location = Location();
+    LocationData locationData;
+    locationData = await location.getLocation();
+    await DioHelper.getPlace(url: 'lat=${locationData.latitude}&lon=${locationData.longitude}').then((value) {
       addressController.text = value.data['display_name'] ;
       emit(SuccessPlace());
     }).catchError((onError) {
@@ -77,6 +81,26 @@ class inCareHeaderCubit extends Cubit<headerState> {
       }
       print('error : $onError');
       emit(ErrorPlace());
+    });
+  }
+
+
+  UserDataPatient? userDataPatient;
+  Future<void> getUserDataPatient({
+    required String token,
+  }) async {
+    emit(PatientGetUserLoadingState());
+    await DioHelper.getDate(
+      url: '${AppStrings.patientGetUser}/$token',
+    ).then((value) {
+      userDataPatient = UserDataPatient.fromJson(value.data);
+      emit(PatientGetUserSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(PatientGetUserErrorState(onError.response!.data['message']));
+      }
     });
   }
 }

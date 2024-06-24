@@ -98,3 +98,15 @@ final class PatientResetPasswordErrorState extends RegisterState {
   PatientResetPasswordErrorState(this.error);
 }
 
+final class PatientChangePasswordLoadingState extends RegisterState {}
+
+final class PatientChangePasswordSuccessState extends RegisterState {}
+
+final class PatientChangePasswordErrorState extends RegisterState {
+  final String error;
+
+  PatientChangePasswordErrorState(this.error);
+}
+
+
+

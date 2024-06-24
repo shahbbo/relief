@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:relief/shared/components/constants.dart';
 
 import '../../resources/string_manager.dart';
+import '../local/cache_helper.dart';
 
 
 
@@ -61,10 +63,11 @@ class DioHelper {
     required dynamic data ,
   }) async
   {
-/*    token = CacheHelper.getData(key: 'TokenId');
+    tokenPatient = CacheHelper.getData(key: 'tokenPatient');
+    tokenCaregiver = CacheHelper.getData(key: 'tokenCaregiver');
     dio.options.headers = {
-      'Authorization':'Bearer $token',
-    };*/
+      'Authorization':'${tokenPatient == null  ? tokenCaregiver : tokenPatient}',
+    };
     return dio.put(
       url ,
       queryParameters: query,

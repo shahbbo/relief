@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:relief/models/UserDataPatient/UserDataPatient.dart';
 
 import '../../shared/network/remote/dio_helper.dart';
 import '../../shared/resources/string_manager.dart';
@@ -220,4 +221,31 @@ class RegisterCubit extends Cubit<RegisterState> {
       }
     });
   }
+
+  Future<void> patientChangePassword({
+    required String currentPassword ,
+    required String newPassword,
+    required String confirmPassword,
+  }) async {
+    emit(PatientChangePasswordLoadingState());
+    await DioHelper.putData(
+      url: AppStrings.patientChangePassword,
+      data: {
+        'currentPassword' : currentPassword,
+        'newPassword': newPassword,
+        'confirmPassword' : confirmPassword,
+      },
+    ).then((value) {
+      emit(PatientChangePasswordSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(PatientChangePasswordErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+
+
 }
