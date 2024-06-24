@@ -84,6 +84,7 @@ class _RegisterN2State extends State<RegisterN2> {
       listener: (context, state) {
         if(state is RegisterCarerSuccessState) {
           CacheHelper.saveData(key: 'tokenCaregiver', value: state.data['token']);
+          CacheHelper.saveData(key: 'ID', value: state.data['UserData']['_id']);
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Registered Successfully'),

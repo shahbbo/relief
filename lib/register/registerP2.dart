@@ -45,6 +45,7 @@ class _RegisterP2State extends State<RegisterP2> {
       listener: (context, state) {
         if(state is RegisterPatientSuccessState){
          CacheHelper.saveData(key: 'tokenPatient', value: state.data['token']);
+         CacheHelper.saveData(key: 'ID', value: state.data['UserData']['_id']);
 
          Navigator.push(context, MaterialPageRoute(builder: (context) => elderApp()));
         }

@@ -35,6 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
       listener: (context, state) {
         if (state is LoginPatientSuccessState) {
           CacheHelper.saveData(key: 'tokenPatient', value: state.data['token']);
+          CacheHelper.saveData(key: 'ID', value: state.data['UserData']['_id']);
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => const elderApp()));
         }
@@ -48,6 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
         }*/
         else if(state is LoginCaregiverSuccessState) {
           CacheHelper.saveData(key: 'tokenCaregiver', value: state.data['token']);
+          CacheHelper.saveData(key: 'ID', value: state.data['UserData']['_id']);
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => const carerApp()));
         }
