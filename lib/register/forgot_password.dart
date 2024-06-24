@@ -73,8 +73,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                 decoration: InputDecoration(
                                   labelText: ('Email Address'),
                                   border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(15)),
-                                ),
+                                  borderRadius: BorderRadius.circular(15)),
+                            ),
                               ),
                               const SizedBox(
                                 height: 20,

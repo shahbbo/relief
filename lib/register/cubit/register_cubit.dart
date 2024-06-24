@@ -16,11 +16,13 @@ class RegisterCubit extends Cubit<RegisterState> {
   TextEditingController nameElderController = TextEditingController();
   TextEditingController emailElderController = TextEditingController();
   TextEditingController passwordElderController = TextEditingController();
+  TextEditingController repasswordElderController = TextEditingController();
   TextEditingController phoneElderController = TextEditingController();
 
   TextEditingController nameCaregiverController = TextEditingController();
   TextEditingController emailCaregiverController = TextEditingController();
   TextEditingController passwordCaregiverController = TextEditingController();
+  TextEditingController repasswordCaregiverController = TextEditingController();
   TextEditingController phoneCaregiverController = TextEditingController();
 
   Future<void> patientRegister({
@@ -206,6 +208,72 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(PatientResetPasswordLoadingState());
     await DioHelper.postData(
       url: '${AppStrings.patientResetPassword}/$token',
+      data: {
+        'newPassword': newPassword,
+        'confirmPassword': confirmPassword,
+      },
+    ).then((value) {
+      emit(PatientResetPasswordSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(PatientResetPasswordErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+  Future<void> carerForgotPassword({
+    required String email,
+  }) async {
+    emit(PatientForgotPasswordLoadingState());
+    await DioHelper.postData(
+      url: AppStrings.carerForgotPassword,
+      data: {
+        'email': email,
+      },
+    ).then((value) {
+      print(value.data);
+      emit(PatientForgotPasswordSuccessState(value.data));
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(
+            PatientForgotPasswordErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+  Future<void> carerVerifyCode({
+    required String otp,
+    required String token,
+  }) async {
+    emit(PatientVerifyCodeLoadingState());
+    await DioHelper.postData(
+      url: '${AppStrings.carerVerifyCode}/$token',
+      data: {
+        'verificationCode': otp,
+      },
+    ).then((value) {
+      emit(PatientVerifyCodeSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(PatientVerifyCodeErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+  Future<void> carerResetPassword({
+    required String newPassword,
+    required String confirmPassword,
+    required String token,
+  }) async {
+    emit(PatientResetPasswordLoadingState());
+    await DioHelper.postData(
+      url: '${AppStrings.carerResetPassword}/$token',
       data:
       {
         'newPassword': newPassword,

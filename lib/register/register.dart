@@ -167,7 +167,7 @@ class _RegisterState extends State<Register> {
                           ),
                           const SizedBox(height: 5),
                           TextFormField(
-                            controller: cubit.passwordElderController,
+                            controller: cubit.repasswordElderController,
                             obscureText: _obscureText,
                             keyboardType: TextInputType.visiblePassword,
                             obscuringCharacter: '*',
