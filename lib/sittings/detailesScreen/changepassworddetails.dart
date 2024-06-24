@@ -1,20 +1,19 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:relief/register/forgot_password.dart';
 import 'package:relief/sittings/widgets/button.dart';
 import 'package:relief/sittings/widgets/textfieldpassword.dart';
 
 class changepassworddetails extends StatelessWidget {
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  static String id = 'changepassworddetails';
+  static const  String id = 'changepassworddetails';
 
-  TextEditingController oldPasswordElderController = TextEditingController();
-  TextEditingController newPasswordElderController = TextEditingController();
+  final TextEditingController oldPasswordElderController = TextEditingController();
+  final TextEditingController newPasswordElderController = TextEditingController();
 
-  RegExp regex = RegExp(r'^(?=.[A-Za-z])(?=.[0-9])(?=.[!#?%$@]).{8,}$');
+  final RegExp regex = RegExp(r'^(?=.[A-Za-z])(?=.[0-9])(?=.[!#?%$@]).{8,}$');
 
   @override
   Widget build(BuildContext context) {

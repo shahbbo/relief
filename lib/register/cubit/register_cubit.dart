@@ -151,4 +151,73 @@ class RegisterCubit extends Cubit<RegisterState> {
     });
   }
 
+
+  Future<void> patientForgotPassword({
+    required String email,
+  }) async {
+    emit(PatientForgotPasswordLoadingState());
+    await DioHelper.postData(
+      url: AppStrings.patientForgotPassword,
+      data:
+      {
+        'email': email,
+      },
+    ).then((value) {
+      print(value.data);
+      emit(PatientForgotPasswordSuccessState(value.data));
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(PatientForgotPasswordErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+
+  Future<void> patientVerifyCode({
+    required String otp,
+    required String token ,
+  }) async {
+    emit(PatientVerifyCodeLoadingState());
+    await DioHelper.postData(
+      url: '${AppStrings.patientVerifyCode}/$token',
+      data:
+      {
+        'verificationCode': otp,
+      },
+    ).then((value) {
+      emit(PatientVerifyCodeSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(PatientVerifyCodeErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+  Future<void> patientResetPassword({
+    required String newPassword,
+    required String confirmPassword,
+    required String token ,
+  }) async {
+    emit(PatientResetPasswordLoadingState());
+    await DioHelper.postData(
+      url: '${AppStrings.patientResetPassword}/$token',
+      data:
+      {
+        'newPassword': newPassword,
+        'confirmPassword' : confirmPassword,
+      },
+    ).then((value) {
+      emit(PatientResetPasswordSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(PatientResetPasswordErrorState(onError.response!.data['message']));
+      }
+    });
+  }
 }

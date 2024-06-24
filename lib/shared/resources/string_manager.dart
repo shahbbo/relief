@@ -9,4 +9,10 @@ class AppStrings{
   static const String loginCaregiver = 'caregiver/signin';
 
   static const String registerCarer = 'caregiver/signup';
+
+  static const String patientForgotPassword = 'patient/forgot-password';
+
+  static const String patientVerifyCode = 'patient/verify-code';
+
+  static const String patientResetPassword = 'patient/reset-password';
 }

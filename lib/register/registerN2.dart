@@ -417,16 +417,16 @@ class _RegisterN2State extends State<RegisterN2> {
                                 cubit.carerRegister(
                                   username: cubit.nameCaregiverController.text,
                                   email: cubit.emailCaregiverController.text,
-                                  password:
-                                      cubit.passwordCaregiverController.text,
-                                  rePassword:
-                                      cubit.passwordCaregiverController.text,
+                                  password: cubit.passwordCaregiverController.text,
+                                  rePassword: cubit.passwordCaregiverController.text,
                                   gender: GenderCarerController.text,
                                   dateOfBirth: DateOfBirthCarerController,
                                   phone: cubit.phoneCaregiverController.text,
                                   doYouSmoke: SmokeCarerController.text,
                                   canYouDrive: DriveCarerController.text,
                                   biography: BiographyCarerController.text,
+                                  longitude: locationData.longitude,
+                                  latitude: locationData.latitude,
                                 );
                               }
                             },

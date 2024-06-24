@@ -4,7 +4,6 @@ import 'package:location/location.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 import 'package:relief/register/logInScreen.dart';
-import 'package:relief/register/registerN2.dart';
 
 import 'cubit/register_cubit.dart';
 import 'registerP2.dart';

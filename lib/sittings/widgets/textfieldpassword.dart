@@ -4,9 +4,9 @@ class textfieldpassword extends StatefulWidget {
   final String? text;
   final bool obscureText;
 
-  TextEditingController oldPasswordElderController = TextEditingController();
-  TextEditingController newPasswordElderController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final TextEditingController oldPasswordElderController = TextEditingController();
+  final TextEditingController newPasswordElderController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   textfieldpassword({
     this.text,
@@ -25,7 +25,7 @@ class _textfieldpasswordState extends State<textfieldpassword> {
 
   @override
   Widget build(BuildContext context) {
-    var oldPasswordElderController;
+    // var oldPasswordElderController;
     return TextFormField(
       obscuringCharacter: '*',
       obscureText: _isObscure3,
