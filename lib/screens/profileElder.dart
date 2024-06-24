@@ -37,6 +37,16 @@ class _elderprofileState extends State<elderprofile> {
   RegExp regexp = RegExp('^(?:[+01]8)?[0-9]{10}');
 
   @override
+  void initState() {
+    var cubit = inCareHeaderCubit.get(context).userDataPatient;
+    usernameController.text = cubit?.userData?.userName ?? '';
+    emailController.text = cubit?.userData?.email ?? '';
+    phoneController.text = cubit?.userData?.phone ?? '';
+    locationController.text = inCareHeaderCubit.get(context).addressController.text;
+
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return BlocConsumer<inCareHeaderCubit, headerState>(
       listener: (context, state) {},
@@ -289,7 +299,7 @@ class _elderprofileState extends State<elderprofile> {
                               keyboardType: TextInputType.streetAddress,
                               readOnly: true,
                               decoration: InputDecoration(
-                                hintText: cubit.addressController.text ?? '',
+                                hintText: cubit.addressController.text,
                                 suffixIcon: IconButton(
                                   icon: const Icon(
                                       color: Color(0xFF00B4D8),

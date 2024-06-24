@@ -106,8 +106,6 @@ class relief extends StatelessWidget {
             //     splashTransition: SplashTransition.fadeTransition,
             //     backgroundColor: Colors.white)
             home: startWidget,
-            // home: carerApp(),
-            // home: elderApp(),
           );
         },
       ),

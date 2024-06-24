@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:location/location.dart';
 import 'package:relief/cubits/incareCubit/inCareCubit.dart';
-import 'package:relief/shared/components/constants.dart';
 
 class elderNamePhoto extends StatelessWidget {
   const elderNamePhoto({Key? key}) : super(key: key);
