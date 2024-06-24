@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:relief/carerApp.dart';
+import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 import 'package:relief/register/N_or_P.dart';
 import 'package:relief/register/cubit/register_cubit.dart';
 import 'package:relief/register/forgot_password.dart';
+import 'package:relief/shared/components/constants.dart';
 import 'package:relief/shared/network/local/cache_helper.dart';
 
 import '../elderApp.dart';
@@ -36,6 +38,9 @@ class _LoginScreenState extends State<LoginScreen> {
         if (state is LoginPatientSuccessState) {
           CacheHelper.saveData(key: 'tokenPatient', value: state.data['token']);
           CacheHelper.saveData(key: 'ID', value: state.data['UserData']['_id']);
+          inCareHeaderCubit
+              .get(context)
+              .getUserDataPatient(token: tokenPatient.toString());
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => const elderApp()));
         }
@@ -50,6 +55,9 @@ class _LoginScreenState extends State<LoginScreen> {
         else if(state is LoginCaregiverSuccessState) {
           CacheHelper.saveData(key: 'tokenCaregiver', value: state.data['token']);
           CacheHelper.saveData(key: 'ID', value: state.data['UserData']['_id']);
+          inCareHeaderCubit
+              .get(context)
+              .getUserCaregiver(token: tokenCaregiver.toString());
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => const carerApp()));
         }
