@@ -20,12 +20,17 @@ class ResetPassword extends StatelessWidget {
               context,
               MaterialPageRoute(
                   builder: (context) => LoginScreen()));
+        }else if (state is CarerResetPasswordSuccessState){
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => LoginScreen()));
         }
       },
       builder: (context, state) {
         var cubit = RegisterCubit.get(context);
         return ModalProgressHUD(
-          inAsyncCall: state is PatientResetPasswordLoadingState,
+          inAsyncCall: state is PatientResetPasswordLoadingState || state is CarerResetPasswordLoadingState,
           child: Scaffold(
               body: SingleChildScrollView(
                 child: Padding(
@@ -81,6 +86,12 @@ class ResetPassword extends StatelessWidget {
                                 child: MaterialButton(
                                   onPressed: () {
                                     cubit.patientResetPassword(
+                                        newPassword: newPasswordController.text,
+                                        confirmPassword: confirmPasswordController.text,
+                                        token: tokenOtp
+                                    );
+
+                                    cubit.carerResetPassword(
                                         newPassword: newPasswordController.text,
                                         confirmPassword: confirmPasswordController.text,
                                         token: tokenOtp

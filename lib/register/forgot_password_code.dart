@@ -28,12 +28,19 @@ class _ForgotPasswordCodeState extends State<ForgotPasswordCode> {
               builder: (context) => ResetPassword(
                 tokenOtp: widget.tokenOtp,
               )));
+    }else if(state is CarerVerifyCodeSuccessState){
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ResetPassword(
+                tokenOtp: widget.tokenOtp,
+              )));
     }
   },
   builder: (context, state) {
     var cubit = RegisterCubit.get(context);
     return ModalProgressHUD(
-      inAsyncCall: state is PatientVerifyCodeLoadingState,
+      inAsyncCall: state is PatientVerifyCodeLoadingState || state is CarerVerifyCodeLoadingState,
       child: Scaffold(
           appBar: AppBar(
             title: const Text(
@@ -175,6 +182,11 @@ class _ForgotPasswordCodeState extends State<ForgotPasswordCode> {
                             if(otp1Controller.text.isNotEmpty && otp2Controller.text.isNotEmpty && otp3Controller.text.isNotEmpty && otp4Controller.text.isNotEmpty)
                             {
                               cubit.patientVerifyCode(
+                                otp: otp1Controller.text + otp2Controller.text + otp3Controller.text + otp4Controller.text,
+                                token: widget.tokenOtp,
+                              );
+
+                              cubit.carerVerifyCode(
                                 otp: otp1Controller.text + otp2Controller.text + otp3Controller.text + otp4Controller.text,
                                 token: widget.tokenOtp,
                               );

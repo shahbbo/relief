@@ -75,16 +75,45 @@ final class PatientForgotPasswordErrorState extends RegisterState {
   PatientForgotPasswordErrorState(this.error);
 }
 
+
+final class CarerForgotPasswordLoadingState extends RegisterState {}
+
+final class CarerForgotPasswordSuccessState extends RegisterState {
+  final dynamic data;
+
+  CarerForgotPasswordSuccessState(this.data);
+}
+
+final class CarerForgotPasswordErrorState extends RegisterState {
+  final String error;
+
+  CarerForgotPasswordErrorState(this.error);
+}
+
+
 final class PatientVerifyCodeLoadingState extends RegisterState {}
 
 final class PatientVerifyCodeSuccessState extends RegisterState {}
-
 
 final class PatientVerifyCodeErrorState extends RegisterState {
   final String error;
 
   PatientVerifyCodeErrorState(this.error);
 }
+
+
+final class CarerVerifyCodeLoadingState extends RegisterState {}
+
+final class CarerVerifyCodeSuccessState extends RegisterState {}
+
+final class CarerVerifyCodeErrorState extends RegisterState {
+  final String error;
+
+  CarerVerifyCodeErrorState(this.error);
+}
+
+
+
 
 final class PatientResetPasswordLoadingState extends RegisterState {}
 
@@ -97,6 +126,22 @@ final class PatientResetPasswordErrorState extends RegisterState {
 
   PatientResetPasswordErrorState(this.error);
 }
+
+
+final class CarerResetPasswordLoadingState extends RegisterState {}
+
+final class CarerResetPasswordSuccessState extends RegisterState {
+
+}
+
+final class CarerResetPasswordErrorState extends RegisterState {
+  final String error;
+
+  CarerResetPasswordErrorState(this.error);
+}
+
+
+
 
 final class PatientChangePasswordLoadingState extends RegisterState {}
 

@@ -226,7 +226,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   Future<void> carerForgotPassword({
     required String email,
   }) async {
-    emit(PatientForgotPasswordLoadingState());
+    emit(CarerForgotPasswordLoadingState());
     await DioHelper.postData(
       url: AppStrings.carerForgotPassword,
       data: {
@@ -234,13 +234,13 @@ class RegisterCubit extends Cubit<RegisterState> {
       },
     ).then((value) {
       print(value.data);
-      emit(PatientForgotPasswordSuccessState(value.data));
+      emit(CarerForgotPasswordSuccessState(value.data));
     }).catchError((onError) {
       if (onError is DioException) {
         debugPrint(onError.response!.data['message']);
         debugPrint(onError.message);
         emit(
-            PatientForgotPasswordErrorState(onError.response!.data['message']));
+            CarerForgotPasswordErrorState(onError.response!.data['message']));
       }
     });
   }
@@ -249,19 +249,19 @@ class RegisterCubit extends Cubit<RegisterState> {
     required String otp,
     required String token,
   }) async {
-    emit(PatientVerifyCodeLoadingState());
+    emit(CarerVerifyCodeLoadingState());
     await DioHelper.postData(
       url: '${AppStrings.carerVerifyCode}/$token',
       data: {
         'verificationCode': otp,
       },
     ).then((value) {
-      emit(PatientVerifyCodeSuccessState());
+      emit(CarerVerifyCodeSuccessState());
     }).catchError((onError) {
       if (onError is DioException) {
         debugPrint(onError.response!.data['message']);
         debugPrint(onError.message);
-        emit(PatientVerifyCodeErrorState(onError.response!.data['message']));
+        emit(CarerVerifyCodeErrorState(onError.response!.data['message']));
       }
     });
   }
@@ -271,7 +271,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     required String confirmPassword,
     required String token,
   }) async {
-    emit(PatientResetPasswordLoadingState());
+    emit(CarerResetPasswordLoadingState());
     await DioHelper.postData(
       url: '${AppStrings.carerResetPassword}/$token',
       data:
@@ -280,12 +280,12 @@ class RegisterCubit extends Cubit<RegisterState> {
         'confirmPassword' : confirmPassword,
       },
     ).then((value) {
-      emit(PatientResetPasswordSuccessState());
+      emit(CarerResetPasswordSuccessState());
     }).catchError((onError) {
       if (onError is DioException) {
         debugPrint(onError.response!.data['message']);
         debugPrint(onError.message);
-        emit(PatientResetPasswordErrorState(onError.response!.data['message']));
+        emit(CarerResetPasswordErrorState(onError.response!.data['message']));
       }
     });
   }

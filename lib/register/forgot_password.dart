@@ -28,12 +28,21 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                      tokenOtp: state.data['token'],
                      email: emailcontroller.text,
                    )));
+        }else if (state is CarerForgotPasswordSuccessState) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      ForgotPasswordCode(
+                        tokenOtp: state.data['token'],
+                        email: emailcontroller.text,
+                      )));
         }
       },
       builder: (context, state) {
         var cubit = RegisterCubit.get(context);
         return ModalProgressHUD(
-          inAsyncCall: state is PatientForgotPasswordLoadingState,
+          inAsyncCall: state is PatientForgotPasswordLoadingState || state is CarerForgotPasswordLoadingState,
           child: Scaffold(
               appBar: AppBar(
                 title: const Text(
@@ -99,6 +108,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                   onPressed: () {
                                    if (emailcontroller.text.isNotEmpty) {
                                       cubit.patientForgotPassword(
+                                          email: emailcontroller.text);
+
+                                      cubit.carerForgotPassword(
                                           email: emailcontroller.text);
                                     }
                                   },
