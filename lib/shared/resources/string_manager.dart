@@ -33,4 +33,8 @@ class AppStrings{
   static const String patientEditProfile = 'patient/editProfile';
 
   static const String carerEditProfile = 'caregiver/editProfile';
+
+
+
+  static const String patientRequests = 'patient/requests';
 }

@@ -542,56 +542,60 @@ class _HomeState extends State<RequestCaregiver> {
               ),
               Row(
                 children: [
-                  SizedBox(
-                    width: 173,
-                    height: 50,
-                    child: MaterialButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const typeOfCare()));
-                      },
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        side: const BorderSide(
-                          color: Color(0xffbbd0ff),
+                  Expanded(
+                    child: SizedBox(
+                      // width: 173,
+                      height: 50,
+                      child: MaterialButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const typeOfCare()));
+                        },
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25.0),
+                          side: const BorderSide(
+                            color: Color(0xffbbd0ff),
+                          ),
                         ),
-                      ),
-                      color: Colors.white,
-                      child: const Text(
-                        'Back',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
+                        color: Colors.white,
+                        child: const Text(
+                          'Back',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                     ),
                   ),
                   const SizedBox(width: 10),
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Color(0xffbbd0ff),
-                      ),
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                    child: SizedBox(
-                      width: 173,
-                      height: 50,
-                      child: MaterialButton(
-                        color: Colors.red,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25.0),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color(0xffbbd0ff),
                         ),
-                        onPressed: () {},
-                        child: const Text(
-                          'Send Request',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black,
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: SizedBox(
+                        // width: 173,
+                        height: 50,
+                        child: MaterialButton(
+                          color: Colors.red,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25.0),
+                          ),
+                          onPressed: () {},
+                          child: const Text(
+                            'Send Request',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                       ),

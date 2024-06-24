@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:location/location.dart';
+import 'package:relief/arrange/cubit/requests_cubit.dart';
 import 'package:relief/carerApp.dart';
 import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 import 'package:relief/elderApp.dart';
@@ -75,11 +76,11 @@ class relief extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<inCareHeaderCubit>(
-            create: (context) => inCareHeaderCubit()
+        BlocProvider<inCareHeaderCubit>(create: (context) => inCareHeaderCubit()
               ..getUserDataPatient(token: tokenPatient.toString())..getUserCaregiver(token: tokenCaregiver.toString())
               ..getPlace(lat: 0, lon: 0)),
         BlocProvider<RegisterCubit>(create: (context) => RegisterCubit()),
+        BlocProvider<RequestsCubit>(create: (context) => RequestsCubit()),
       ],
       child: BlocConsumer<inCareHeaderCubit, headerState>(
         listener: (context, state) {},
