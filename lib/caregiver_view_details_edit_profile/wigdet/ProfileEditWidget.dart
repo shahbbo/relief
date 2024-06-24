@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:relief/caregiver_view_details_edit_profile/ChangePass.dart';
 
 import '../../cubits/incareCubit/inCareCubit.dart';
 import '../../shared/components/constants.dart';
@@ -156,38 +157,15 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                 ],
               ),
             ),
-            /*Center(
-          child: Stack(
-            alignment: AlignmentDirectional.bottomCenter,
-            children: [
-              Stack(
-                alignment: AlignmentDirectional.bottomEnd,
-                children: [
-                  CircleAvatar(
-                    radius: 75,
-                    backgroundImage: NetworkImage(
-                        'https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png'),
-                  ),
-                  IconButton(
-                    onPressed: () async {
-                      inCareHeaderCubit.get(context).getNewPostImage(ImageSource.gallery);
-                    },
-                    icon:  CircleAvatar(
-                        radius: 20,
-                        backgroundColor: Colors.black,
-                        child: const Icon(
-                          Icons.camera_alt_outlined,
-                          color: Colors.white,
-                          size: 20,
-                        )),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),*/
             TextButton(
-              onPressed: () async {},
+              onPressed: () async {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ChangePasswCarer(),
+                  ),
+                );
+              },
               child: Text(
                 'Change Password',
                 textAlign: TextAlign.center,

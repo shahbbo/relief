@@ -154,4 +154,12 @@ final class PatientChangePasswordErrorState extends RegisterState {
 }
 
 
+final class carerChangePasswordLoadingState extends RegisterState {}
 
+final class carerChangePasswordSuccessState extends RegisterState {}
+
+final class carerChangePasswordErrorState extends RegisterState {
+  final String error;
+
+  carerChangePasswordErrorState(this.error);
+}

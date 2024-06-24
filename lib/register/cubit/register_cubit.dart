@@ -313,6 +313,27 @@ class RegisterCubit extends Cubit<RegisterState> {
     });
   }
 
-
-
+  Future<void> carerChangePassword({
+    required String currentPassword,
+    required String newPassword,
+    required String confirmPassword,
+  }) async {
+    emit(carerChangePasswordLoadingState());
+    await DioHelper.putData(
+      url: AppStrings.carerChangePassword,
+      data: {
+        'currentPassword': currentPassword,
+        'newPassword': newPassword,
+        'confirmPassword': confirmPassword,
+      },
+    ).then((value) {
+      emit(carerChangePasswordSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(carerChangePasswordErrorState(onError.response!.data['message']));
+      }
+    });
+  }
 }

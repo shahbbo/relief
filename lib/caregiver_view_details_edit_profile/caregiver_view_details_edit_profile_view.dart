@@ -62,7 +62,6 @@ class _CaregiverViewDetailsEditProfileViewState
               backgroundColor: Colors.green,
             ),
           );
-
           inCareHeaderCubit.get(context).getUserCaregiver(token: tokenCaregiver.toString());
         } else if (state is CarerEditProfileErrorState) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -106,8 +105,10 @@ class _CaregiverViewDetailsEditProfileViewState
                           keyboardType: TextInputType.text,
                           readOnly: isUserName,
                           decoration: InputDecoration(
-                            hintText: 'Mohamed Khaled',
-                            hintStyle: TextStyle(
+                                  hintText: cubit.userDataCaregiver?.userData
+                                          ?.userName ??
+                                      '',
+                                  hintStyle: TextStyle(
                               color: Color(0xFF343A40),
                               fontSize: 16,
                               fontFamily: 'Barlow',
@@ -181,8 +182,10 @@ class _CaregiverViewDetailsEditProfileViewState
                           keyboardType: TextInputType.emailAddress,
                           readOnly: isEmail,
                           decoration: InputDecoration(
-                            hintText: 'mohamedkhaled22@gmail.com',
-                            hintStyle: TextStyle(
+                                  hintText: cubit
+                                          .userDataCaregiver?.userData?.email ??
+                                      '',
+                                  hintStyle: TextStyle(
                               color: Color(0xFF343A40),
                               fontSize: 16,
                               fontFamily: 'Barlow',
@@ -258,9 +261,10 @@ class _CaregiverViewDetailsEditProfileViewState
                           keyboardType: TextInputType.multiline,
                           readOnly: isBio,
                           decoration: InputDecoration(
-                            hintText:
-                                'I am a compassionate caregiver with over 5 years of experience, dedicated to providing personalized and empathetic care. ',
-                            hintStyle: TextStyle(
+                            hintText: cubit.userDataCaregiver?.userData
+                                          ?.biography ??
+                                      '',
+                                  hintStyle: TextStyle(
                               color: Color(0xFF343A40),
                               fontSize: 16,
                               fontFamily: 'Barlow',
@@ -327,8 +331,10 @@ class _CaregiverViewDetailsEditProfileViewState
                           keyboardType: TextInputType.phone,
                           readOnly: isPhone,
                           decoration: InputDecoration(
-                            hintText: '01012131415',
-                            hintStyle: TextStyle(
+                                  hintText: cubit
+                                          .userDataCaregiver?.userData?.phone ??
+                                      '',
+                                  hintStyle: TextStyle(
                               color: Color(0xFF343A40),
                               fontSize: 16,
                               fontFamily: 'Barlow',
