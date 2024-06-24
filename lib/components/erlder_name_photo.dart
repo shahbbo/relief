@@ -56,17 +56,43 @@ class elderNamePhoto extends StatelessWidget {
                 ),
               ),
               Spacer(),
-              Container(
+              CircleAvatar(
+                radius: 20,
+                backgroundColor: Colors.black,
+                backgroundImage: const NetworkImage(
+                  'https://t3.ftcdn.net/jpg/03/29/17/78/360_F_329177878_ij7ooGdwU9EKqBFtyJQvWsDmYSfI1evZ.jpg',
+                ),
+                child: Text(
+                  cubit?.userData?.userName?[0] ?? '',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontFamily: 'Barlow',
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              /*Container(
                 width: 50,
                 height: 50,
                 decoration: ShapeDecoration(
-                  image: DecorationImage(
+                */ /*  image: DecorationImage(
                     image: AssetImage("asseets/Ellipse 1.png"),
                     fit: BoxFit.fill,
-                  ),
+                  ),*/ /*
                   shape: OvalBorder(),
                 ),
-              ),
+                child: Text(
+                  cubit?.userData?.userName?[0] ?? '',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontFamily: 'Barlow',
+                    fontWeight: FontWeight.w500,
+                    height: 0,
+                  ),
+                )
+              ),*/
             ],
           ),
         );
