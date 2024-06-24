@@ -77,7 +77,7 @@ class relief extends StatelessWidget {
       providers: [
         BlocProvider<inCareHeaderCubit>(
             create: (context) => inCareHeaderCubit()
-              ..getUserDataPatient(token: tokenPatient.toString())
+              ..getUserDataPatient(token: tokenPatient.toString())..getUserCaregiver(token: tokenCaregiver.toString())
               ..getPlace(lat: 0, lon: 0)),
         BlocProvider<RegisterCubit>(create: (context) => RegisterCubit()),
       ],

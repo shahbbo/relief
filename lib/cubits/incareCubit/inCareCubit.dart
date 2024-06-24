@@ -7,6 +7,7 @@ import 'package:relief/caregiver_view_details_edit_profile/caregiver_view_detail
 import 'package:relief/caregiver_view_details_requests/caregiver_view_details_requests_viwe.dart';
 import 'package:relief/caregiver_view_details_review/caregiver_view_details_review.dart';
 import 'package:relief/homeScreen.dart';
+import 'package:relief/models/UserDataCarer/UserDataCaregiver.dart';
 import 'package:relief/screens/benefits.dart';
 import 'package:relief/screens/howItWorks.dart';
 import 'package:relief/screens/overview.dart';
@@ -100,6 +101,26 @@ class inCareHeaderCubit extends Cubit<headerState> {
         debugPrint(onError.response!.data['message']);
         debugPrint(onError.message);
         emit(PatientGetUserErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+
+  UserDataCaregiver? userDataCaregiver;
+  Future<void> getUserCaregiver({
+    required String token,
+  }) async {
+    emit(CaregiverGetUserLoadingState());
+    await DioHelper.getDate(
+      url: '${AppStrings.carerGetUser}/$token',
+    ).then((value) {
+      userDataCaregiver = UserDataCaregiver.fromJson(value.data);
+      emit(CaregiverGetUserSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(CaregiverGetUserErrorState(onError.response!.data['message']));
       }
     });
   }

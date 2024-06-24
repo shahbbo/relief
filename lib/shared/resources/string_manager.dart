@@ -25,4 +25,6 @@ class AppStrings{
   static const String patientChangePassword = 'patient/changePassword';
 
   static const String patientGetUser = 'patient/getPatientByToken';
+
+  static const String carerGetUser = 'caregiver/getCaregiverByToken';
 }

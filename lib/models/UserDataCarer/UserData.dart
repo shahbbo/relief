@@ -1,18 +1,18 @@
-// import 'HealthRecord.dart';
+
 import 'Location.dart';
 
 class UserData {
   UserData({
-    this.userName,
-    this.email,
-    this.dateOfBirth,
-    this.phone,
-    this.gender,
-    this.password,
-    this.rePassword,
-    // this.healthRecord,
-    this.location,
-  });
+      this.userName, 
+      this.email, 
+      this.dateOfBirth, 
+      this.phone, 
+      this.gender, 
+      this.availability, 
+      this.doYouSmoke, 
+      this.canYouDrive, 
+      this.biography, 
+      this.location,});
 
   UserData.fromJson(dynamic json) {
     userName = json['userName'];
@@ -20,22 +20,21 @@ class UserData {
     dateOfBirth = json['dateOfBirth'];
     phone = json['phone'];
     gender = json['gender'];
-    password = json['password'];
-    rePassword = json['re_password'];
-    // healthRecord = json['healthRecord'] != null ? HealthRecord.fromJson(json['healthRecord']) : null;
-    location =
-        json['location'] != null ? Location.fromJson(json['location']) : null;
+    availability = json['availability'];
+    doYouSmoke = json['doYouSmoke'];
+    canYouDrive = json['canYouDrive'];
+    biography = json['biography'];
+    location = json['location'] != null ? Location.fromJson(json['location']) : null;
   }
-
   String? userName;
   String? email;
   String? dateOfBirth;
   String? phone;
   String? gender;
-  String? password;
-  String? rePassword;
-
-  // HealthRecord? healthRecord;
+  bool? availability;
+  String? doYouSmoke;
+  String? canYouDrive;
+  String? biography;
   Location? location;
 
   Map<String, dynamic> toJson() {
@@ -45,14 +44,14 @@ class UserData {
     map['dateOfBirth'] = dateOfBirth;
     map['phone'] = phone;
     map['gender'] = gender;
-    map['password'] = password;
-    map['re_password'] = rePassword;
-/*    if (healthRecord != null) {
-      map['healthRecord'] = healthRecord?.toJson();
-    }*/
+    map['availability'] = availability;
+    map['doYouSmoke'] = doYouSmoke;
+    map['canYouDrive'] = canYouDrive;
+    map['biography'] = biography;
     if (location != null) {
       map['location'] = location?.toJson();
     }
     return map;
   }
+
 }

@@ -1,15 +1,12 @@
 import 'UserData.dart';
 
-class UserDataCarer {
-  UserDataCarer({
-    this.userData,
-  });
+class UserDataCaregiver {
+  UserDataCaregiver({
+      this.userData,});
 
-  UserDataCarer.fromJson(dynamic json) {
-    userData =
-        json['UserData'] != null ? UserData.fromJson(json['UserData']) : null;
+  UserDataCaregiver.fromJson(dynamic json) {
+    userData = json['UserData'] != null ? UserData.fromJson(json['UserData']) : null;
   }
-
   UserData? userData;
 
   Map<String, dynamic> toJson() {
@@ -19,4 +16,5 @@ class UserDataCarer {
     }
     return map;
   }
+
 }

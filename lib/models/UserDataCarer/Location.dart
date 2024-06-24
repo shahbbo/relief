@@ -1,15 +1,12 @@
 class Location {
   Location({
-    this.type,
-    this.coordinates,
-  });
+      this.type, 
+      this.coordinates,});
 
   Location.fromJson(dynamic json) {
     type = json['type'];
-    coordinates =
-        json['coordinates'] != null ? json['coordinates'].cast<num>() : [];
+    coordinates = json['coordinates'] != null ? json['coordinates'].cast<num>() : [];
   }
-
   String? type;
   List<num>? coordinates;
 
@@ -19,4 +16,5 @@ class Location {
     map['coordinates'] = coordinates;
     return map;
   }
+
 }

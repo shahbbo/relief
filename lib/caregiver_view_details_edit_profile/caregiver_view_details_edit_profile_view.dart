@@ -40,6 +40,16 @@ class _CaregiverViewDetailsEditProfileViewState
   RegExp regexp = RegExp('^(?:[+01]8)?[0-9]{10}');
 
   @override
+  void initState() {
+    var cubit = inCareHeaderCubit.get(context).userDataCaregiver ;
+    usernameController.text = cubit?.userData?.userName ?? '';
+    emailController.text = cubit?.userData?.email ?? '';
+    bioController.text = cubit?.userData?.biography ?? '';
+    phoneController.text = cubit?.userData?.phone ?? '';
+    locationController.text = inCareHeaderCubit.get(context).addressController.text;
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return BlocConsumer<inCareHeaderCubit, headerState>(
       listener: (context, state) {
