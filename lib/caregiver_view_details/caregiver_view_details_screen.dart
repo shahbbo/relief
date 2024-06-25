@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:relief/caregiver_view_details/widget/schedule_widget.dart';
 
 import 'widget/profile_caregiver.dart';
 
