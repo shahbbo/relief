@@ -108,6 +108,7 @@ class _ReviewsState extends State<Reviews> with SingleTickerProviderStateMixin {
 
             TabBar(
               controller: _tabController,
+              indicatorColor: Color(0xff0096c7),
               tabs: [
                 Tab(
                   child: Text(
@@ -115,7 +116,7 @@ class _ReviewsState extends State<Reviews> with SingleTickerProviderStateMixin {
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xff0096c7)),
+                        color: valueIndex == 0 ? Color(0xff0096c7) : Color(0xff212529)),
                   ),
                 ),
                 Tab(
@@ -124,7 +125,7 @@ class _ReviewsState extends State<Reviews> with SingleTickerProviderStateMixin {
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xff212529)),
+                        color: valueIndex == 1 ? Color(0xff0096c7) : Color(0xff212529)),
                   ),
                 ),
               ],
@@ -134,7 +135,9 @@ class _ReviewsState extends State<Reviews> with SingleTickerProviderStateMixin {
                 });
               },
             ),
-
+            SizedBox(
+              height: 10,
+            ),
             valueIndex == 0 ?   Column(
               children: [
                 const SizedBox(
