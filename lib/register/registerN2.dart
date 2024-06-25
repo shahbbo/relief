@@ -86,17 +86,21 @@ class _RegisterN2State extends State<RegisterN2> {
     return BlocConsumer<RegisterCubit, RegisterState>(
       listener: (context, state) async {
         if(state is RegisterCarerSuccessState) {
-          CacheHelper.saveData(key: 'tokenCaregiver', value: state.data['token']);
-          CacheHelper.saveData(key: 'ID', value: state.data['UserData']['_id']);
+          await CacheHelper.saveData(key: 'tokenCaregiver', value: state.data['token']);
+          await CacheHelper.saveData(key: 'ID', value: state.data['UserData']['_id']);
+
+          tokenCaregiver = await CacheHelper.getData(key: 'tokenCaregiver');
           await inCareHeaderCubit.get(context).getUserDataPatient(token: tokenCaregiver.toString());
+
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Registered Successfully'),
               backgroundColor: Colors.green,
             ),
           );
-          Navigator.push(
+          await Navigator.push(
               context, MaterialPageRoute(builder: (context) => const carerApp()));
+          await  inCareHeaderCubit.get(context).mainScreensC[0];
         }
       },
       builder: (context, state) {

@@ -34,41 +34,35 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<RegisterCubit, RegisterState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is LoginPatientSuccessState) {
-          CacheHelper.saveData(key: 'tokenPatient', value: state.data['token']);
-          CacheHelper.saveData(key: 'ID', value: state.data['UserData']['_id']);
-          inCareHeaderCubit
-              .get(context)
-              .getUserDataPatient(token: tokenPatient.toString());
-          Navigator.push(context,
+
+          await CacheHelper.saveData(key: 'tokenPatient', value: state.data['token']);
+          await CacheHelper.saveData(key: 'ID', value: state.data['UserData']['_id']);
+
+
+
+          tokenPatient = await CacheHelper.getData(key: 'tokenPatient');
+          await inCareHeaderCubit.get(context).getUserDataPatient(token: tokenPatient.toString());
+          await inCareHeaderCubit.get(context).getAllUserDataCaregiver();
+
+          await Navigator.push(context,
               MaterialPageRoute(builder: (context) => const elderApp()));
+
+          await inCareHeaderCubit.get(context).mainScreens[0];
         }
-        /*else if (state is LoginPatientErrorState) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.error),
-              backgroundColor: Colors.red,
-            ),
-          );
-        }*/
         else if(state is LoginCaregiverSuccessState) {
-          CacheHelper.saveData(key: 'tokenCaregiver', value: state.data['token']);
-          CacheHelper.saveData(key: 'ID', value: state.data['UserData']['_id']);
-          inCareHeaderCubit
-              .get(context)
-              .getUserCaregiver(token: tokenCaregiver.toString());
-          Navigator.push(
+          await CacheHelper.saveData(key: 'tokenCaregiver', value: state.data['token']);
+          await CacheHelper.saveData(key: 'ID', value: state.data['UserData']['_id']);
+
+          tokenCaregiver = await CacheHelper.getData(key: 'tokenCaregiver');
+          await inCareHeaderCubit.get(context).getUserCaregiver(token: tokenCaregiver.toString());
+
+          await Navigator.push(
               context, MaterialPageRoute(builder: (context) => const carerApp()));
+
+          await inCareHeaderCubit.get(context).mainScreensC[0];
         }
-      /*  else if (state is LoginCaregiverErrorState) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.error),
-              backgroundColor: Colors.red,
-            ),
-          );
-        }*/
       },
       builder: (context, state) {
         var cubit = RegisterCubit.get(context);
