@@ -70,19 +70,22 @@ class inCareHeaderCubit extends Cubit<headerState> {
 
 
   TextEditingController addressController = TextEditingController();
+
   Future<void> getPlace({
     required dynamic lat,
-    required dynamic lon ,
+    required dynamic lon,
   }) async {
     emit(LoadingPlace());
     Location location = Location();
     LocationData locationData;
     locationData = await location.getLocation();
-    await DioHelper.getPlace(url: 'lat=${locationData.latitude}&lon=${locationData.longitude}').then((value) {
-      addressController.text = value.data['display_name'] ;
+    await DioHelper.getPlace(
+            url: 'lat=${locationData.latitude}&lon=${locationData.longitude}')
+        .then((value) {
+      addressController.text = value.data['display_name'];
       emit(SuccessPlace());
     }).catchError((onError) {
-      if(onError is DioException){
+      if (onError is DioException) {
         print('error : ${onError.response!.data}');
       }
       print('error : $onError');
@@ -92,6 +95,7 @@ class inCareHeaderCubit extends Cubit<headerState> {
 
 
   UserDataPatient? userDataPatient;
+
   Future<void> getUserDataPatient({
     required String token,
   }) async {
@@ -112,6 +116,7 @@ class inCareHeaderCubit extends Cubit<headerState> {
 
 
   UserDataCaregiver? userDataCaregiver;
+
   Future<void> getUserCaregiver({
     required String token,
   }) async {
@@ -143,7 +148,7 @@ class inCareHeaderCubit extends Cubit<headerState> {
         'userName': name,
         'email': email,
         'phone': phone,
-        },
+      },
     ).then((value) {
       emit(PatientEditProfileSuccessState());
     }).catchError((onError) {
@@ -165,20 +170,23 @@ class inCareHeaderCubit extends Cubit<headerState> {
     emit(CarerEditProfileLoadingState());
     uid = CacheHelper.getData(key: 'ID');
     await DioHelper.putData(
-      url: '${AppStrings.carerEditProfile}/$uid',
-      data: image == null  ? {
-        'userName': name,
-        'email': email,
-        'biography': biography,
-        'phone': phone,
-      } : FormData.fromMap({
-        'userName': name,
-        'email': email,
-        'biography': biography,
-        'phone': phone,
-        'profilePhoto': await MultipartFile.fromFile(image.path,),
-      })
-    ).then((value) {
+            url: '${AppStrings.carerEditProfile}/$uid',
+            data: image == null
+                ? {
+                    'userName': name,
+                    'email': email,
+                    'biography': biography,
+                    'phone': phone,
+                  }
+                : FormData.fromMap({
+                    'userName': name,
+                    'email': email,
+                    'biography': biography,
+                    'phone': phone,
+                    'profilePhoto': await MultipartFile.fromFile(
+                      image.path,
+                    ),
+                  })).then((value) {
       emit(CarerEditProfileSuccessState());
     }).catchError((onError) {
       if (onError is DioException) {
@@ -191,6 +199,7 @@ class inCareHeaderCubit extends Cubit<headerState> {
 
   File? newPostImage;
   var newPicker = ImagePicker();
+
   Future<void> getNewPostImage(ImageSource imageSource) async {
     final pickedFile = await newPicker.pickImage(source: imageSource);
     if (pickedFile != null) {
@@ -204,7 +213,7 @@ class inCareHeaderCubit extends Cubit<headerState> {
   }
 
   Future<void> discardChange() async {
-    newPostImage = null ;
+    newPostImage = null;
     emit(DiscardChange());
   }
 

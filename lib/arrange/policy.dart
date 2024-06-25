@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:relief/arrange/arrange_care.dart';
 import 'package:relief/arrange/type_of_care.dart';
 
 class Policy extends StatelessWidget {
@@ -79,10 +78,7 @@ class Policy extends StatelessWidget {
                       height: 50,
                       child: MaterialButton(
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const ArrangeCare()));
+                          Navigator.pop(context);
                         },
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25.0),
@@ -121,7 +117,7 @@ class Policy extends StatelessWidget {
                                     builder: (context) => const typeOfCare()));
                           },
                           child: const Text(
-                            'Next',
+                            'Continue',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w600,

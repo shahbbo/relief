@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:relief/arrange/arrange_care.dart';
+import 'package:relief/arrange/policy.dart';
 import 'package:relief/screens/speakToAnExp.dart';
 
 class overview extends StatelessWidget {
@@ -211,7 +211,7 @@ class overview extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ArrangeCare()),
+                    MaterialPageRoute(builder: (context) => Policy()),
                   );
                 },
                 child: Text(

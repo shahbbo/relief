@@ -7,10 +7,9 @@ class UserData {
       this.dateOfBirth, 
       this.phone, 
       this.gender, 
-      this.password, 
-      this.rePassword, 
-      // this.healthRecord,
-      this.location,});
+      this.password,
+    this.rePassword,
+    this.location,});
 
   UserData.fromJson(dynamic json) {
     userName = json['userName'];

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:relief/arrange/request_caregiver1.dart';
 import 'package:relief/arrange/choose_caregiver.dart';
-import 'package:relief/arrange/policy.dart';
-import 'package:relief/arrange/request_caregiver.dart';
 
 class typeOfCare extends StatelessWidget {
   const typeOfCare({super.key});
@@ -101,7 +100,7 @@ class typeOfCare extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const RequestCaregiver()));
+                            builder: (context) => const RequestCaregiver1()));
                   },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25.0),
@@ -130,8 +129,7 @@ class typeOfCare extends StatelessWidget {
               height: 50,
               child: MaterialButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Policy()));
+                  Navigator.pop(context);
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25.0),

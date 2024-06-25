@@ -41,8 +41,8 @@ class _LoginScreenState extends State<LoginScreen> {
           inCareHeaderCubit
               .get(context)
               .getUserDataPatient(token: tokenPatient.toString());
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => const elderApp()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const elderApp()));
         }
         /*else if (state is LoginPatientErrorState) {
           ScaffoldMessenger.of(context).showSnackBar(
