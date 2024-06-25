@@ -113,8 +113,6 @@ class _HomeState extends State<RequestCaregiver1> {
           Navigator.pushAndRemoveUntil(context,
               MaterialPageRoute(builder: (context) => const elderApp()), (route) => false
           );
-          /*Navigator.pop(context);
-          Navigator.pop(context);*/
         } else if (state is PublicRequestErrorState) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
