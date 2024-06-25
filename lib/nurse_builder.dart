@@ -1,40 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:relief/components/nurse_tile.dart';
-import 'package:relief/models/NurseModel.dart';
+import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 
 class nurseBuilder extends StatelessWidget {
   nurseBuilder({super.key});
 
-  final List<NurseModel> nurseList = [
-    NurseModel(
-      name: 'mahmoud ali',
-      image: "asseets/nurse.png",
-    ),
-    NurseModel(
-      name: 'mahmoud amr',
-      image: "asseets/nurse.png",
-    ),
-    NurseModel(
-      name: 'mahmoud baha',
-      image: "asseets/nurse.png",
-    ),
-    NurseModel(
-      name: 'mahmoud adel',
-      image: "asseets/nurse.png",
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 120,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: nurseList.length,
-        itemBuilder: (BuildContext context, int index) {
-          return nurse(nurseList: nurseList[index]);
-        },
-      ),
+    return BlocConsumer<inCareHeaderCubit, headerState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        var cubit = inCareHeaderCubit.get(context);
+        return Container(
+          height: 120,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: cubit.allUserDataCaregiver.length,
+            itemBuilder: (BuildContext context, int index) {
+              return nurse(nurseList: cubit.allUserDataCaregiver[index]);
+            },
+          ),
+        );
+      },
     );
   }
 }

@@ -21,6 +21,7 @@ import 'package:relief/screens/profileElder.dart';
 import 'package:relief/shared/components/constants.dart';
 import 'package:relief/sittings/SittingSS.dart';
 
+import '../../models/GetAllUserDataCaregiver/GetAllUserDataCaregiver.dart';
 import '../../models/UserDataPatient/UserDataPatient.dart';
 import '../../shared/network/local/cache_helper.dart';
 import '../../shared/network/remote/dio_helper.dart';
@@ -68,7 +69,6 @@ class inCareHeaderCubit extends Cubit<headerState> {
     CaregiverViewDetailsEditProfileView(),
   ];
 
-
   TextEditingController addressController = TextEditingController();
 
   Future<void> getPlace({
@@ -93,7 +93,6 @@ class inCareHeaderCubit extends Cubit<headerState> {
     });
   }
 
-
   UserDataPatient? userDataPatient;
 
   Future<void> getUserDataPatient({
@@ -113,7 +112,6 @@ class inCareHeaderCubit extends Cubit<headerState> {
       }
     });
   }
-
 
   UserDataCaregiver? userDataCaregiver;
 
@@ -135,11 +133,11 @@ class inCareHeaderCubit extends Cubit<headerState> {
     });
   }
 
-
   Future<void> patientEditProfile({
     required String name,
     required String email,
-    required String phone,}) async {
+    required String phone,
+  }) async {
     emit(PatientEditProfileLoadingState());
     uid = CacheHelper.getData(key: 'ID');
     await DioHelper.putData(
@@ -160,13 +158,13 @@ class inCareHeaderCubit extends Cubit<headerState> {
     });
   }
 
-
   Future<void> carerEditProfile({
     required String name,
     required String email,
     required String biography,
     File? image,
-    required String phone,}) async {
+    required String phone,
+  }) async {
     emit(CarerEditProfileLoadingState());
     uid = CacheHelper.getData(key: 'ID');
     await DioHelper.putData(
@@ -186,7 +184,8 @@ class inCareHeaderCubit extends Cubit<headerState> {
                     'profilePhoto': await MultipartFile.fromFile(
                       image.path,
                     ),
-                  })).then((value) {
+                  }))
+        .then((value) {
       emit(CarerEditProfileSuccessState());
     }).catchError((onError) {
       if (onError is DioException) {
@@ -217,4 +216,71 @@ class inCareHeaderCubit extends Cubit<headerState> {
     emit(DiscardChange());
   }
 
+  List<GetAllUserDataCaregiver> allUserDataCaregiver = [];
+  Future<void> getAllUserDataCaregiver() async {
+    emit(CaregiverGetAllUserLoadingState());
+    await DioHelper.getDate(
+      url: AppStrings.getAllUserCaregiver,
+    ).then((value) {
+      allUserDataCaregiver = (value.data as List)
+          .map((e) => GetAllUserDataCaregiver.fromJson(e))
+          .toList();
+      emit(CaregiverGetAllUserSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(CaregiverGetAllUserErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+  GetAllUserDataCaregiver? getCaregiverById;
+  Future<void> getUserCaregiverById({
+    required String id,
+  }) async {
+    emit(CaregiverGetUserByIdLoadingState());
+    await DioHelper.getDate(
+      url: '${AppStrings.caregiverById}/$id',
+    ).then((value) {
+      getCaregiverById = GetAllUserDataCaregiver.fromJson(value.data['data']);
+      emit(CaregiverGetUserByIdSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(CaregiverGetUserByIdErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+  Future<void> patientSpecificRequests(
+      {required String id,
+      required int day,
+      required int month,
+      required int hours,
+      required int minutes,
+      required int amount}) async {
+    emit(PatientSpecificRequestsLoadingState());
+    await DioHelper.postData(
+        url: '${AppStrings.patientSpecificRequests}/$id',
+        data: {
+          'appointmentDateTime': {
+            'day': day,
+            'month': month,
+            'hours': hours,
+            'minutes': minutes
+          },
+          'determineThePeriodOfService': {"amount": amount, "unit": "day"}
+        }).then((value) {
+      emit(PatientSpecificRequestsSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(PatientSpecificRequestsErrorState(
+            onError.response!.data['message']));
+      }
+    });
+  }
 }

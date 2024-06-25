@@ -59,3 +59,33 @@ final class NewPostImagePickedSuccessState extends headerState {}
 final class NewPostImagePickedErrorState extends headerState {}
 
 final class DiscardChange extends headerState {}
+
+final class CaregiverGetAllUserLoadingState extends headerState {}
+
+final class CaregiverGetAllUserSuccessState extends headerState {}
+
+final class CaregiverGetAllUserErrorState extends headerState {
+  final String error;
+
+  CaregiverGetAllUserErrorState(this.error);
+}
+
+final class CaregiverGetUserByIdLoadingState extends headerState {}
+
+final class CaregiverGetUserByIdSuccessState extends headerState {}
+
+final class CaregiverGetUserByIdErrorState extends headerState {
+  final String error;
+
+  CaregiverGetUserByIdErrorState(this.error);
+}
+
+final class PatientSpecificRequestsLoadingState extends headerState {}
+
+final class PatientSpecificRequestsSuccessState extends headerState {}
+
+final class PatientSpecificRequestsErrorState extends headerState {
+  final String error;
+
+  PatientSpecificRequestsErrorState(this.error);
+}

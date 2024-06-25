@@ -98,7 +98,6 @@ class _HomeState extends State<RequestCaregiver1> {
     return BlocConsumer<RequestsCubit, RequestsState>(
       listener: (context, state) {},
       builder: (context, state) {
-        var reqCubit = RequestsCubit.of(context);
         return SafeArea(
           child: ModalProgressHUD(
             inAsyncCall: state is PublicRequestLoadingState,

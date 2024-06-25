@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:relief/careGiverS/reviews.dart';
+import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 
 class CareGiver extends StatefulWidget {
-  CareGiver({super.key});
-
+  CareGiver({super.key, required this.id});
+  final String id ;
   @override
   State<CareGiver> createState() => _CareGiverState();
 }
@@ -19,6 +21,28 @@ class _CareGiverState extends State<CareGiver> {
 
   @override
   Widget build(BuildContext context) {
+    return BlocProvider(
+  create: (context) => inCareHeaderCubit()..getUserCaregiverById(id: widget.id),
+  child: BlocConsumer<inCareHeaderCubit, headerState>(
+  listener: (context, state) {
+    if (state is PatientSpecificRequestsSuccessState){
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Your request has been sent successfully'),
+        ),
+      );
+
+      Navigator.pop(context);
+    }else if(state is PatientSpecificRequestsErrorState){
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(state.error),
+        ),
+      );
+    }
+  },
+  builder: (context, state) {
+    var cubit = inCareHeaderCubit.get(context);
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(1.0), // here the desired height
@@ -50,7 +74,7 @@ class _CareGiverState extends State<CareGiver> {
                         ),
                       ),
                     ),
-                    const Stack(
+                    Stack(
                       children: [
                         Stack(
                           children: [
@@ -62,8 +86,17 @@ class _CareGiverState extends State<CareGiver> {
                               padding: EdgeInsets.all(10.0),
                               child: CircleAvatar(
                                 radius: 45,
+                                child: Text(
+                                  cubit.getCaregiverById?.userName?[0] ?? '',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 30,
+                                    fontFamily: 'Barlow',
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
                                 backgroundImage: NetworkImage(
-                                    'https://i.pinimg.com/564x/37/ec/3e/37ec3e33bebcfea360ffbcb5bcc191c3.jpg'),
+                                    'https://t3.ftcdn.net/jpg/03/29/17/78/360_F_329177878_ij7ooGdwU9EKqBFtyJQvWsDmYSfI1evZ.jpg'),
                               ),
                             ),
                           ],
@@ -78,8 +111,8 @@ class _CareGiverState extends State<CareGiver> {
               ),
               Column(
                 children: [
-                  const Text(
-                    'Mohamed Ali',
+                  Text(
+                    cubit.getCaregiverById?.userName ?? '',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
@@ -146,23 +179,12 @@ class _CareGiverState extends State<CareGiver> {
                       Text(''),
                     ],
                   ),
-                  // const SizedBox(
-                  //   height: 10,
-                  // ),
-                  // const Row(
-                  //   children: [
-                  //     ImageIcon(AssetImage('asseets/Vector.png')),
-                  //     SizedBox(
-                  //       width: 5,
-                  //     ),
-                  //     Text('Since Nov 2020'),
-                  //   ],
-                  // ),
                   const SizedBox(
                     height: 20,
                   ),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Biography',
@@ -176,8 +198,8 @@ class _CareGiverState extends State<CareGiver> {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Text(
-                    '[Nurse\'s Name] channels compassion and expertise, offering solace in healthcare chaos and extending aid to underserved communities, epitomizing nursing\'s essence.',
+                   Text(
+                    '[${cubit.getCaregiverById?.userName ?? ''}] ${cubit.getCaregiverById?.biography ?? ''}',
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 16,
@@ -188,7 +210,7 @@ class _CareGiverState extends State<CareGiver> {
                     height: 15,
                   ),
                   SizedBox(
-                    width: 265,
+                    // width: 265,
                     height: 50,
                     child: MaterialButton(
                       onPressed: () {
@@ -197,279 +219,308 @@ class _CareGiverState extends State<CareGiver> {
                             builder: (_) {
                               return SingleChildScrollView(
                                 child: AlertDialog(
-                                  content: Expanded(
-                                    child: SingleChildScrollView(
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Spacer(),
-                                              IconButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                icon: Icon(Icons.close),
-                                              ),
-                                            ],
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                bottom: 8.0),
-                                            child: Text(
-                                              'Day',
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.w600),
+                                  content: SingleChildScrollView(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Spacer(),
+                                            IconButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              icon: Icon(Icons.close),
                                             ),
+                                          ],
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              bottom: 8.0),
+                                          child: Text(
+                                            'Day',
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w600),
                                           ),
-                                          Container(
-                                            height: 55,
-                                            width: 300,
-                                            child: TextFormField(
-                                              controller: Day,
-                                              keyboardType:
-                                                  TextInputType.number,
-                                              decoration: InputDecoration(
-                                                  labelText: 'Day',
-                                                  labelStyle: TextStyle(
-                                                      color: Color(0xffADB5BD)),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide:
-                                                        const BorderSide(
-                                                            width: 1,
-                                                            color: Color(
-                                                                0xffBBD0FF)),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            25),
-                                                  ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide:
-                                                        const BorderSide(
-                                                            width: 1,
-                                                            color: Color(
-                                                                0xffBBD0FF)),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            25),
-                                                  )),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                bottom: 8.0, top: 8.0),
-                                            child: Text(
-                                              'Month',
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.w600),
-                                            ),
-                                          ),
-                                          Container(
-                                            height: 55,
-                                            width: 300,
-                                            child: TextFormField(
-                                              controller: Month,
-                                              keyboardType:
-                                                  TextInputType.number,
-                                              decoration: InputDecoration(
-                                                  labelText: 'Month',
-                                                  labelStyle: TextStyle(
-                                                      color: Color(0xffADB5BD)),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide:
-                                                        const BorderSide(
-                                                            width: 1,
-                                                            color: Color(
-                                                                0xffBBD0FF)),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            25),
-                                                  ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide:
-                                                        const BorderSide(
-                                                            width: 1,
-                                                            color: Color(
-                                                                0xffBBD0FF)),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            25),
-                                                  )),
-                                            ),
-                                          ),
-                                          Row(
-                                            children: [
-                                              const Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    'Hour',
-                                                    style: TextStyle(
-                                                      fontSize: 18,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Spacer(
-                                                flex: 1,
-                                              ),
-                                              const Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    'Minutes',
-                                                    style: TextStyle(
-                                                      fontSize: 18,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Spacer(),
-                                            ],
-                                          ),
-                                          const SizedBox(height: 12),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Container(
-                                                width: 115,
-                                                child: TextFormField(
-                                                  controller: Hour,
-                                                  keyboardType:
-                                                      TextInputType.number,
-                                                  decoration: InputDecoration(
-                                                      labelText: '00',
-                                                      labelStyle: TextStyle(
+                                        ),
+                                        Container(
+                                          height: 55,
+                                          width: 300,
+                                          child: TextFormField(
+                                            controller: Day,
+                                            keyboardType:
+                                                TextInputType.number,
+                                            decoration: InputDecoration(
+                                                labelText: 'Day',
+                                                labelStyle: TextStyle(
+                                                    color: Color(0xffADB5BD)),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide:
+                                                      const BorderSide(
+                                                          width: 1,
                                                           color: Color(
-                                                              0xffADB5BD)),
-                                                      enabledBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide:
-                                                            const BorderSide(
-                                                                width: 1,
-                                                                color: Color(
-                                                                    0xffBBD0FF)),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(25),
-                                                      ),
-                                                      focusedBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide:
-                                                            const BorderSide(
-                                                                width: 1,
-                                                                color: Color(
-                                                                    0xffBBD0FF)),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(25),
-                                                      )),
+                                                              0xffBBD0FF)),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          25),
                                                 ),
-                                              ),
-                                              Spacer(),
-                                              Container(
-                                                width: 115,
-                                                child: TextFormField(
-                                                  controller: Minute,
-                                                  keyboardType:
-                                                      TextInputType.number,
-                                                  decoration: InputDecoration(
-                                                      labelText: '00',
-                                                      labelStyle: TextStyle(
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide:
+                                                      const BorderSide(
+                                                          width: 1,
                                                           color: Color(
-                                                              0xffADB5BD)),
-                                                      enabledBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide:
-                                                            const BorderSide(
-                                                                width: 1,
-                                                                color: Color(
-                                                                    0xffBBD0FF)),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(25),
-                                                      ),
-                                                      focusedBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide:
-                                                            const BorderSide(
-                                                                width: 1,
-                                                                color: Color(
-                                                                    0xffBBD0FF)),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(25),
-                                                      )),
+                                                              0xffBBD0FF)),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          25),
+                                                )),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              bottom: 8.0, top: 8.0),
+                                          child: Text(
+                                            'Month',
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 55,
+                                          width: 300,
+                                          child: TextFormField(
+                                            controller: Month,
+                                            keyboardType:
+                                                TextInputType.number,
+                                            decoration: InputDecoration(
+                                                labelText: 'Month',
+                                                labelStyle: TextStyle(
+                                                    color: Color(0xffADB5BD)),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide:
+                                                      const BorderSide(
+                                                          width: 1,
+                                                          color: Color(
+                                                              0xffBBD0FF)),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          25),
                                                 ),
-                                              ),
-                                              Spacer(
-                                                flex: 3,
-                                              ),
-                                            ],
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide:
+                                                      const BorderSide(
+                                                          width: 1,
+                                                          color: Color(
+                                                              0xffBBD0FF)),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          25),
+                                                )),
                                           ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                bottom: 8.0, top: 8),
-                                            child: Text(
-                                              'Determine the period of service',
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.w600),
-                                            ),
-                                          ),
-                                          Container(
-                                            height: 55,
-                                            width: 300,
-                                            child: TextFormField(
-                                              controller: Day,
-                                              keyboardType:
-                                                  TextInputType.number,
-                                              decoration: InputDecoration(
-                                                  labelText:
-                                                      'The Number Of Days',
-                                                  labelStyle: TextStyle(
-                                                      color: Color(0xffADB5BD)),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide:
-                                                        const BorderSide(
-                                                            width: 1,
-                                                            color: Color(
-                                                                0xffBBD0FF)),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            25),
+                                        ),
+                                        Row(
+                                          children: [
+                                            const Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Hour',
+                                                  style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight:
+                                                        FontWeight.w600,
                                                   ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide:
-                                                        const BorderSide(
-                                                            width: 1,
-                                                            color: Color(
-                                                                0xffBBD0FF)),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            25),
-                                                  )),
+                                                ),
+                                              ],
+                                            ),
+                                            Spacer(
+                                              flex: 1,
+                                            ),
+                                            const Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Minutes',
+                                                  style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight:
+                                                        FontWeight.w600,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Spacer(),
+                                          ],
+                                        ),
+                                        const SizedBox(height: 12),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              width: 115,
+                                              child: TextFormField(
+                                                controller: Hour,
+                                                keyboardType:
+                                                    TextInputType.number,
+                                                decoration: InputDecoration(
+                                                    labelText: '00',
+                                                    labelStyle: TextStyle(
+                                                        color: Color(
+                                                            0xffADB5BD)),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide:
+                                                          const BorderSide(
+                                                              width: 1,
+                                                              color: Color(
+                                                                  0xffBBD0FF)),
+                                                      borderRadius:
+                                                          BorderRadius
+                                                              .circular(25),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide:
+                                                          const BorderSide(
+                                                              width: 1,
+                                                              color: Color(
+                                                                  0xffBBD0FF)),
+                                                      borderRadius:
+                                                          BorderRadius
+                                                              .circular(25),
+                                                    )),
+                                              ),
+                                            ),
+                                            Spacer(),
+                                            Container(
+                                              width: 115,
+                                              child: TextFormField(
+                                                controller: Minute,
+                                                keyboardType:
+                                                    TextInputType.number,
+                                                decoration: InputDecoration(
+                                                    labelText: '00',
+                                                    labelStyle: TextStyle(
+                                                        color: Color(
+                                                            0xffADB5BD)),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide:
+                                                          const BorderSide(
+                                                              width: 1,
+                                                              color: Color(
+                                                                  0xffBBD0FF)),
+                                                      borderRadius:
+                                                          BorderRadius
+                                                              .circular(25),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide:
+                                                          const BorderSide(
+                                                              width: 1,
+                                                              color: Color(
+                                                                  0xffBBD0FF)),
+                                                      borderRadius:
+                                                          BorderRadius
+                                                              .circular(25),
+                                                    )),
+                                              ),
+                                            ),
+                                            Spacer(
+                                              flex: 3,
+                                            ),
+                                          ],
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              bottom: 8.0, top: 8),
+                                          child: Text(
+                                            'Determine the period of service',
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 55,
+                                          width: 300,
+                                          child: TextFormField(
+                                            controller: Day,
+                                            keyboardType:
+                                                TextInputType.number,
+                                            decoration: InputDecoration(
+                                                labelText:
+                                                    'The Number Of Days',
+                                                labelStyle: TextStyle(
+                                                    color: Color(0xffADB5BD)),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide:
+                                                      const BorderSide(
+                                                          width: 1,
+                                                          color: Color(
+                                                              0xffBBD0FF)),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          25),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide:
+                                                      const BorderSide(
+                                                          width: 1,
+                                                          color: Color(
+                                                              0xffBBD0FF)),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          25),
+                                                )),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Center(
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              cubit.patientSpecificRequests(
+                                                  id: widget.id,
+                                                  day: int.parse(Day.text),
+                                                  month: int.parse(Month.text),
+                                                  hours: int.parse(Hour.text),
+                                                  minutes: int.parse(Minute.text),
+                                                  amount: int.parse(Day.text)
+                                              );
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(25),
+                                              ), backgroundColor: const Color(0xffD90429),
+                                            ),
+                                            child: const Text(
+                                              'Send',
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.white,
+                                              ),
                                             ),
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -497,5 +548,8 @@ class _CareGiverState extends State<CareGiver> {
         ),
       ),
     );
+  },
+),
+);
   }
 }

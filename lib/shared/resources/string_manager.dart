@@ -36,5 +36,9 @@ class AppStrings{
 
   static const String patientPublicRequests = 'patient/publicrequests';
 
-  static const String patientRequests = 'patient/requests';
+  static const String patientSpecificRequests = 'patient/Specificrequests';
+
+  static const String getAllUserCaregiver = 'caregiver/displayAllCaregivers';
+
+  static const String caregiverById = 'caregiver';
 }
