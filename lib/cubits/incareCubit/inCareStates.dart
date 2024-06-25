@@ -120,3 +120,44 @@ final class CaregiverAcceptRequestErrorState extends headerState {
 
   CaregiverAcceptRequestErrorState(this.error);
 }
+
+
+final class ApprovePubicRequestLoadingState extends headerState {}
+
+final class ApprovePubicRequestSuccessState extends headerState {}
+
+final class ApprovePubicRequestErrorState extends headerState {
+  final String error;
+
+  ApprovePubicRequestErrorState(this.error);
+}
+
+final class RejectPubicRequestLoadingState extends headerState {}
+
+final class RejectPubicRequestSuccessState extends headerState {}
+
+final class RejectPubicRequestErrorState extends headerState {
+  final String error;
+
+  RejectPubicRequestErrorState(this.error);
+}
+
+final class ApprovePrivateRequestLoadingState extends headerState {}
+
+final class ApprovePrivateRequestSuccessState extends headerState {}
+
+final class ApprovePrivateRequestErrorState extends headerState {
+  final String error;
+
+  ApprovePrivateRequestErrorState(this.error);
+}
+
+final class RejectPrivateRequestLoadingState extends headerState {}
+
+final class RejectPrivateRequestSuccessState extends headerState {}
+
+final class RejectPrivateRequestErrorState extends headerState {
+  final String error;
+
+  RejectPrivateRequestErrorState(this.error);
+}

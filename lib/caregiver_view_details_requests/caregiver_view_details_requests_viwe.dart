@@ -11,7 +11,73 @@ class CaregiverViewDetailsRequestsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<inCareHeaderCubit, headerState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if(state is ApprovePubicRequestSuccessState){
+          inCareHeaderCubit.get(context).caregiverAcceptRequest();
+          inCareHeaderCubit.get(context).getApprovedRequestsForCaregiver();
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Request Approved'),
+            ),
+          );
+        }
+        else if(state is ApprovePubicRequestErrorState){
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.error),
+            ),
+          );
+        }
+        else if(state is RejectPubicRequestSuccessState){
+          inCareHeaderCubit.get(context).caregiverAcceptRequest();
+          inCareHeaderCubit.get(context).getApprovedRequestsForCaregiver();
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Request Rejected'),
+            ),
+          );
+        }
+        else if(state is RejectPubicRequestErrorState){
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.error),
+            ),
+          );
+        }
+        else if(state is ApprovePrivateRequestSuccessState){
+          inCareHeaderCubit.get(context).caregiverAcceptRequest();
+          inCareHeaderCubit.get(context).getApprovedRequestsForCaregiver();
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Request Approved'),
+            ),
+          );
+        }
+        else if(state is ApprovePrivateRequestErrorState){
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.error),
+            ),
+          );
+        }
+        else if(state is RejectPrivateRequestSuccessState){
+          inCareHeaderCubit.get(context).caregiverAcceptRequest();
+          inCareHeaderCubit.get(context).getApprovedRequestsForCaregiver();
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Request Rejected'),
+            ),
+          );
+        }
+        else if(state is RejectPrivateRequestErrorState){
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.error),
+            ),
+          );
+        }
+      },
       builder: (context, state) {
         var cubit = inCareHeaderCubit.get(context);
         return SafeArea(
@@ -20,6 +86,7 @@ class CaregiverViewDetailsRequestsView extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
                     height: 50,
@@ -38,7 +105,17 @@ class CaregiverViewDetailsRequestsView extends StatelessWidget {
                     ),
                   ),
 
-                  ListView.builder(
+                  cubit.pendingRequestModel.length == 0 ?  Center(
+                    child: Text(
+                      'No Requests',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 22,
+                        fontFamily: 'Barlow',
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ): ListView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     itemCount: cubit.pendingRequestModel.length,

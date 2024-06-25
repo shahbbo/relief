@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 
 import '../../models/PendingRequest/PendingRequestModel.dart';
 
@@ -150,7 +151,11 @@ class ScheduleRequestsWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(25),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                pendingRequestModel.role == 'public' ?
+                    inCareHeaderCubit.get(context).rejectPubicRequest(id : pendingRequestModel.id ?? '')
+                    :  inCareHeaderCubit.get(context).rejectPrivateRequest(id : pendingRequestModel.id ?? '');
+              },
               child: Text(
                 '    Cancel    ',
                 style: TextStyle(
@@ -162,7 +167,11 @@ class ScheduleRequestsWidget extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                pendingRequestModel.role == 'public' ?
+                    inCareHeaderCubit.get(context).approvePubicRequest(id : pendingRequestModel.id ?? '')
+                    :  inCareHeaderCubit.get(context).approvePrivateRequest(id : pendingRequestModel.id ?? '');
+              },
               child: Text(
                 '    Approve    ',
                 style: TextStyle(

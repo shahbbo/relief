@@ -371,4 +371,70 @@ class inCareHeaderCubit extends Cubit<headerState> {
     });
   }
 
+
+  Future<void> approvePubicRequest({required String id}) async {
+    emit(ApprovePubicRequestLoadingState());
+    await DioHelper.putData(
+      url: 'caregiver/publicrequests/${id}/approve',
+      data: {},
+    ).then((value) {
+      emit(ApprovePubicRequestSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(ApprovePubicRequestErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+
+  Future<void> rejectPubicRequest({required String id}) async {
+    emit(RejectPubicRequestLoadingState());
+    await DioHelper.putData(
+      url: 'caregiver/publicrequests/${id}/reject',
+      data: {},
+    ).then((value) {
+      emit(RejectPubicRequestSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(RejectPubicRequestErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+  Future<void> approvePrivateRequest({required String id}) async {
+    emit(ApprovePrivateRequestLoadingState());
+    await DioHelper.putData(
+      url: 'caregiver/specificRequests/approve/${id}',
+      data: {},
+    ).then((value) {
+      emit(ApprovePrivateRequestSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(ApprovePrivateRequestErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+  Future<void> rejectPrivateRequest({required String id}) async {
+    emit(RejectPrivateRequestLoadingState());
+    await DioHelper.putData(
+      url: 'caregiver/specificRequests/reject/${id}',
+      data: {},
+    ).then((value) {
+      emit(RejectPrivateRequestSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(RejectPrivateRequestErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
 }
