@@ -45,6 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
           tokenPatient = await CacheHelper.getData(key: 'tokenPatient');
           await inCareHeaderCubit.get(context).getUserDataPatient(token: tokenPatient.toString());
           await inCareHeaderCubit.get(context).getAllUserDataCaregiver();
+          await inCareHeaderCubit.get(context).getApprovedRequestsForPatient();
 
           await Navigator.push(context,
               MaterialPageRoute(builder: (context) => const elderApp()));
