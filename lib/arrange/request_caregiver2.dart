@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:relief/arrange/cubit/requests_cubit.dart';
 
 class RequestCaregiver2 extends StatefulWidget {
@@ -34,8 +35,8 @@ class _HomeState extends State<RequestCaregiver2> {
     setState(() {
       if (buttonNumber == 1) {
         button1Color = Color(0xffbbd0ff);
+        button2Color = Colors.white;
         button3Color = Colors.white;
-        button4Color = Colors.white;
         carerGender.text = 'male';
       } else if (buttonNumber == 2) {
         button1Color = Colors.white;
@@ -67,13 +68,13 @@ class _HomeState extends State<RequestCaregiver2> {
 
   void selectButton3(int buttonNumber) {
     setState(() {
-      if (buttonNumber == 5) {
-        button5Color = Color(0xffbbd0ff);
-        button6Color = Colors.white;
-        driver.text = 'yes';
-      } else if (buttonNumber == 6) {
-        button5Color = Colors.white;
+      if (buttonNumber == 6) {
         button6Color = Color(0xffbbd0ff);
+        button7Color = Colors.white;
+        driver.text = 'yes';
+      } else if (buttonNumber == 7) {
+        button6Color = Colors.white;
+        button7Color = Color(0xffbbd0ff);
         driver.text = 'no';
       }
     });
@@ -678,9 +679,9 @@ class _HomeState extends State<RequestCaregiver2> {
                               if (formKey.currentState!.validate()) {
                                 RequestsCubit.of(context).publicRequest(
                                   HowManyPeopleAreYouArrangingCareFor:
-                                      RequestsCubit.of(context)
+                                      int.parse(RequestsCubit.of(context)
                                           .numberElders
-                                          .text,
+                                          .text),
                                   HowManyWeeksOfCareAreRequired:
                                       RequestsCubit.of(context).weeksCare.text,
                                   WhenWouldYouLikeTheCareToStart:
@@ -691,12 +692,12 @@ class _HomeState extends State<RequestCaregiver2> {
                                       carerGender.text,
                                   WouldYouAcceptACarerWhoSmokes: smoker.text,
                                   DoYouNeedACarerThatCanDrive: driver.text,
-                                  day: day.text,
-                                  month: month.text,
-                                  hours: hour.text,
-                                  minutes: minutes.text,
-                                  amount: periodOfService.text,
-                                  unit: 'days',
+                                  day: int.parse(day.text),
+                                  month: int.parse(month.text),
+                                  hours: int.parse(hour.text),
+                                  minutes: int.parse(minutes.text),
+                                  amount: int.parse(periodOfService.text),
+                                  unit: 'day',
                                 );
                               }
                             },

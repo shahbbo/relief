@@ -4,13 +4,10 @@ import 'package:relief/shared/components/constants.dart';
 import '../../resources/string_manager.dart';
 import '../local/cache_helper.dart';
 
-
-
 class DioHelper {
-  static late Dio dio ;
+  static late Dio dio;
 
-  static inti()
-  {
+  static inti() {
     dio = Dio(
       BaseOptions(
         baseUrl: AppStrings.baseUrl,
@@ -19,57 +16,54 @@ class DioHelper {
     );
   }
 
-
-
-  static Future<Response> getDate({
-  required String url,
-   Map<String,dynamic>? query ,
-    dynamic data,
-    String tokenVerify = ''
-  }) async
-  {
-/*    token = CacheHelper.getData(key: 'TokenId');
+  static Future<Response> getDate(
+      {required String url,
+      Map<String, dynamic>? query,
+      dynamic data,
+      String tokenVerify = ''}) async {
+    tokenPatient = CacheHelper.getData(key: 'tokenPatient');
+    tokenCaregiver = CacheHelper.getData(key: 'tokenCaregiver');
     dio.options.headers = {
-      'Authorization':'Bearer ${tokenVerify.isEmpty ? token : tokenVerify}',
-    };*/
+      'Authorization':
+          '${tokenPatient == null ? tokenCaregiver : tokenPatient}',
+    };
     return await dio.get(
-      url ,
+      url,
       data: data,
       queryParameters: query,
     );
   }
 
-  static Future<Response> postData({
-    required String url,
-    Map<String,dynamic>? query ,
-    required dynamic data ,
-    String tokenVerify = ''
-  }) async
-  {
-/*    token = CacheHelper.getData(key: 'TokenId');
+  static Future<Response> postData(
+      {required String url,
+      Map<String, dynamic>? query,
+      required dynamic data,
+      String tokenVerify = ''}) async {
+    tokenPatient = CacheHelper.getData(key: 'tokenPatient');
+    tokenCaregiver = CacheHelper.getData(key: 'tokenCaregiver');
     dio.options.headers = {
-      'Authorization':'Bearer ${tokenVerify.isEmpty ? token : tokenVerify}',
-    };*/
-     return dio.post(
-       url ,
-       queryParameters: query,
-       data: data,
-     );
+      'Authorization': '${tokenPatient == null ? tokenCaregiver : tokenPatient}',
+    };
+    return dio.post(
+      url,
+      queryParameters: query,
+      data: data,
+    );
   }
 
   static Future<Response> putData({
     required String url,
-    Map<String,dynamic>? query ,
-    required dynamic data ,
-  }) async
-  {
+    Map<String, dynamic>? query,
+    required dynamic data,
+  }) async {
     tokenPatient = CacheHelper.getData(key: 'tokenPatient');
     tokenCaregiver = CacheHelper.getData(key: 'tokenCaregiver');
     dio.options.headers = {
-      'Authorization':'${tokenPatient == null  ? tokenCaregiver : tokenPatient}',
+      'Authorization':
+          '${tokenPatient == null ? tokenCaregiver : tokenPatient}',
     };
     return dio.put(
-      url ,
+      url,
       queryParameters: query,
       data: data,
     );
@@ -78,28 +72,23 @@ class DioHelper {
   static Future<Response> deleteData({
     required String url,
     dynamic data,
-  }) async
-  {
-/*    token = CacheHelper.getData(key: 'TokenId');
+  }) async {
+    tokenPatient = CacheHelper.getData(key: 'tokenPatient');
+    tokenCaregiver = CacheHelper.getData(key: 'tokenCaregiver');
     dio.options.headers = {
-      'Authorization':'Bearer $token',
-    };*/
+      'Authorization':
+          '${tokenPatient == null ? tokenCaregiver : tokenPatient}',
+    };
     return dio.delete(
-      url ,
+      url,
       data: data,
     );
   }
 
-
   static Future<dynamic> getPlace({
     required String url,
-  }) async
-  {
-    return Dio(
-      BaseOptions(
-        baseUrl: 'https://geocode.maps.co/reverse?'
-      )
-    ).get(url);
+  }) async {
+    return Dio(BaseOptions(baseUrl: 'https://geocode.maps.co/reverse?'))
+        .get(url);
   }
-
 }

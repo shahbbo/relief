@@ -52,9 +52,9 @@ class _HomeState extends State<RequestCaregiver1> {
         button5Color = Colors.white;
         RequestsCubit.of(context).weeksCare.text = '4-8 weeks';
       } else if (buttonNumber == 5) {
-        button3Color = Color(0xffbbd0ff);
+        button3Color = Colors.white;
         button4Color = Colors.white;
-        button5Color = Colors.white;
+        button5Color = Color(0xffbbd0ff);
         RequestsCubit.of(context).weeksCare.text = 'Ongoing';
       }
     });
@@ -72,9 +72,9 @@ class _HomeState extends State<RequestCaregiver1> {
         button8Color = Colors.white;
         RequestsCubit.of(context).startDate.text = 'within a week';
       } else if (buttonNumber == 8) {
-        button6Color = Color(0xffbbd0ff);
+        button6Color = Colors.white;
         button7Color = Colors.white;
-        button8Color = Colors.white;
+        button8Color = Color(0xffbbd0ff);
         RequestsCubit.of(context).startDate.text = '1-3 month';
       }
     });
@@ -168,8 +168,8 @@ class _HomeState extends State<RequestCaregiver1> {
                                   width: double.infinity,
                                   height: 56,
                                   child: MaterialButton(
-                                    onPressed: () => selectButton4(9),
-                                    color: button9Color,
+                                    onPressed: () => selectButton(1),
+                                    color: button1Color,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(25.0),
                                     ),
@@ -204,8 +204,8 @@ class _HomeState extends State<RequestCaregiver1> {
                                   width: double.infinity,
                                   height: 56,
                                   child: MaterialButton(
-                                    onPressed: () => selectButton4(10),
-                                    color: button10Color,
+                                    onPressed: () => selectButton(2),
+                                    color: button2Color,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(25.0),
                                     ),
@@ -268,8 +268,8 @@ class _HomeState extends State<RequestCaregiver1> {
                                   width: double.infinity,
                                   height: 56,
                                   child: MaterialButton(
-                                    onPressed: () => selectButton(1),
-                                    color: button1Color,
+                                    onPressed: () => selectButton2(3),
+                                    color: button3Color,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(25.0),
                                     ),
@@ -304,8 +304,8 @@ class _HomeState extends State<RequestCaregiver1> {
                                   width: double.infinity,
                                   height: 56,
                                   child: MaterialButton(
-                                    onPressed: () => selectButton(2),
-                                    color: button2Color,
+                                    onPressed: () => selectButton2(4),
+                                    color: button4Color,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(25.0),
                                     ),
@@ -340,8 +340,8 @@ class _HomeState extends State<RequestCaregiver1> {
                                   width: double.infinity,
                                   height: 56,
                                   child: MaterialButton(
-                                    onPressed: () => selectButton(3),
-                                    color: button3Color,
+                                    onPressed: () => selectButton2(5),
+                                    color: button5Color,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(25.0),
                                     ),
@@ -404,8 +404,8 @@ class _HomeState extends State<RequestCaregiver1> {
                                   width: double.infinity,
                                   height: 56,
                                   child: MaterialButton(
-                                    onPressed: () => selectButton2(4),
-                                    color: button4Color,
+                                    onPressed: () => selectButton3(6),
+                                    color: button6Color,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(25.0),
                                     ),
@@ -440,8 +440,8 @@ class _HomeState extends State<RequestCaregiver1> {
                                   width: double.infinity,
                                   height: 56,
                                   child: MaterialButton(
-                                    onPressed: () => selectButton2(5),
-                                    color: button5Color,
+                                    onPressed: () => selectButton3(7),
+                                    color: button7Color,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(25.0),
                                     ),
@@ -476,8 +476,8 @@ class _HomeState extends State<RequestCaregiver1> {
                                   width: double.infinity,
                                   height: 56,
                                   child: MaterialButton(
-                                    onPressed: () => selectButton2(6),
-                                    color: button6Color,
+                                    onPressed: () => selectButton3(8),
+                                    color: button8Color,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(25.0),
                                     ),
@@ -535,8 +535,8 @@ class _HomeState extends State<RequestCaregiver1> {
                                   width: double.infinity,
                                   height: 56,
                                   child: MaterialButton(
-                                    onPressed: () => selectButton3(7),
-                                    color: button7Color,
+                                    onPressed: () => selectButton4(9),
+                                    color: button9Color,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(25.0),
                                     ),
@@ -571,8 +571,8 @@ class _HomeState extends State<RequestCaregiver1> {
                                   width: double.infinity,
                                   height: 56,
                                   child: MaterialButton(
-                                    onPressed: () => selectButton3(8),
-                                    color: button8Color,
+                                    onPressed: () => selectButton4(10),
+                                    color: button10Color,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(25.0),
                                     ),

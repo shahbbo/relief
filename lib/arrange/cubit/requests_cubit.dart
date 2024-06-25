@@ -17,30 +17,28 @@ class RequestsCubit extends Cubit<RequestsState> {
   TextEditingController room = TextEditingController();
 
   Future<void> publicRequest({
-    required String HowManyPeopleAreYouArrangingCareFor,
+    required int HowManyPeopleAreYouArrangingCareFor,
     required String HowManyWeeksOfCareAreRequired,
     required String WhenWouldYouLikeTheCareToStart,
     required String DoesThePropertyHaveAPrivateBedroomForTheCarer,
     required String DoYouHaveAnyPreferenceOnTheGenderOfTheirCarer,
     required String WouldYouAcceptACarerWhoSmokes,
     required String DoYouNeedACarerThatCanDrive,
-    required String day,
-    required String month,
-    required String hours,
-    required String minutes,
-    required String amount,
+    required int day,
+    required int month,
+    required int hours,
+    required int minutes,
+    required int amount,
     required String unit,
   }) async {
     emit(PublicRequestLoadingState());
-    await DioHelper.postData(url: AppStrings.patientPublicRequests, data: {
-      'HowManyPeopleAreYouArrangingCareFor':
-          HowManyPeopleAreYouArrangingCareFor,
+    await DioHelper.postData(url: AppStrings.patientPublicRequests,
+        data: {
+      'HowManyPeopleAreYouArrangingCareFor': HowManyPeopleAreYouArrangingCareFor,
       'HowManyWeeksOfCareAreRequired': HowManyWeeksOfCareAreRequired,
       'WhenWouldYouLikeTheCareToStart': WhenWouldYouLikeTheCareToStart,
-      'DoesThePropertyHaveAPrivateBedroomForTheCarer':
-          DoesThePropertyHaveAPrivateBedroomForTheCarer,
-      'DoYouHaveAnyPreferenceOnTheGenderOfTheirCarer':
-          DoYouHaveAnyPreferenceOnTheGenderOfTheirCarer,
+      'DoesThePropertyHaveAPrivateBedroomForTheCarer': DoesThePropertyHaveAPrivateBedroomForTheCarer,
+      'DoYouHaveAnyPreferenceOnTheGenderOfTheirCarer': DoYouHaveAnyPreferenceOnTheGenderOfTheirCarer,
       'WouldYouAcceptACarerWhoSmokes': WouldYouAcceptACarerWhoSmokes,
       'DoYouNeedACarerThatCanDrive': DoYouNeedACarerThatCanDrive,
       'appointmentDateTime': {
