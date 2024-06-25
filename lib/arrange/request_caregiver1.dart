@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:relief/arrange/request_caregiver2.dart';
+import 'package:relief/cubits/incareCubit/inCareCubit.dart';
+import 'package:relief/elderApp.dart';
 
 import 'cubit/requests_cubit.dart';
 
@@ -26,6 +28,7 @@ class _HomeState extends State<RequestCaregiver1> {
   Color button9Color = Colors.white;
   Color button10Color = Colors.white;
 
+
   void selectButton(int buttonNumber) {
     setState(() {
       if (buttonNumber == 1) {
@@ -39,6 +42,7 @@ class _HomeState extends State<RequestCaregiver1> {
       }
     });
   }
+
   void selectButton2(int buttonNumber) {
     setState(() {
       if (buttonNumber == 3) {
@@ -59,6 +63,7 @@ class _HomeState extends State<RequestCaregiver1> {
       }
     });
   }
+
   void selectButton3(int buttonNumber) {
     setState(() {
       if (buttonNumber == 6) {
@@ -79,6 +84,7 @@ class _HomeState extends State<RequestCaregiver1> {
       }
     });
   }
+
   void selectButton4(int buttonNumber) {
     setState(() {
       if (buttonNumber == 9) {
@@ -96,7 +102,27 @@ class _HomeState extends State<RequestCaregiver1> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<RequestsCubit, RequestsState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is PublicRequestSuccessState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Request Sent Successfully'),
+            ),
+          );
+          inCareHeaderCubit.get(context).mainScreens[0];
+          Navigator.pushAndRemoveUntil(context,
+              MaterialPageRoute(builder: (context) => const elderApp()), (route) => false
+          );
+          /*Navigator.pop(context);
+          Navigator.pop(context);*/
+        } else if (state is PublicRequestErrorState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.error),
+            ),
+          );
+        }
+      },
       builder: (context, state) {
         return SafeArea(
           child: ModalProgressHUD(
@@ -610,6 +636,10 @@ class _HomeState extends State<RequestCaregiver1> {
                                         height: 50,
                                         child: MaterialButton(
                                           onPressed: () {
+                                            RequestsCubit.of(context).numberElders.text = '';
+                                            RequestsCubit.of(context).weeksCare.text = '';
+                                            RequestsCubit.of(context).startDate.text = '';
+                                            RequestsCubit.of(context).room.text = '';
                                             Navigator.pop(context);
                                           },
                                           shape: RoundedRectangleBorder(
@@ -644,16 +674,21 @@ class _HomeState extends State<RequestCaregiver1> {
                                         // width: 173,
                                         height: 50,
                                         child: MaterialButton(
-                                          onPressed: () {
-                                            if (formKey.currentState!
-                                                .validate()) {
+                                          onPressed: RequestsCubit.of(context).numberElders.text.isNotEmpty &&
+                                              RequestsCubit.of(context).weeksCare.text.isNotEmpty &&
+                                              RequestsCubit.of(context).startDate.text.isNotEmpty &&
+                                              RequestsCubit.of(context).room.text.isNotEmpty ? () {
+                                            if (RequestsCubit.of(context).numberElders.text.isNotEmpty ||
+                                                RequestsCubit.of(context).weeksCare.text.isNotEmpty ||
+                                                RequestsCubit.of(context).startDate.text.isNotEmpty ||
+                                                RequestsCubit.of(context).room.text.isNotEmpty) {
                                               Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
                                                           const RequestCaregiver2()));
                                             }
-                                          },
+                                          } : null,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(25.0),
@@ -664,7 +699,7 @@ class _HomeState extends State<RequestCaregiver1> {
                                             style: TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.white,
+                                              color: Colors.black,
                                             ),
                                           ),
                                         ),
