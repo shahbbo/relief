@@ -9,9 +9,7 @@ class carerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<inCareHeaderCubit, headerState>(
-        listener: (context, state) {
-      // TODO: implement listener
-    }, builder: (context, state) {
+        listener: (context, state) {}, builder: (context, state) {
       return Scaffold(
         body: SingleChildScrollView(
           child: Column(

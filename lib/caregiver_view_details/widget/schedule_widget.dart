@@ -4,8 +4,9 @@ import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 import '../../models/GetAprovedRequestsForPatient/RequestsForPatientModel.dart';
 
 class ScheduleWidget extends StatelessWidget {
-  const ScheduleWidget({super.key, required this.requestsForPatientModel});
+  const ScheduleWidget({super.key, required this.requestsForPatientModel, required this.caregiver});
   final RequestsForPatientModel requestsForPatientModel;
+  final bool caregiver ;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,7 +35,7 @@ class ScheduleWidget extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-                  text:  requestsForPatientModel.caregiverName,
+                  text: caregiver ==true ?  requestsForPatientModel.userNamePatient : requestsForPatientModel.caregiverName,
                   style: TextStyle(
                     color: Color(0xFF003049),
                     fontSize: 16,
@@ -92,7 +93,7 @@ class ScheduleWidget extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-                  text: requestsForPatientModel.caregiverPhone,
+                  text: caregiver == true ? requestsForPatientModel.patientPhone : requestsForPatientModel.caregiverPhone,
                   style: TextStyle(
                     color: Color(0xFF003049),
                     fontSize: 16,

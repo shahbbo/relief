@@ -91,7 +91,7 @@ class _RegisterN2State extends State<RegisterN2> {
 
           tokenCaregiver = await CacheHelper.getData(key: 'tokenCaregiver');
           await inCareHeaderCubit.get(context).getUserDataPatient(token: tokenCaregiver.toString());
-
+          await inCareHeaderCubit.get(context).getApprovedRequestsForCaregiver();
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Registered Successfully'),

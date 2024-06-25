@@ -30,6 +30,7 @@ class calender extends StatelessWidget {
                       child: ScheduleWidget(
                         requestsForPatientModel:
                             cubit.requestsForPatientModel[index],
+                        caregiver: false,
                       ),
                     );
                   },

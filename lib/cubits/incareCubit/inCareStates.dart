@@ -100,3 +100,13 @@ final class GetApprovedRequestsForPatientErrorState extends headerState {
 
   GetApprovedRequestsForPatientErrorState(this.error);
 }
+
+final class GetApprovedRequestsForCaregiverLoadingState extends headerState {}
+
+final class GetApprovedRequestsForCaregiverSuccessState extends headerState {}
+
+final class GetApprovedRequestsForCaregiverErrorState extends headerState {
+  final String error;
+
+  GetApprovedRequestsForCaregiverErrorState(this.error);
+}

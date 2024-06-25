@@ -327,4 +327,26 @@ class inCareHeaderCubit extends Cubit<headerState> {
     });
   }
 
+
+
+  List<RequestsForPatientModel> requestsForCaregiverModel = [];
+  Future<void> getApprovedRequestsForCaregiver() async {
+    emit(GetApprovedRequestsForCaregiverLoadingState());
+    uid = CacheHelper.getData(key: 'ID');
+    await DioHelper.getDate(
+      url: 'caregiver/${uid}/requests',
+    ).then((value) {
+      requestsForCaregiverModel = (value.data as List)
+          .map((e) => RequestsForPatientModel.fromJson(e))
+          .toList();
+      emit(GetApprovedRequestsForCaregiverSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(GetApprovedRequestsForCaregiverErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
 }
