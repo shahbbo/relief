@@ -1,10 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:relief/careGiverS/add_review.dart';
-import 'package:relief/careGiverS/my_reviews.dart';
 
-class Reviews extends StatelessWidget {
+class Reviews extends StatefulWidget {
   const Reviews({super.key});
 
+  @override
+  State<Reviews> createState() => _ReviewsState();
+}
+
+class _ReviewsState extends State<Reviews> with SingleTickerProviderStateMixin {
+
+  late TabController _tabController;
+
+  int valueIndex = 0 ;
+  @override
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(vsync: this, length: 2);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,11 +105,12 @@ class Reviews extends StatelessWidget {
                     )),
               ],
             ),
-            Row(
-              children: [
-                TextButton(
-                  onPressed: () {},
-                  child: const Text(
+
+            TabBar(
+              controller: _tabController,
+              tabs: [
+                Tab(
+                  child: Text(
                     'All',
                     style: TextStyle(
                         fontSize: 20,
@@ -97,14 +118,8 @@ class Reviews extends StatelessWidget {
                         color: Color(0xff0096c7)),
                   ),
                 ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MyReviews()));
-                  },
-                  child: const Text(
+                Tab(
+                  child: Text(
                     'My Reviews',
                     style: TextStyle(
                         fontSize: 20,
@@ -113,297 +128,352 @@ class Reviews extends StatelessWidget {
                   ),
                 ),
               ],
+              onTap: (value){
+                setState(() {
+                  valueIndex = value ;
+                });
+              },
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+
+            valueIndex == 0 ?   Column(
               children: [
                 const SizedBox(
-                  width: 20,
+                  height: 25,
                 ),
-                Container(
-                  width: 25,
-                  height: 2.0,
-                  color: const Color(0xff0096c7),
+                Row(
+                  children: [
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 6,
+                    ),
+                    const Text(
+                      'Ali khaled',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                          color: Color(0xff6c757d)),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            Divider(
-              color: const Color(0xffdee2e6),
-            ),
-         /*   Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 360,
-                  height: 1.0,
-                  color: Colors.black,
-                  // color: const Color(0xffdee2e6),
-                ),
-              ],
-            ),*/
-            const SizedBox(
-              height: 25,
-            ),
-            Row(
-              children: [
-                Image.asset('asseets/Star 6.png'),
                 const SizedBox(
-                  width: 4,
-                ),
-                Image.asset('asseets/Star 6.png'),
-                const SizedBox(
-                  width: 4,
-                ),
-                Image.asset('asseets/Star 6.png'),
-                const SizedBox(
-                  width: 4,
-                ),
-                Image.asset('asseets/Star 6.png'),
-                const SizedBox(
-                  width: 4,
-                ),
-                Image.asset('asseets/Star 6.png'),
-                const SizedBox(
-                  width: 6,
+                  height: 10,
                 ),
                 const Text(
-                  'Ali khaled',
+                  'The caregiver provided exceptional support, demonstrating compassion, professionalism, and unwavering dedication to their duties.',
                   style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                      color: Color(0xff6c757d)),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              'The caregiver provided exceptional support, demonstrating compassion, professionalism, and unwavering dedication to their duties.',
-              style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: 14,
-                color: Color(0xff343a40),
-              ),
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            Row(
-              children: [
-                Image.asset('asseets/Vector (1).png'),
-                const SizedBox(
-                  width: 6,
-                ),
-                const Text(
-                  'Helpful',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w400,
                     fontSize: 14,
-                    color: Color(0xff6c757d),
+                    color: Color(0xff343a40),
                   ),
                 ),
                 const SizedBox(
-                  width: 25,
+                  height: 12,
                 ),
-                Image.asset('asseets/Vector (2).png'),
+                Row(
+                  children: [
+                    Image.asset('asseets/Vector (1).png'),
+                    const SizedBox(
+                      width: 6,
+                    ),
+                    const Text(
+                      'Helpful',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                        color: Color(0xff6c757d),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 25,
+                    ),
+                    Image.asset('asseets/Vector (2).png'),
+                    const SizedBox(
+                      width: 6,
+                    ),
+                    const Text(
+                      'Not Helpful',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff6c757d),
+                      ),
+                    ),
+                  ],
+                ),
                 const SizedBox(
-                  width: 6,
+                  height: 25,
+                ),
+                Row(
+                  children: [
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 6,
+                    ),
+                    const Text(
+                      'Ali khaled',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                          color: Color(0xff6c757d)),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
                 ),
                 const Text(
-                  'Not Helpful',
+                  'The caregiver provided exceptional support, demonstrating compassion, professionalism, and unwavering dedication to their duties.',
                   style: TextStyle(
+                    fontWeight: FontWeight.w400,
                     fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xff6c757d),
+                    color: Color(0xff343a40),
+                  ),
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                Row(
+                  children: [
+                    Image.asset('asseets/Vector (1).png'),
+                    const SizedBox(
+                      width: 6,
+                    ),
+                    const Text(
+                      'Helpful',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                        color: Color(0xff6c757d),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 25,
+                    ),
+                    Image.asset('asseets/Vector (2).png'),
+                    const SizedBox(
+                      width: 6,
+                    ),
+                    const Text(
+                      'Not Helpful',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff6c757d),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                Row(
+                  children: [
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 6,
+                    ),
+                    const Text(
+                      'Ali khaled',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                          color: Color(0xff6c757d)),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  'The caregiver provided exceptional support, demonstrating compassion, professionalism, and unwavering dedication to their duties.',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                    color: Color(0xff343a40),
+                  ),
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                Row(
+                  children: [
+                    Image.asset('asseets/Vector (1).png'),
+                    const SizedBox(
+                      width: 6,
+                    ),
+                    const Text(
+                      'Helpful',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                        color: Color(0xff6c757d),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 25,
+                    ),
+                    Image.asset('asseets/Vector (2).png'),
+                    const SizedBox(
+                      width: 6,
+                    ),
+                    const Text(
+                      'Not Helpful',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff6c757d),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  width: 265,
+                  height: 50,
+                  child: MaterialButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AddReview()));
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                    color: const Color(0xFFD90429),
+                    child: const Text(
+                      'Add Review',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
               ],
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            Row(
+            ) : Column(
               children: [
-                Image.asset('asseets/Star 6.png'),
-                const SizedBox(
-                  width: 4,
+                Row(
+                  children: [
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 6,
+                    ),
+                    const Text(
+                      'Ali Khaled',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                          color: Color(0xff6c757d)),
+                    ),
+                  ],
                 ),
-                Image.asset('asseets/Star 6.png'),
                 const SizedBox(
-                  width: 4,
-                ),
-                Image.asset('asseets/Star 6.png'),
-                const SizedBox(
-                  width: 4,
-                ),
-                Image.asset('asseets/Star 6.png'),
-                const SizedBox(
-                  width: 4,
-                ),
-                Image.asset('asseets/Star 6.png'),
-                const SizedBox(
-                  width: 6,
+                  height: 10,
                 ),
                 const Text(
-                  'Ali khaled',
+                  'The caregiver provided exceptional support, demonstrating compassion, professionalism, and unwavering dedication to their duties.',
                   style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                      color: Color(0xff6c757d)),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              'The caregiver provided exceptional support, demonstrating compassion, professionalism, and unwavering dedication to their duties.',
-              style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: 14,
-                color: Color(0xff343a40),
-              ),
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            Row(
-              children: [
-                Image.asset('asseets/Vector (1).png'),
-                const SizedBox(
-                  width: 6,
-                ),
-                const Text(
-                  'Helpful',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w400,
                     fontSize: 14,
-                    color: Color(0xff6c757d),
+                    color: Color(0xff343a40),
                   ),
                 ),
                 const SizedBox(
-                  width: 25,
+                  height: 350,
                 ),
-                Image.asset('asseets/Vector (2).png'),
-                const SizedBox(
-                  width: 6,
-                ),
-                const Text(
-                  'Not Helpful',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xff6c757d),
+                SizedBox(
+                  width: 265,
+                  height: 50,
+                  child: MaterialButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AddReview()));
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                    color: const Color(0xFFD90429),
+                    child: const Text(
+                      'Add Review',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
               ],
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            Row(
-              children: [
-                Image.asset('asseets/Star 6.png'),
-                const SizedBox(
-                  width: 4,
-                ),
-                Image.asset('asseets/Star 6.png'),
-                const SizedBox(
-                  width: 4,
-                ),
-                Image.asset('asseets/Star 6.png'),
-                const SizedBox(
-                  width: 4,
-                ),
-                Image.asset('asseets/Star 6.png'),
-                const SizedBox(
-                  width: 4,
-                ),
-                Image.asset('asseets/Star 6.png'),
-                const SizedBox(
-                  width: 6,
-                ),
-                const Text(
-                  'Ali khaled',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                      color: Color(0xff6c757d)),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              'The caregiver provided exceptional support, demonstrating compassion, professionalism, and unwavering dedication to their duties.',
-              style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: 14,
-                color: Color(0xff343a40),
-              ),
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            Row(
-              children: [
-                Image.asset('asseets/Vector (1).png'),
-                const SizedBox(
-                  width: 6,
-                ),
-                const Text(
-                  'Helpful',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: Color(0xff6c757d),
-                  ),
-                ),
-                const SizedBox(
-                  width: 25,
-                ),
-                Image.asset('asseets/Vector (2).png'),
-                const SizedBox(
-                  width: 6,
-                ),
-                const Text(
-                  'Not Helpful',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xff6c757d),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              width: 265,
-              height: 50,
-              child: MaterialButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const AddReview()));
-                },
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-                color: const Color(0xFFD90429),
-                child: const Text(
-                  'Add Review',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
             ),
           ],
         ),

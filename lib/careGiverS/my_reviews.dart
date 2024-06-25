@@ -136,74 +136,80 @@ class MyReviews extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-            Row(
+
+
+            Column(
               children: [
-                Image.asset('asseets/Star 6.png'),
-                const SizedBox(
-                  width: 4,
+                Row(
+                  children: [
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Image.asset('asseets/Star 6.png'),
+                    const SizedBox(
+                      width: 6,
+                    ),
+                    const Text(
+                      'Ali Khaled',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                          color: Color(0xff6c757d)),
+                    ),
+                  ],
                 ),
-                Image.asset('asseets/Star 6.png'),
                 const SizedBox(
-                  width: 4,
-                ),
-                Image.asset('asseets/Star 6.png'),
-                const SizedBox(
-                  width: 4,
-                ),
-                Image.asset('asseets/Star 6.png'),
-                const SizedBox(
-                  width: 4,
-                ),
-                Image.asset('asseets/Star 6.png'),
-                const SizedBox(
-                  width: 6,
+                  height: 10,
                 ),
                 const Text(
-                  'Ali Khaled',
+                  'The caregiver provided exceptional support, demonstrating compassion, professionalism, and unwavering dedication to their duties.',
                   style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                      color: Color(0xff6c757d)),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              'The caregiver provided exceptional support, demonstrating compassion, professionalism, and unwavering dedication to their duties.',
-              style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: 14,
-                color: Color(0xff343a40),
-              ),
-            ),
-            const SizedBox(
-              height: 350,
-            ),
-            SizedBox(
-              width: 265,
-              height: 50,
-              child: MaterialButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const AddReview()));
-                },
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-                color: const Color(0xFFD90429),
-                child: const Text(
-                  'Add Review',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                    color: Color(0xff343a40),
                   ),
                 ),
-              ),
+                const SizedBox(
+                  height: 350,
+                ),
+                SizedBox(
+                  width: 265,
+                  height: 50,
+                  child: MaterialButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AddReview()));
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                    color: const Color(0xFFD90429),
+                    child: const Text(
+                      'Add Review',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
