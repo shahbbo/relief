@@ -22,6 +22,7 @@ import 'package:relief/shared/components/constants.dart';
 import 'package:relief/sittings/SittingSS.dart';
 
 import '../../models/GetAllUserDataCaregiver/GetAllUserDataCaregiver.dart';
+import '../../models/GetAprovedRequestsForPatient/RequestsForPatientModel.dart';
 import '../../models/UserDataPatient/UserDataPatient.dart';
 import '../../shared/network/local/cache_helper.dart';
 import '../../shared/network/remote/dio_helper.dart';
@@ -304,4 +305,26 @@ class inCareHeaderCubit extends Cubit<headerState> {
       emit(ErrorPlace());
     });
   }
+
+
+  List< RequestsForPatientModel> requestsForPatientModel = [];
+  Future<void> getApprovedRequestsForPatient() async {
+    emit(GetApprovedRequestsForPatientLoadingState());
+    uid = CacheHelper.getData(key: 'ID');
+    await DioHelper.getDate(
+      url: 'patient/${uid}/requests',
+    ).then((value) {
+     requestsForPatientModel = (value.data as List)
+          .map((e) => RequestsForPatientModel.fromJson(e))
+          .toList();
+      emit(GetApprovedRequestsForPatientSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(GetApprovedRequestsForPatientErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
 }

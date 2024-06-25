@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:relief/cubits/incareCubit/inCareCubit.dart';
+
+import '../../models/GetAprovedRequestsForPatient/RequestsForPatientModel.dart';
 
 class ScheduleWidget extends StatelessWidget {
-  const ScheduleWidget({super.key});
-
+  const ScheduleWidget({super.key, required this.requestsForPatientModel});
+  final RequestsForPatientModel requestsForPatientModel;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +24,7 @@ class ScheduleWidget extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(
-                  text: 'name :',
+                  text: ' name :  ',
                   style: TextStyle(
                     color: Color(0xFF003049),
                     fontSize: 16,
@@ -31,7 +34,7 @@ class ScheduleWidget extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-                  text: ' ali khaled',
+                  text:  requestsForPatientModel.caregiverName,
                   style: TextStyle(
                     color: Color(0xFF003049),
                     fontSize: 16,
@@ -50,7 +53,7 @@ class ScheduleWidget extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(
-                  text: 'location :',
+                  text: 'location : ',
                   style: TextStyle(
                     color: Color(0xFF003049),
                     fontSize: 16,
@@ -60,7 +63,7 @@ class ScheduleWidget extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-                  text: '5th Settlement, egypt',
+                  text: inCareHeaderCubit.get(context).addressController.text,
                   style: TextStyle(
                     color: Color(0xFF003049),
                     fontSize: 16,
@@ -79,7 +82,7 @@ class ScheduleWidget extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(
-                  text: 'phone number :',
+                  text: 'phone number : ',
                   style: TextStyle(
                     color: Color(0xFF003049),
                     fontSize: 16,
@@ -89,7 +92,7 @@ class ScheduleWidget extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-                  text: '01023659988',
+                  text: requestsForPatientModel.caregiverPhone,
                   style: TextStyle(
                     color: Color(0xFF003049),
                     fontSize: 16,
@@ -108,7 +111,7 @@ class ScheduleWidget extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(
-                  text: 'date and duration :',
+                  text: 'date and duration : ',
                   style: TextStyle(
                     color: Color(0xFF003049),
                     fontSize: 16,
@@ -118,7 +121,7 @@ class ScheduleWidget extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-                  text: '15/6  - 3AM , 15 days',
+                  text: '${requestsForPatientModel.appointmentDateTime?.day}/${requestsForPatientModel.appointmentDateTime?.month}  - ${requestsForPatientModel.appointmentDateTime?.hours}AM , ${requestsForPatientModel.determineThePeriodOfService?.amount} days',
                   style: TextStyle(
                     color: Color(0xFF003049),
                     fontSize: 16,

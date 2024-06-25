@@ -39,7 +39,10 @@ class CaregiverViewDetailsScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: ScheduleWidget(),
+                    child: Container(),
+                    /*  child: ScheduleWidget(
+                        requestsForPatientModel: null,
+                      ),*/
                     );
                   },
                 )

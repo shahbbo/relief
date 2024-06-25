@@ -89,3 +89,14 @@ final class PatientSpecificRequestsErrorState extends headerState {
 
   PatientSpecificRequestsErrorState(this.error);
 }
+
+
+final class GetApprovedRequestsForPatientLoadingState  extends headerState {}
+
+final class GetApprovedRequestsForPatientSuccessState  extends headerState {}
+
+final class GetApprovedRequestsForPatientErrorState extends headerState {
+  final String error;
+
+  GetApprovedRequestsForPatientErrorState(this.error);
+}
