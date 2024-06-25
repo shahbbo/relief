@@ -408,23 +408,22 @@ class _HomeState extends State<RequestCaregiver2> {
                 ),
                 const SizedBox(height: 12),
                 Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color(0xffbbd0ff),
-                    ),
-                    borderRadius: BorderRadius.circular(25),
-                  ),
                   child: TextFormField(
                     controller: periodOfService,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      hintText: 'Enter The Number Of Days',
-                      hintStyle: TextStyle(color: Colors.black),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: BorderSide(color: Color(0xffbbd0ff)),
-                      ),
-                    ),
+                        labelText: 'Enter The Number Of Days',
+                        labelStyle: TextStyle(color: Color(0xffADB5BD)),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                              width: 1, color: Color(0xffBBD0FF)),
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                              width: 1, color: Color(0xffBBD0FF)),
+                          borderRadius: BorderRadius.circular(25),
+                        )),
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -456,23 +455,22 @@ class _HomeState extends State<RequestCaregiver2> {
                 ),
                 const SizedBox(height: 12),
                 Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color(0xffbbd0ff),
-                    ),
-                    borderRadius: BorderRadius.circular(25),
-                  ),
                   child: TextFormField(
                     controller: day,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      hintText: 'DD',
-                      hintStyle: TextStyle(color: Colors.black),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: BorderSide(color: Color(0xffbbd0ff)),
-                      ),
-                    ),
+                        labelText: 'DD',
+                        labelStyle: TextStyle(color: Color(0xffADB5BD)),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                              width: 1, color: Color(0xffBBD0FF)),
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                              width: 1, color: Color(0xffBBD0FF)),
+                          borderRadius: BorderRadius.circular(25),
+                        )),
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -490,23 +488,22 @@ class _HomeState extends State<RequestCaregiver2> {
                 ),
                 const SizedBox(height: 12),
                 Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color(0xffbbd0ff),
-                    ),
-                    borderRadius: BorderRadius.circular(25),
-                  ),
                   child: TextFormField(
                     controller: month,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      hintText: 'MM',
-                      hintStyle: TextStyle(color: Colors.black),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: BorderSide(color: Color(0xffbbd0ff)),
-                      ),
-                    ),
+                        labelText: 'MM',
+                        labelStyle: TextStyle(color: Color(0xffADB5BD)),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                              width: 1, color: Color(0xffBBD0FF)),
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                              width: 1, color: Color(0xffBBD0FF)),
+                          borderRadius: BorderRadius.circular(25),
+                        )),
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -546,44 +543,43 @@ class _HomeState extends State<RequestCaregiver2> {
                   children: [
                     Container(
                       width: 140,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color(0xffbbd0ff),
-                        ),
-                        borderRadius: BorderRadius.circular(25),
-                      ),
                       child: TextFormField(
                         controller: hour,
-                        keyboardType: TextInputType.datetime,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
-                          hintText: '00',
-                          hintStyle: TextStyle(color: Colors.black),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(25),
-                            borderSide: BorderSide(color: Color(0xffbbd0ff)),
-                          ),
-                        ),
+                            labelText: '00',
+                            labelStyle: TextStyle(color: Color(0xffADB5BD)),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  width: 1, color: Color(0xffBBD0FF)),
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  width: 1, color: Color(0xffBBD0FF)),
+                              borderRadius: BorderRadius.circular(25),
+                            )),
                       ),
                     ),
                     Spacer(),
                     Container(
                       width: 140,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color(0xffbbd0ff),
-                        ),
-                        borderRadius: BorderRadius.circular(25),
-                      ),
                       child: TextFormField(
                         controller: minutes,
-                        keyboardType: TextInputType.datetime,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
-                          hintText: '00',
-                          hintStyle: TextStyle(color: Colors.black),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(25),
-                          ),
-                        ),
+                            labelText: '00',
+                            labelStyle: TextStyle(color: Color(0xffADB5BD)),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  width: 1, color: Color(0xffBBD0FF)),
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  width: 1, color: Color(0xffBBD0FF)),
+                              borderRadius: BorderRadius.circular(25),
+                            )),
                       ),
                     ),
                     Spacer(
@@ -606,21 +602,21 @@ class _HomeState extends State<RequestCaregiver2> {
                 ),
                 const SizedBox(height: 12),
                 Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color(0xffbbd0ff),
-                    ),
-                    borderRadius: BorderRadius.circular(25),
-                  ),
                   child: TextFormField(
-                    keyboardType: TextInputType.text,
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      hintText: 'Enter Your Address',
-                      hintStyle: TextStyle(color: Colors.black),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                    ),
+                        labelText: 'Enter Your Address',
+                        labelStyle: TextStyle(color: Color(0xffADB5BD)),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                              width: 1, color: Color(0xffBBD0FF)),
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                              width: 1, color: Color(0xffBBD0FF)),
+                          borderRadius: BorderRadius.circular(25),
+                        )),
                   ),
                 ),
                 const SizedBox(height: 20),

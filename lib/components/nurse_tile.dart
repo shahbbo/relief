@@ -111,7 +111,7 @@ class nurse extends StatelessWidget {
           GestureDetector(
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const CareGiver()));
+                  MaterialPageRoute(builder: (context) => CareGiver()));
             },
             child: Container(
               width: 247,
