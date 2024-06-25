@@ -44,11 +44,12 @@ class _RegisterP2State extends State<RegisterP2> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<RegisterCubit, RegisterState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if(state is RegisterPatientSuccessState){
          CacheHelper.saveData(key: 'tokenPatient', value: state.data['token']);
          CacheHelper.saveData(key: 'ID', value: state.data['UserData']['_id']);
-         inCareHeaderCubit.get(context).getUserDataPatient(token: tokenPatient.toString());
+         await inCareHeaderCubit.get(context).getUserDataPatient(token: tokenPatient.toString());
+         await inCareHeaderCubit.get(context).getAllUserDataCaregiver();
          Navigator.push(context, MaterialPageRoute(builder: (context) => elderApp()));
         }
       },
