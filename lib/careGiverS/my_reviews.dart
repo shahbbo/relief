@@ -127,15 +127,11 @@ class MyReviews extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 360,
-                  height: 1.0,
-                  color: const Color(0xffdee2e6),
-                ),
-              ],
+            Divider(
+              color: const Color(0xffdee2e6),
+              thickness: 1,
+              indent: 0,
+              endIndent: 0,
             ),
             const SizedBox(
               height: 25,

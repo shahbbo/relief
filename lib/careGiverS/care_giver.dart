@@ -166,13 +166,13 @@ class _CareGiverState extends State<CareGiver> {
                   const SizedBox(
                     height: 30,
                   ),
-                  const Row(
+                  Row(
                     children: [
                       ImageIcon(AssetImage('asseets/MapPin.png')),
                       SizedBox(
                         width: 5,
                       ),
-                      Text('Ismailia, Egypt'),
+                      Text(cubit.addressCaregiver),
                       SizedBox(
                         width: 2,
                       ),

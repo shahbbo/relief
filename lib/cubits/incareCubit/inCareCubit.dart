@@ -244,6 +244,9 @@ class inCareHeaderCubit extends Cubit<headerState> {
       url: '${AppStrings.caregiverById}/$id',
     ).then((value) {
       getCaregiverById = GetAllUserDataCaregiver.fromJson(value.data['data']);
+      getPlaceCaregiver(
+          lat: getCaregiverById?.location?.coordinates?[0],
+          lon: getCaregiverById?.location?.coordinates?[0]);
       emit(CaregiverGetUserByIdSuccessState());
     }).catchError((onError) {
       if (onError is DioException) {
@@ -281,6 +284,24 @@ class inCareHeaderCubit extends Cubit<headerState> {
         emit(PatientSpecificRequestsErrorState(
             onError.response!.data['message']));
       }
+    });
+  }
+
+  String addressCaregiver = ' ';
+  Future<void> getPlaceCaregiver({
+    required dynamic lat,
+    required dynamic lon,
+  }) async {
+    emit(LoadingPlace());
+    await DioHelper.getPlace(url: 'lat=${lat}&lon=${lon}').then((value) {
+      addressCaregiver = value.data['display_name'];
+      emit(SuccessPlace());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        print('error : ${onError.response!.data}');
+      }
+      print('error : $onError');
+      emit(ErrorPlace());
     });
   }
 }
