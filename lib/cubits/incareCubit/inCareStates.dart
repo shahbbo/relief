@@ -110,3 +110,13 @@ final class GetApprovedRequestsForCaregiverErrorState extends headerState {
 
   GetApprovedRequestsForCaregiverErrorState(this.error);
 }
+
+final class CaregiverAcceptRequestLoadingState extends headerState {}
+
+final class CaregiverAcceptRequestSuccessState extends headerState {}
+
+final class CaregiverAcceptRequestErrorState extends headerState {
+  final String error;
+
+  CaregiverAcceptRequestErrorState(this.error);
+}

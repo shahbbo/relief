@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-class ScheduleRequestsWidget extends StatelessWidget {
-  const ScheduleRequestsWidget({super.key});
+import '../../models/PendingRequest/PendingRequestModel.dart';
 
+class ScheduleRequestsWidget extends StatelessWidget {
+  const ScheduleRequestsWidget({super.key, required this.pendingRequestModel});
+  final PendingRequestModel pendingRequestModel;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,7 +25,7 @@ class ScheduleRequestsWidget extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: 'name :',
+                      text: 'name : ',
                       style: TextStyle(
                         color: Color(0xFF003049),
                         fontSize: 16,
@@ -33,7 +35,7 @@ class ScheduleRequestsWidget extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: ' ali khaled',
+                      text: pendingRequestModel.userNamePatient,
                       style: TextStyle(
                         color: Color(0xFF003049),
                         fontSize: 16,
@@ -52,7 +54,7 @@ class ScheduleRequestsWidget extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: 'location :',
+                      text: 'location : ',
                       style: TextStyle(
                         color: Color(0xFF003049),
                         fontSize: 16,
@@ -81,7 +83,7 @@ class ScheduleRequestsWidget extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: 'phone number :',
+                      text: ' phone number : ',
                       style: TextStyle(
                         color: Color(0xFF003049),
                         fontSize: 16,
@@ -91,7 +93,7 @@ class ScheduleRequestsWidget extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: '01023659988',
+                      text: pendingRequestModel.patientPhone,
                       style: TextStyle(
                         color: Color(0xFF003049),
                         fontSize: 16,
@@ -110,7 +112,7 @@ class ScheduleRequestsWidget extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: 'date and duration :',
+                      text: 'date and duration : ',
                       style: TextStyle(
                         color: Color(0xFF003049),
                         fontSize: 16,
@@ -120,7 +122,7 @@ class ScheduleRequestsWidget extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: '15/6  - 3AM , 15 days',
+                      text: '${pendingRequestModel.appointmentDateTime?.day}/${pendingRequestModel.appointmentDateTime?.month}  - ${pendingRequestModel.appointmentDateTime?.hours}AM , ${pendingRequestModel.determineThePeriodOfService?.amount} days',
                       style: TextStyle(
                         color: Color(0xFF003049),
                         fontSize: 16,

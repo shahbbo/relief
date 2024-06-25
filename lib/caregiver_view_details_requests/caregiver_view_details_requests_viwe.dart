@@ -41,11 +41,13 @@ class CaregiverViewDetailsRequestsView extends StatelessWidget {
                   ListView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
-                    itemCount: 5,
+                    itemCount: cubit.pendingRequestModel.length,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: ScheduleRequestsWidget(),
+                        child: ScheduleRequestsWidget(
+                          pendingRequestModel: cubit.pendingRequestModel[index],
+                        ),
                       );
                     },
                   )

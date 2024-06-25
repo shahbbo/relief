@@ -23,6 +23,7 @@ import 'package:relief/sittings/SittingSS.dart';
 
 import '../../models/GetAllUserDataCaregiver/GetAllUserDataCaregiver.dart';
 import '../../models/GetAprovedRequestsForPatient/RequestsForPatientModel.dart';
+import '../../models/PendingRequest/PendingRequestModel.dart';
 import '../../models/UserDataPatient/UserDataPatient.dart';
 import '../../shared/network/local/cache_helper.dart';
 import '../../shared/network/remote/dio_helper.dart';
@@ -345,6 +346,27 @@ class inCareHeaderCubit extends Cubit<headerState> {
         debugPrint(onError.response!.data['message']);
         debugPrint(onError.message);
         emit(GetApprovedRequestsForCaregiverErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+
+  List<PendingRequestModel> pendingRequestModel= [];
+  Future<void> caregiverAcceptRequest() async {
+    emit(CaregiverAcceptRequestLoadingState());
+    uid = CacheHelper.getData(key: 'ID');
+    await DioHelper.getDate(
+      url: 'caregiver/${uid}/pendingrequest',
+    ).then((value) {
+      pendingRequestModel = (value.data as List)
+          .map((e) => PendingRequestModel.fromJson(e))
+          .toList();
+      emit(CaregiverAcceptRequestSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(CaregiverAcceptRequestErrorState(onError.response!.data['message']));
       }
     });
   }
