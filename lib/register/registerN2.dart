@@ -8,6 +8,9 @@ import 'package:relief/register/logInScreen.dart';
 import 'package:dob_input_field/dob_input_field.dart';
 import 'package:relief/shared/network/local/cache_helper.dart';
 
+import '../cubits/incareCubit/inCareCubit.dart';
+import '../shared/components/constants.dart';
+
 class RegisterN2 extends StatefulWidget {
   const RegisterN2({super.key});
 
@@ -85,6 +88,7 @@ class _RegisterN2State extends State<RegisterN2> {
         if(state is RegisterCarerSuccessState) {
           CacheHelper.saveData(key: 'tokenCaregiver', value: state.data['token']);
           CacheHelper.saveData(key: 'ID', value: state.data['UserData']['_id']);
+          inCareHeaderCubit.get(context).getUserDataPatient(token: tokenCaregiver.toString());
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Registered Successfully'),

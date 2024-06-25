@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:location/location.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 import 'package:relief/register/cubit/register_cubit.dart';
 import 'package:relief/register/logInScreen.dart';
 
 import '../elderApp.dart';
+import '../shared/components/constants.dart';
 import '../shared/network/local/cache_helper.dart';
 
 class RegisterP2 extends StatefulWidget {
@@ -46,7 +48,7 @@ class _RegisterP2State extends State<RegisterP2> {
         if(state is RegisterPatientSuccessState){
          CacheHelper.saveData(key: 'tokenPatient', value: state.data['token']);
          CacheHelper.saveData(key: 'ID', value: state.data['UserData']['_id']);
-
+         inCareHeaderCubit.get(context).getUserDataPatient(token: tokenPatient.toString());
          Navigator.push(context, MaterialPageRoute(builder: (context) => elderApp()));
         }
       },
