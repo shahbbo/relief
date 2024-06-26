@@ -153,7 +153,9 @@ class _CareGiverState extends State<CareGiver> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Reviews()));
+                                    builder: (context) => Reviews(
+                                        id: widget.id,
+                                    )));
                           },
                           label: Text('   Reviews '),
                           icon: Icon(Icons.reviews),
