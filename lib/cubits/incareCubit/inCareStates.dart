@@ -161,3 +161,14 @@ final class RejectPrivateRequestErrorState extends headerState {
 
   RejectPrivateRequestErrorState(this.error);
 }
+
+
+final class MakeRatingLoadingState extends headerState {}
+
+final class MakeRatingSuccessState extends headerState {}
+
+final class MakeRatingErrorState extends headerState {
+  final String error;
+
+  MakeRatingErrorState(this.error);
+}

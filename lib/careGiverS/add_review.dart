@@ -1,113 +1,183 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 
-class AddReview extends StatelessWidget {
-  const AddReview({super.key});
+class AddReview extends StatefulWidget {
+  const AddReview({super.key, required this.id});
+  final String id;
+
+  @override
+  State<AddReview> createState() => _AddReviewState();
+}
+
+class _AddReviewState extends State<AddReview> {
+
+  double ratings = 0 ;
+
+  TextEditingController  messageController = TextEditingController() ;
+
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(40.0), // here the desired height
-          child: AppBar(
-            title: const Text(
-              'Add Reviews',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
+    return BlocConsumer<inCareHeaderCubit, headerState>(
+      listener: (context, state) {
+        if (state is MakeRatingSuccessState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Rating Added Successfully'),
+              backgroundColor: Colors.green,
+            ),
+          );
+
+          Navigator.pop(context);
+        } else if (state is MakeRatingErrorState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.error),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      },
+      builder: (context, state) {
+        var cubit = inCareHeaderCubit.get(context);
+        return Scaffold(
+          appBar: PreferredSize(
+              preferredSize: const Size.fromHeight(40.0),
+              // here the desired height
+              child: AppBar(
+                title: const Text(
+                  'Add Reviews',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              )),
+          body: ModalProgressHUD(
+            inAsyncCall: state is MakeRatingLoadingState,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const Row(
+                      children: [
+                        Text(
+                          'Tap To Rate',
+                          style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xff212529)),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    RatingBar.builder(
+                      initialRating: 0,
+                      minRating: 1,
+                      direction: Axis.horizontal,
+                      allowHalfRating: true,
+                      itemCount: 5,
+                      itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                      itemBuilder: (context, _) => const Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      onRatingUpdate: (rating) {
+                        setState(() {
+                          ratings = rating;
+                        });
+
+                      },
+                    ),
+                    const SizedBox(
+                      height: 45,
+                    ),
+                    const Row(
+                      children: [
+                        Text(
+                          'Tell Us More (Optional)',
+                          style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xff212529)),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    Form(
+                      key: formKey,
+                      child: TextFormField(
+                        controller: messageController,
+                        maxLines: null,
+                        textAlignVertical: TextAlignVertical.top,
+                        keyboardType: TextInputType.multiline,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15)),
+                          hintText: 'Why This Rate?',
+                        ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    const Text(
+                      'Note:Your review helps us to improve your experince',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xff6c757d),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 340,
+                    ),
+                    SizedBox(
+                      width: 265,
+                      height: 50,
+                      child: MaterialButton(
+                        onPressed: () {
+                          if(formKey.currentState!.validate()) {
+                            cubit.makeRating(
+                              id: widget.id,
+                              rating: ratings.toInt(),
+                              messageRating: messageController.text,
+                            );
+                          }
+                        },
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        color: const Color(0xFF212529),
+                        child: const Text(
+                          'Submit Review',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          )),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const Row(
-                children: [
-                  Text(
-                    'Tap To Rate',
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xff212529)),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              RatingBar.builder(
-                initialRating: 0,
-                minRating: 1,
-                direction: Axis.horizontal,
-                allowHalfRating: true,
-                itemCount: 5,
-                itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                itemBuilder: (context, _) => const Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                ),
-                onRatingUpdate: (rating) {},
-              ),
-              const SizedBox(
-                height: 45,
-              ),
-              const Row(
-                children: [
-                  Text(
-                    'Tell Us More (Optional)',
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xff212529)),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15)),
-                  hintText: 'Why This Rate?',
-                ),
-              ),
-              const Text(
-                'Note:Your review helps us to improve your experince',
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xff6c757d),
-                ),
-              ),
-              const SizedBox(
-                height: 340,
-              ),
-              SizedBox(
-                width: 265,
-                height: 50,
-                child: MaterialButton(
-                  onPressed: () {},
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25.0),
-                  ),
-                  color: const Color(0xFF212529),
-                  child: const Text(
-                    'Submit Review',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ],
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

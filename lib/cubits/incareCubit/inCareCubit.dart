@@ -437,4 +437,28 @@ class inCareHeaderCubit extends Cubit<headerState> {
     });
   }
 
+
+
+  Future<void> makeRating({
+    required String id,
+    required int rating,
+    required String messageRating,
+  }) async {
+    emit(MakeRatingLoadingState());
+    await DioHelper.postData(
+      url: 'requests/${id}/rate',
+      data: {
+        'rating' : rating,
+        'messageRating' :messageRating,
+      },
+    ).then((value) {
+      emit(MakeRatingSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(MakeRatingErrorState(onError.response!.data['message']));
+      }
+    });
+  }
 }

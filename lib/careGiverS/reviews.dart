@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:relief/careGiverS/add_review.dart';
 
 class Reviews extends StatefulWidget {
   const Reviews({super.key});
@@ -380,30 +379,6 @@ class _ReviewsState extends State<Reviews> with SingleTickerProviderStateMixin {
                 const SizedBox(
                   height: 20,
                 ),
-                SizedBox(
-                  width: 265,
-                  height: 50,
-                  child: MaterialButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const AddReview()));
-                    },
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                    color: const Color(0xFFD90429),
-                    child: const Text(
-                      'Add Review',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
               ],
             ) : Column(
               children: [
@@ -449,33 +424,7 @@ class _ReviewsState extends State<Reviews> with SingleTickerProviderStateMixin {
                     color: Color(0xff343a40),
                   ),
                 ),
-                const SizedBox(
-                  height: 350,
-                ),
-                SizedBox(
-                  width: 265,
-                  height: 50,
-                  child: MaterialButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const AddReview()));
-                    },
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                    color: const Color(0xFFD90429),
-                    child: const Text(
-                      'Add Review',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
+
               ],
             ),
           ],

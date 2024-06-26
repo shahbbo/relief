@@ -58,7 +58,39 @@ class elderNamePhoto extends StatelessWidget {
                   ),
                 ),
                 Spacer(),
+
                 CircleAvatar(
+                  radius: 20,
+                  backgroundColor: Colors.black,
+                  child: CircleAvatar(
+                    radius: 18,
+                    backgroundImage: cubit?.userData
+                        ?.profilePhoto !=
+                        null
+                        ? NetworkImage(cubit?.userData
+                        ?.profilePhoto
+                        .toString() ??
+                        '')
+                        : const NetworkImage(
+                      'https://t3.ftcdn.net/jpg/03/29/17/78/360_F_329177878_ij7ooGdwU9EKqBFtyJQvWsDmYSfI1evZ.jpg',
+                    ),
+                    child: cubit?.userData
+                        ?.profilePhoto !=
+                        null
+                        ? null
+                        : Text(
+                      cubit?.userData
+                          ?.userName?[0]
+                          .toUpperCase() ??
+                          '',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ),
+               /* CircleAvatar(
                   radius: 20,
                   backgroundColor: Colors.black,
                   backgroundImage: const NetworkImage(
@@ -73,7 +105,7 @@ class elderNamePhoto extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                ),
+                ),*/
                 /*Container(
                   width: 50,
                   height: 50,

@@ -8,6 +8,7 @@ class UserData {
       this.phone, 
       this.gender, 
       this.password,
+    this.profilePhoto,
     this.rePassword,
     this.location,});
 
@@ -16,9 +17,11 @@ class UserData {
     email = json['email'];
     dateOfBirth = json['dateOfBirth'];
     phone = json['phone'];
+    profilePhoto = json['profilePhoto'];
     gender = json['gender'];
     password = json['password'];
     rePassword = json['re_password'];
+
     // healthRecord = json['healthRecord'] != null ? HealthRecord.fromJson(json['healthRecord']) : null;
     location = json['location'] != null ? Location.fromJson(json['location']) : null;
   }
@@ -29,6 +32,7 @@ class UserData {
   String? gender;
   String? password;
   String? rePassword;
+  String? profilePhoto;
   // HealthRecord? healthRecord;
   Location? location;
 
