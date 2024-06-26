@@ -43,8 +43,9 @@ class ReviewCubit extends Cubit<ReviewState> {
     required String id ,
 }) async {
     emit(GetAllRatingsMessageForCaregiverLoadingState());
+    uid = CacheHelper.getData(key: 'ID');
     await DioHelper.getDate(
-      url: 'caregiver/${id}/messageRatingse',
+      url: 'caregiver/${id.isNotEmpty ? id : uid}/messageRatingse',
     ).then((value) {
       ratingsForCaregiver = (value.data as List)
           .map((e) => RatingsForCaregiver.fromJson(e))

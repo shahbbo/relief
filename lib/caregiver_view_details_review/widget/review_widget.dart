@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-class ReviewWidget extends StatelessWidget {
-  const ReviewWidget({super.key});
+import '../../models/RatingsForCaregiver/RatingsForCaregiver.dart';
 
+class ReviewWidget extends StatelessWidget {
+  ReviewWidget({super.key, required this.ratingsForCaregiver});
+  final RatingsForCaregiver ratingsForCaregiver ;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -13,11 +15,12 @@ class ReviewWidget extends StatelessWidget {
         Row(
           children: [
             RatingBar.builder(
-              initialRating: 3,
+              initialRating: ratingsForCaregiver.info?.rating?.toDouble() ?? 0.0,
               minRating: 1,
               direction: Axis.horizontal,
               allowHalfRating: true,
               itemCount: 5,
+              ignoreGestures: true,
               itemSize: 15,
               itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
               itemBuilder: (context, _) => Icon(
@@ -32,7 +35,7 @@ class ReviewWidget extends StatelessWidget {
               width: 10,
             ),
             Text(
-              'Ali Khaled',
+              ratingsForCaregiver.patientData?.userNamePatient?.toString() ?? '',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Color(0xFF6C757D),
@@ -47,7 +50,7 @@ class ReviewWidget extends StatelessWidget {
           height: 10,
         ),
         Text(
-          'The caregiver provided exceptional support, demonstrating compassion, professionalism, and unwavering dedication to their duties.',
+          ratingsForCaregiver.info?.messageRating?.toString() ?? '',
           style: TextStyle(
             color: Color(0xFF343A40),
             fontSize: 14,
@@ -55,7 +58,9 @@ class ReviewWidget extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
         ),
-
+        SizedBox(
+          height: 10,
+        ),
         Row(
           children: [
             Text(
