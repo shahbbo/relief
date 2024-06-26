@@ -18,11 +18,13 @@ class ReviewCubit extends Cubit<ReviewState> {
 
  List<RatingsMessageForPateintModel> ratingsMessageForPateintModel = [];
 
-  Future<void> getAllRatingsMessageForPatient() async {
+  Future<void> getAllRatingsMessageForPatient({
+    required String id,
+}) async {
     emit(GetAllRatingsMessageForPatientLoadingState());
-    uid = CacheHelper.getData(key: 'ID');
+    // uid = CacheHelper.getData(key: 'ID');
     await DioHelper.getDate(
-      url: 'patient/${uid}/Ratings',
+      url: 'patient/${id}/Ratings',
     ).then((value) {
       ratingsMessageForPateintModel = (value.data as List)
           .map((e) => RatingsMessageForPateintModel.fromJson(e))

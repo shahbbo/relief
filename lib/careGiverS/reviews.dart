@@ -36,7 +36,7 @@ class _ReviewsState extends State<Reviews> with SingleTickerProviderStateMixin {
     return BlocProvider(
       create: (context) => ReviewCubit()
         ..getMessageRatingsForCaregiver(id: widget.id)
-        ..getAllRatingsMessageForPatient(),
+        ..getAllRatingsMessageForPatient(id: widget.id),
       child: BlocConsumer<ReviewCubit, ReviewState>(
         listener: (context, state) {},
         builder: (context, state) {

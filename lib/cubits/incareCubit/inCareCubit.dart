@@ -307,15 +307,14 @@ class inCareHeaderCubit extends Cubit<headerState> {
     });
   }
 
-
-  List< RequestsForPatientModel> requestsForPatientModel = [];
+  List<RequestsForPatientModel> requestsForPatientModel = [];
   Future<void> getApprovedRequestsForPatient() async {
     emit(GetApprovedRequestsForPatientLoadingState());
     uid = CacheHelper.getData(key: 'ID');
     await DioHelper.getDate(
       url: 'patient/${uid}/requests',
     ).then((value) {
-     requestsForPatientModel = (value.data as List)
+      requestsForPatientModel = (value.data as List)
           .map((e) => RequestsForPatientModel.fromJson(e))
           .toList();
       emit(GetApprovedRequestsForPatientSuccessState());
@@ -323,12 +322,11 @@ class inCareHeaderCubit extends Cubit<headerState> {
       if (onError is DioException) {
         debugPrint(onError.response!.data['message']);
         debugPrint(onError.message);
-        emit(GetApprovedRequestsForPatientErrorState(onError.response!.data['message']));
+        emit(GetApprovedRequestsForPatientErrorState(
+            onError.response!.data['message']));
       }
     });
   }
-
-
 
   List<RequestsForPatientModel> requestsForCaregiverModel = [];
   Future<void> getApprovedRequestsForCaregiver() async {
@@ -345,13 +343,13 @@ class inCareHeaderCubit extends Cubit<headerState> {
       if (onError is DioException) {
         debugPrint(onError.response!.data['message']);
         debugPrint(onError.message);
-        emit(GetApprovedRequestsForCaregiverErrorState(onError.response!.data['message']));
+        emit(GetApprovedRequestsForCaregiverErrorState(
+            onError.response!.data['message']));
       }
     });
   }
 
-
-  List<PendingRequestModel> pendingRequestModel= [];
+  List<PendingRequestModel> pendingRequestModel = [];
   Future<void> caregiverAcceptRequest() async {
     emit(CaregiverAcceptRequestLoadingState());
     uid = CacheHelper.getData(key: 'ID');
@@ -366,11 +364,11 @@ class inCareHeaderCubit extends Cubit<headerState> {
       if (onError is DioException) {
         debugPrint(onError.response!.data['message']);
         debugPrint(onError.message);
-        emit(CaregiverAcceptRequestErrorState(onError.response!.data['message']));
+        emit(CaregiverAcceptRequestErrorState(
+            onError.response!.data['message']));
       }
     });
   }
-
 
   Future<void> approvePubicRequest({required String id}) async {
     emit(ApprovePubicRequestLoadingState());
@@ -387,7 +385,6 @@ class inCareHeaderCubit extends Cubit<headerState> {
       }
     });
   }
-
 
   Future<void> rejectPubicRequest({required String id}) async {
     emit(RejectPubicRequestLoadingState());
@@ -416,7 +413,8 @@ class inCareHeaderCubit extends Cubit<headerState> {
       if (onError is DioException) {
         debugPrint(onError.response!.data['message']);
         debugPrint(onError.message);
-        emit(ApprovePrivateRequestErrorState(onError.response!.data['message']));
+        emit(
+            ApprovePrivateRequestErrorState(onError.response!.data['message']));
       }
     });
   }
@@ -437,8 +435,6 @@ class inCareHeaderCubit extends Cubit<headerState> {
     });
   }
 
-
-
   Future<void> makeRating({
     required String id,
     required int rating,
@@ -448,8 +444,8 @@ class inCareHeaderCubit extends Cubit<headerState> {
     await DioHelper.postData(
       url: 'requests/${id}/rate',
       data: {
-        'rating' : rating,
-        'messageRating' :messageRating,
+        'rating': rating,
+        'messageRating': messageRating,
       },
     ).then((value) {
       emit(MakeRatingSuccessState());
@@ -461,7 +457,4 @@ class inCareHeaderCubit extends Cubit<headerState> {
       }
     });
   }
-
-
-
 }
