@@ -144,7 +144,10 @@ flutter:
     - asseets/reviewOn.png
     - asseets/Logoo.png
     - asseets/Hands Cash.png
-
+    - asseets/candrive.png
+    - asseets/gender.png
+    - asseets/smoker.png
+    - asseets/phone.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
