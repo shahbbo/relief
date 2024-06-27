@@ -70,8 +70,7 @@ class ScheduleWidget extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text:
-                          inCareHeaderCubit.get(context).addressController.text,
+                      text: inCareHeaderCubit.get(context).addressCaregiver,
                       style: TextStyle(
                         color: Color(0xFF003049),
                         fontSize: 16,
@@ -178,7 +177,8 @@ class ScheduleWidget extends StatelessWidget {
                           MaterialPageRoute(
                               builder: (context) => AddReview(
                                 id: requestsForPatientModel.id ?? '',
-                              )));
+                                    role: requestsForPatientModel.role ?? '',
+                                  )));
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFFD90429),

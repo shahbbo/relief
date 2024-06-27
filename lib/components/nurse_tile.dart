@@ -70,7 +70,7 @@ class nurse extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'nurse',
+                            'Caregiver',
                             style: TextStyle(
                               color: Color(0xFF3E5C76),
                               fontSize: 14,

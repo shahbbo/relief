@@ -172,3 +172,13 @@ final class MakeRatingErrorState extends headerState {
 
   MakeRatingErrorState(this.error);
 }
+
+final class MakePublicRatingLoadingState extends headerState {}
+
+final class MakePublicRatingSuccessState extends headerState {}
+
+final class MakePublicRatingErrorState extends headerState {
+  final String error;
+
+  MakePublicRatingErrorState(this.error);
+}

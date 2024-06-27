@@ -6,6 +6,7 @@ import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 class CareGiver extends StatefulWidget {
   CareGiver({super.key, required this.id});
   final String id;
+
   @override
   State<CareGiver> createState() => _CareGiverState();
 }
@@ -18,6 +19,8 @@ class _CareGiverState extends State<CareGiver> {
   TextEditingController Hour = TextEditingController();
 
   TextEditingController Minute = TextEditingController();
+
+  TextEditingController Days = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -187,7 +190,148 @@ class _CareGiverState extends State<CareGiver> {
                           ],
                         ),
                         const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            ImageIcon(AssetImage('asseets/phone.png')),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(cubit.getCaregiverById?.phone ?? ''),
+                            SizedBox(
+                              width: 2,
+                            ),
+                            Text(''),
+                          ],
+                        ),
+                        const SizedBox(
                           height: 20,
+                        ),
+                        Container(
+                          width: 345,
+                          height: 48,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 8),
+                          decoration: ShapeDecoration(
+                            color: Color(0xFFFFFFFC),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 32,
+                                height: 32,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: BoxDecoration(),
+                                child: Image.asset('asseets/smoker.png'),
+                              ),
+                              const SizedBox(width: 20),
+                              Text(
+                                cubit.getCaregiverById?.doYouSmoke
+                                        ?.toString() ??
+                                    '',
+                                style: TextStyle(
+                                  color: Color(0xFF3E5C76),
+                                  fontSize: 22,
+                                  fontFamily: 'Barlow',
+                                  fontWeight: FontWeight.w500,
+                                  height: 0,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          width: 345,
+                          height: 48,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 8),
+                          decoration: ShapeDecoration(
+                            color: Color(0xFFFFFFFC),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 32,
+                                height: 32,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: BoxDecoration(),
+                                child: Image.asset('asseets/candrive.png'),
+                              ),
+                              const SizedBox(width: 20),
+                              Text(
+                                cubit.getCaregiverById?.canYouDrive
+                                        ?.toString() ??
+                                    '',
+                                style: TextStyle(
+                                  color: Color(0xFF3E5C76),
+                                  fontSize: 22,
+                                  fontFamily: 'Barlow',
+                                  fontWeight: FontWeight.w500,
+                                  height: 0,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          width: 345,
+                          height: 48,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 8),
+                          decoration: ShapeDecoration(
+                            color: Color(0xFFFFFFFC),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 32,
+                                height: 32,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: BoxDecoration(),
+                                child: Image.asset('asseets/gender.png'),
+                              ),
+                              const SizedBox(width: 20),
+                              Text(
+                                cubit.getCaregiverById?.gender?.toString() ??
+                                    '',
+                                style: TextStyle(
+                                  color: Color(0xFF3E5C76),
+                                  fontSize: 22,
+                                  fontFamily: 'Barlow',
+                                  fontWeight: FontWeight.w500,
+                                  height: 0,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
                         ),
                         const Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -206,7 +350,7 @@ class _CareGiverState extends State<CareGiver> {
                           height: 10,
                         ),
                         Text(
-                          '[${cubit.getCaregiverById?.userName ?? ''}] ${cubit.getCaregiverById?.biography ?? ''}',
+                          ' ${cubit.getCaregiverById?.biography ?? ''}',
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 16,
@@ -471,7 +615,7 @@ class _CareGiverState extends State<CareGiver> {
                                                 height: 55,
                                                 width: 300,
                                                 child: TextFormField(
-                                                  controller: Day,
+                                                  controller: Days,
                                                   keyboardType:
                                                       TextInputType.number,
                                                   decoration: InputDecoration(
@@ -522,7 +666,7 @@ class _CareGiverState extends State<CareGiver> {
                                                             minutes: int.parse(
                                                                 Minute.text),
                                                             amount: int.parse(
-                                                                Day.text));
+                                                                Days.text));
                                                   },
                                                   style:
                                                       ElevatedButton.styleFrom(
@@ -536,7 +680,7 @@ class _CareGiverState extends State<CareGiver> {
                                                         const Color(0xffD90429),
                                                   ),
                                                   child: const Text(
-                                                    'Send',
+                                                    '  Submit  ',
                                                     style: TextStyle(
                                                       fontSize: 20,
                                                       fontWeight:
