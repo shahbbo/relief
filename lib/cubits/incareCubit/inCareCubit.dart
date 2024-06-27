@@ -239,7 +239,6 @@ class inCareHeaderCubit extends Cubit<headerState> {
   }
 
   String addressCaregiver = ' ';
-
   Future<void> getPlaceCaregiver({
     required dynamic lat,
     required dynamic lon,

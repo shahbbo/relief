@@ -123,7 +123,8 @@ class _ReviewsState extends State<Reviews> with SingleTickerProviderStateMixin {
                     indicatorColor: Color(0xff0096c7),
                     tabs: [
                       Tab(
-                        child: Text(
+                        child:
+                        Text(
                           'All',
                           style: TextStyle(
                               fontSize: 20,
