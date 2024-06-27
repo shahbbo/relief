@@ -5,9 +5,9 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 
 class AddReview extends StatefulWidget {
-  const AddReview({super.key, required this.id});
+  const AddReview({super.key, required this.id, required this.role});
   final String id;
-
+  final String role;
   @override
   State<AddReview> createState() => _AddReviewState();
 }
@@ -24,19 +24,20 @@ class _AddReviewState extends State<AddReview> {
   Widget build(BuildContext context) {
     return BlocConsumer<inCareHeaderCubit, headerState>(
       listener: (context, state) {
-        if (state is MakeRatingSuccessState) {
+        if (state is MakeRatingSuccessState ||
+            state is MakePublicRatingSuccessState) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text('Rating Added Successfully'),
               backgroundColor: Colors.green,
             ),
           );
-
           Navigator.pop(context);
-        } else if (state is MakeRatingErrorState) {
+        } else if (state is MakeRatingErrorState ||
+            state is MakePublicRatingErrorState) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(state.error),
+              content: Text('Request Has Been Reviewed Before'),
               backgroundColor: Colors.red,
             ),
           );
@@ -149,8 +150,16 @@ class _AddReviewState extends State<AddReview> {
                       height: 50,
                       child: MaterialButton(
                         onPressed: () {
-                          if(formKey.currentState!.validate()) {
+                          if (formKey.currentState!.validate() &&
+                              widget.role == 'specific') {
                             cubit.makeRating(
+                              id: widget.id,
+                              rating: ratings.toInt(),
+                              messageRating: messageController.text,
+                            );
+                          } else if (formKey.currentState!.validate() &&
+                              widget.role == 'public') {
+                            cubit.makePublicRating(
                               id: widget.id,
                               rating: ratings.toInt(),
                               messageRating: messageController.text,

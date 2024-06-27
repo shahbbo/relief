@@ -9,7 +9,6 @@ import 'package:relief/caregiver_view_details/caregiver_view_details_screen.dart
 import 'package:relief/caregiver_view_details_edit_profile/caregiver_view_details_edit_profile_view.dart';
 import 'package:relief/caregiver_view_details_requests/caregiver_view_details_requests_viwe.dart';
 import 'package:relief/caregiver_view_details_review/caregiver_view_details_review.dart';
-import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 import 'package:relief/homeScreen.dart';
 import 'package:relief/models/UserDataCarer/UserDataCaregiver.dart';
 import 'package:relief/screens/benefits.dart';
@@ -220,6 +219,7 @@ class inCareHeaderCubit extends Cubit<headerState> {
   }
 
   List<GetAllUserDataCaregiver> allUserDataCaregiver = [];
+
   Future<void> getAllUserDataCaregiver() async {
     emit(CaregiverGetAllUserLoadingState());
     await DioHelper.getDate(
@@ -238,6 +238,25 @@ class inCareHeaderCubit extends Cubit<headerState> {
     });
   }
 
+  String addressCaregiver = ' ';
+
+  Future<void> getPlaceCaregiver({
+    required dynamic lat,
+    required dynamic lon,
+  }) async {
+    emit(LoadingPlace());
+    await DioHelper.getPlace(url: 'lat=${lat}&lon=${lon}').then((value) {
+      addressCaregiver = value.data['display_name'];
+      emit(SuccessPlace());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        print('error : ${onError.response!.data}');
+      }
+      print('error : $onError');
+      emit(ErrorPlace());
+    });
+  }
+
   GetAllUserDataCaregiver? getCaregiverById;
   Future<void> getUserCaregiverById({
     required String id,
@@ -249,7 +268,7 @@ class inCareHeaderCubit extends Cubit<headerState> {
       getCaregiverById = GetAllUserDataCaregiver.fromJson(value.data['data']);
       getPlaceCaregiver(
           lat: getCaregiverById?.location?.coordinates?[0],
-          lon: getCaregiverById?.location?.coordinates?[0]);
+          lon: getCaregiverById?.location?.coordinates?[1]);
       emit(CaregiverGetUserByIdSuccessState());
     }).catchError((onError) {
       if (onError is DioException) {
@@ -290,23 +309,6 @@ class inCareHeaderCubit extends Cubit<headerState> {
     });
   }
 
-  String addressCaregiver = ' ';
-  Future<void> getPlaceCaregiver({
-    required dynamic lat,
-    required dynamic lon,
-  }) async {
-    emit(LoadingPlace());
-    await DioHelper.getPlace(url: 'lat=${lat}&lon=${lon}').then((value) {
-      addressCaregiver = value.data['display_name'];
-      emit(SuccessPlace());
-    }).catchError((onError) {
-      if (onError is DioException) {
-        print('error : ${onError.response!.data}');
-      }
-      print('error : $onError');
-      emit(ErrorPlace());
-    });
-  }
 
   List<RequestsForPatientModel> requestsForPatientModel = [];
   Future<void> getApprovedRequestsForPatient() async {
@@ -455,6 +457,29 @@ class inCareHeaderCubit extends Cubit<headerState> {
         debugPrint(onError.response!.data['message']);
         debugPrint(onError.message);
         emit(MakeRatingErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+  Future<void> makePublicRating({
+    required String id,
+    required int rating,
+    required String messageRating,
+  }) async {
+    emit(MakePublicRatingLoadingState());
+    await DioHelper.postData(
+      url: 'publicRequests/${id}/rate',
+      data: {
+        'rating': rating,
+        'messageRating': messageRating,
+      },
+    ).then((value) {
+      emit(MakePublicRatingSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(MakePublicRatingErrorState(onError.response!.data['message']));
       }
     });
   }
