@@ -70,7 +70,8 @@ class ScheduleWidget extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: inCareHeaderCubit.get(context).addressCaregiver,
+                      text:
+                          inCareHeaderCubit.get(context).addressController.text,
                       style: TextStyle(
                         color: Color(0xFF003049),
                         fontSize: 16,
