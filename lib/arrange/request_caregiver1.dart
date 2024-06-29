@@ -127,7 +127,7 @@ class _HomeState extends State<RequestCaregiver1> {
             inAsyncCall: state is PublicRequestLoadingState,
             color: Colors.transparent,
             progressIndicator: const CircularProgressIndicator(
-              color: Colors.red,
+              color: Color(0xFFB91A13),
             ),
             child: Scaffold(
               backgroundColor: Colors.white,
@@ -691,7 +691,7 @@ class _HomeState extends State<RequestCaregiver1> {
                                             borderRadius:
                                                 BorderRadius.circular(25.0),
                                           ),
-                                          color: Colors.red,
+                                          color: Color(0xFFB91A13),
                                           child: const Text(
                                             'Next',
                                             style: TextStyle(

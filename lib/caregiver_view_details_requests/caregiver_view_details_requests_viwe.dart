@@ -104,16 +104,18 @@ class CaregiverViewDetailsRequestsView extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-
                   cubit.pendingRequestModel.length == 0 ?  Center(
-                    child: Text(
-                      'No Requests',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 22,
-                        fontFamily: 'Barlow',
-                        fontWeight: FontWeight.w600,
-                      ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              'No Requests',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 22,
+                                fontFamily: 'Barlow',
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
                     ),
                   ): ListView.builder(
                     shrinkWrap: true,

@@ -30,8 +30,23 @@ class CaregiverViewDetailsReview extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
-                    ListView.builder(
-                      shrinkWrap: true,
+                    cubit.ratingsForCaregiver.length == 0
+                        ? Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text(
+                                'No Reviews Yet',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 22,
+                                  fontFamily: 'Barlow',
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          )
+                        : ListView.builder(
+                            shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: cubit.ratingsForCaregiver.length,
                       itemBuilder: (context, index) {

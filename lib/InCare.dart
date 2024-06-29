@@ -103,7 +103,7 @@ class Incare extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 16, vertical: 12),
                             decoration: ShapeDecoration(
-                              color: Color(0xFFD90429),
+                              color: Color(0xFFB91A13),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25),
                               ),
@@ -269,7 +269,7 @@ class Incare extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 16, vertical: 12),
                             decoration: ShapeDecoration(
-                              color: Color(0xFFD90429),
+                              color: Color(0xFFB91A13),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25),
                               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:relief/components/erlder_name_photo.dart';
 
 class speakToAnExp extends StatelessWidget {
   const speakToAnExp({super.key});
@@ -7,54 +8,27 @@ class speakToAnExp extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          children: [
-            SizedBox(height: 15),
-            Container(
-              width: 361,
-              height: 50,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+        body: Center(
+          child: Column(
+            children: [
+              SizedBox(height: 15),
+              elderNamePhoto(),
+              SizedBox(height: 20),
+              SizedBox(
+                width: 361,
+                child: Text(
+                  'How we can help.. ',
+                  style: TextStyle(
+                    color: Color(0xFF000814),
+                    fontSize: 40,
+                    fontFamily: 'Barlow',
+                    fontWeight: FontWeight.w600,
+                    height: 0,
                   ),
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: ShapeDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("asseets/Ellipse 1.png"),
-                        fit: BoxFit.fill,
-                      ),
-                      shape: OvalBorder(),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
-            SizedBox(
-              width: 361,
-              child: Text(
-                'How we can help.. ',
-                style: TextStyle(
-                  color: Color(0xFF000814),
-                  fontSize: 40,
-                  fontFamily: 'Barlow',
-                  fontWeight: FontWeight.w600,
-                  height: 0,
                 ),
               ),
-            ),
-            SizedBox(height: 20),
-            Center(
-              child: Container(
+              SizedBox(height: 20),
+              Container(
                 width: 361,
                 height: 100,
                 padding: const EdgeInsets.all(10),
@@ -71,8 +45,8 @@ class speakToAnExp extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Container(
-                        height: 80,
-                        padding: const EdgeInsets.all(7),
+                        // height: 80,
+                        // padding: const EdgeInsets.all(7),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -120,64 +94,61 @@ class speakToAnExp extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-            SizedBox(height: 20),
-            Center(
-                child: Container(
-              width: 361,
-              height: 100,
-              padding: const EdgeInsets.all(7),
-              decoration: ShapeDecoration(
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(width: 1, color: Color(0xFFBBD0FF)),
-                  borderRadius: BorderRadius.circular(25),
+              SizedBox(height: 20),
+              Container(
+                width: 361,
+                height: 100,
+                padding: const EdgeInsets.all(7),
+                decoration: ShapeDecoration(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(width: 1, color: Color(0xFFBBD0FF)),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
                 ),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 80,
-                      padding: const EdgeInsets.all(10),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                              width: 32,
-                              height: 32,
-                              clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(),
-                              child: Image.asset('asseets/HandHeart.png')),
-                          const SizedBox(width: 15),
-                          Expanded(
-                            child: SizedBox(
-                              child: Text(
-                                'Our care planning experts will work with your family to tailor a bespoke live-in care arrangement to your loved one’s needs.',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14,
-                                  fontFamily: 'Barlow',
-                                  fontWeight: FontWeight.w500,
-                                  height: 0,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        // height: 80,
+                        // padding: const EdgeInsets.all(10),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                                width: 32,
+                                height: 32,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: BoxDecoration(),
+                                child: Image.asset('asseets/HandHeart.png')),
+                            const SizedBox(width: 15),
+                            Expanded(
+                              child: SizedBox(
+                                child: Text(
+                                  'Our care planning experts will work with your family to tailor a bespoke live-in care arrangement to your loved one’s needs.',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 14,
+                                    fontFamily: 'Barlow',
+                                    fontWeight: FontWeight.w500,
+                                    height: 0,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            )),
-            SizedBox(height: 20),
-            Center(
-              child: Container(
+              SizedBox(height: 20),
+              Container(
                 width: 361,
                 height: 100,
                 padding: const EdgeInsets.all(7),
@@ -230,84 +201,84 @@ class speakToAnExp extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-            SizedBox(height: 35),
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                width: 361,
-                height: 91,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 1),
-                clipBehavior: Clip.antiAlias,
-                decoration: ShapeDecoration(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(width: 1, color: Color(0xFFBBD0FF)),
-                    borderRadius: BorderRadius.circular(25),
+              SizedBox(height: 35),
+              GestureDetector(
+                onTap: () {},
+                child: Container(
+                  width: 361,
+                  height: 91,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 1),
+                  clipBehavior: Clip.antiAlias,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 1, color: Color(0xFFBBD0FF)),
+                      borderRadius: BorderRadius.circular(25),
+                    ),
                   ),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 206,
-                      height: 76,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Call us on',
-                            style: TextStyle(
-                              color: Color(0xFFD90429),
-                              fontSize: 25,
-                              fontFamily: 'Barlow',
-                              fontWeight: FontWeight.w600,
-                              height: 0,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 206,
+                        height: 76,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Call us on',
+                              style: TextStyle(
+                                color: Color(0xFFD90429),
+                                fontSize: 25,
+                                fontFamily: 'Barlow',
+                                fontWeight: FontWeight.w600,
+                                height: 0,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 8),
-                          Container(
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                    width: 32,
-                                    height: 32,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: BoxDecoration(),
-                                    child: Image.asset('asseets/call.png')),
-                                SizedBox(
-                                  width: 119,
-                                  height: 24,
-                                  child: Text(
-                                    '01028293040',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20,
-                                      fontFamily: 'Barlow',
-                                      fontWeight: FontWeight.w500,
-                                      height: 0,
+                            const SizedBox(height: 8),
+                            Container(
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      width: 32,
+                                      height: 32,
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: BoxDecoration(),
+                                      child: Image.asset('asseets/call.png')),
+                                  SizedBox(
+                                    width: 119,
+                                    height: 24,
+                                    child: Text(
+                                      '01028293040',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 20,
+                                        fontFamily: 'Barlow',
+                                        fontWeight: FontWeight.w500,
+                                        height: 0,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

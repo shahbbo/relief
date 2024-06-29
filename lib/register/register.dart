@@ -21,9 +21,7 @@ class _RegisterState extends State<Register> {
   bool _obscureText = true;
   Location location = Location();
 
-
-
-  // RegExp regex = RegExp(r'^(?=.[A-Za-z])(?=.[0-9])(?=.[!#?%$@]).{8,}$');
+  RegExp regex = RegExp(r'^(?=.[A-Za-z])(?=.[0-9])(?=.[!#?%$@]).{8,}$');
   RegExp regexx = RegExp(r'[a-zA-Z0-9.%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$');
   RegExp regexn = RegExp('[a-zA-Z]');
   RegExp regexp = RegExp('^(?:[+01]8)?[0-9]{10}');

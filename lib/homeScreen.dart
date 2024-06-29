@@ -18,7 +18,7 @@ class homeScreen extends StatelessWidget {
             children: [
               SizedBox(height: 8),
               elderNamePhoto(),
-              SizedBox(height: 4),
+              // SizedBox(height: 4),
               SizedBox(
                 width: 325,
                 height: 44,

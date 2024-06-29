@@ -12,10 +12,10 @@ class elderNamePhoto extends StatelessWidget {
       builder: (context, state) {
         var cubit = inCareHeaderCubit.get(context).userDataPatient;
         return Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(3),
           child: Container(
             width: 361,
-            height: 51,
+            height: 80,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -35,7 +35,7 @@ class elderNamePhoto extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 18,
+                            fontSize: 17,
                             fontFamily: 'Barlow',
                             fontWeight: FontWeight.w500,
                             height: 0,
@@ -43,22 +43,29 @@ class elderNamePhoto extends StatelessWidget {
                         ),
                       ),
                       Spacer(),
-                      Text(
-                        '${inCareHeaderCubit.get(context).addressController.text}',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xFF3E5C76),
-                          fontSize: 14,
-                          fontFamily: 'Barlow',
-                          fontWeight: FontWeight.w400,
-                          height: 0,
+                      SizedBox(
+                        height: 50,
+                        width: 270,
+                        child: Text.rich(
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          TextSpan(
+                            text:
+                                '${inCareHeaderCubit.get(context).addressController.text}',
+                            style: TextStyle(
+                              color: Color(0xFF3E5C76),
+                              fontSize: 12,
+                              fontFamily: 'Barlow',
+                              fontWeight: FontWeight.w400,
+                              height: 0,
+                            ),
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
                 Spacer(),
-
                 CircleAvatar(
                   radius: 20,
                   backgroundColor: Colors.black,
@@ -90,43 +97,6 @@ class elderNamePhoto extends StatelessWidget {
                     ),
                   ),
                 ),
-               /* CircleAvatar(
-                  radius: 20,
-                  backgroundColor: Colors.black,
-                  backgroundImage: const NetworkImage(
-                    'https://t3.ftcdn.net/jpg/03/29/17/78/360_F_329177878_ij7ooGdwU9EKqBFtyJQvWsDmYSfI1evZ.jpg',
-                  ),
-                  child: Text(
-                    cubit?.userData?.userName?[0] ?? '',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontFamily: 'Barlow',
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),*/
-                /*Container(
-                  width: 50,
-                  height: 50,
-                  decoration: ShapeDecoration(
-                  */ /*  image: DecorationImage(
-                      image: AssetImage("asseets/Ellipse 1.png"),
-                      fit: BoxFit.fill,
-                    ),*/ /*
-                    shape: OvalBorder(),
-                  ),
-                  child: Text(
-                    cubit?.userData?.userName?[0] ?? '',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontFamily: 'Barlow',
-                      fontWeight: FontWeight.w500,
-                      height: 0,
-                    ),
-                  )
-                ),*/
               ],
             ),
           ),

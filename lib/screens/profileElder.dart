@@ -69,7 +69,7 @@ class _elderprofileState extends State<elderprofile> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.error),
-              backgroundColor: Colors.red,
+              backgroundColor: Color(0xFFB91A13),
             ),
           );
         }
@@ -84,9 +84,9 @@ class _elderprofileState extends State<elderprofile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(height: 20),
-                  elderNamePhoto(),
                   SizedBox(height: 10),
+                  elderNamePhoto(),
+                  SizedBox(height: 5),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Form(
@@ -407,7 +407,7 @@ class _elderprofileState extends State<elderprofile> {
                               ),
                             ),
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.redAccent,
+                              backgroundColor: Color(0xFFB91A13),
                               minimumSize: Size(double.infinity, 50),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),

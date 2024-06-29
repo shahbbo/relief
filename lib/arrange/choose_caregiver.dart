@@ -85,6 +85,17 @@ class _ChooseCaregiverState extends State<ChooseCaregiver>
                                     : Color(0xff212529)),
                           ),
                         ),
+                        // Tab(
+                        //   child: Text(
+                        //     'Ratings',
+                        //     style: TextStyle(
+                        //         fontSize: 16,
+                        //         fontWeight: FontWeight.w500,
+                        //         color: valueIndex == 3
+                        //             ? Color(0xff0096c7)
+                        //             : Color(0xff212529)),
+                        //   ),
+                        // ),
                       ],
                       onTap: (value) {
                         setState(() {
@@ -153,8 +164,8 @@ class _ChooseCaregiverState extends State<ChooseCaregiver>
                                 0,
                         itemBuilder: (BuildContext context, int index) {
                           return forYouNurse(
-                              nurseList: cubit
-                              .aiRecommendationModel?.matchingCaregivers?[index]);
+                              nurseList: cubit.aiRecommendationModel
+                                  ?.matchingCaregivers?[index]);
                         },
                       ),
           ]),

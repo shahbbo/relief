@@ -149,7 +149,7 @@ class ScheduleWidget extends StatelessWidget {
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
-                        side: BorderSide(color: Color(0xFFD90429)),
+                        side: BorderSide(color: Color(0xffbbd0ff)),
                         borderRadius: BorderRadius.circular(25.0),
                       ),
                     ),
@@ -174,7 +174,7 @@ class ScheduleWidget extends StatelessWidget {
                                   )));
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFFD90429),
+                      backgroundColor: Color(0xFFB91A13),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25.0),
                       ),

@@ -40,8 +40,6 @@ class _LoginScreenState extends State<LoginScreen> {
           await CacheHelper.saveData(key: 'tokenPatient', value: state.data['token']);
           await CacheHelper.saveData(key: 'ID', value: state.data['UserData']['_id']);
 
-
-
           tokenPatient = await CacheHelper.getData(key: 'tokenPatient');
           await inCareHeaderCubit.get(context).getUserDataPatient(token: tokenPatient.toString());
           await inCareHeaderCubit.get(context).getAllUserDataCaregiver();
@@ -65,7 +63,6 @@ class _LoginScreenState extends State<LoginScreen> {
           await inCareHeaderCubit.get(context).caregiverAcceptRequest();
           await Navigator.push(
               context, MaterialPageRoute(builder: (context) => const carerApp()));
-
           await inCareHeaderCubit.get(context).mainScreensC[0];
         }
       },
@@ -224,7 +221,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25),
                             ),
-                            color: Colors.redAccent,
+                            color: Color(0xFFB91A13),
                             child: const Text(
                               'Log In',
                               style: TextStyle(
@@ -255,7 +252,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   'Register',
                                   style: TextStyle(
                                     fontSize: 18,
-                                    color: Colors.red,
+                                    color: Color(0xFFB91A13),
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ))

@@ -587,37 +587,37 @@ class _HomeState extends State<RequestCaregiver2> {
                   ],
                 ),
                 const SizedBox(height: 12),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      'What Is Your Full Home Address?',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 12),
-                Container(
-                  child: TextFormField(
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                        labelText: 'Enter Your Address',
-                        labelStyle: TextStyle(color: Color(0xffADB5BD)),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              width: 1, color: Color(0xffBBD0FF)),
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              width: 1, color: Color(0xffBBD0FF)),
-                          borderRadius: BorderRadius.circular(25),
-                        )),
-                  ),
-                ),
+                // const Row(
+                //   mainAxisAlignment: MainAxisAlignment.start,
+                //   children: [
+                //     Text(
+                //       'What Is Your Full Home Address?',
+                //       style: TextStyle(
+                //         fontSize: 18,
+                //         fontWeight: FontWeight.w600,
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                // const SizedBox(height: 12),
+                // Container(
+                //   child: TextFormField(
+                //     keyboardType: TextInputType.number,
+                //     decoration: InputDecoration(
+                //         labelText: 'Enter Your Address',
+                //         labelStyle: TextStyle(color: Color(0xffADB5BD)),
+                //         enabledBorder: OutlineInputBorder(
+                //           borderSide: const BorderSide(
+                //               width: 1, color: Color(0xffBBD0FF)),
+                //           borderRadius: BorderRadius.circular(25),
+                //         ),
+                //         focusedBorder: OutlineInputBorder(
+                //           borderSide: const BorderSide(
+                //               width: 1, color: Color(0xffBBD0FF)),
+                //           borderRadius: BorderRadius.circular(25),
+                //         )),
+                //   ),
+                // ),
                 const SizedBox(height: 20),
                 const Text(
                   '*Note:by clicking Send Request your agree that : '
@@ -669,7 +669,7 @@ class _HomeState extends State<RequestCaregiver2> {
                           // width: 173,
                           height: 50,
                           child: MaterialButton(
-                            color: Colors.red,
+                            color: Color(0xFFB91A13),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25.0),
                             ),
