@@ -188,3 +188,23 @@ final class LoadingPlaceCaregiver extends headerState {}
 final class SuccessPlaceCaregiver extends headerState {}
 
 final class ErrorPlaceCaregiver extends headerState {}
+
+final class NearbyCaregiversLoadingState extends headerState {}
+
+final class NearbyCaregiversSuccessState extends headerState {}
+
+final class NearbyCaregiversErrorState extends headerState {
+  final String error;
+
+  NearbyCaregiversErrorState(this.error);
+}
+
+final class AiRecommendationLoadingState  extends headerState {}
+
+final class AiRecommendationSuccessState extends headerState {}
+
+final class AiRecommendationErrorState extends headerState {
+  final String error;
+
+  AiRecommendationErrorState(this.error);
+}

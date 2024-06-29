@@ -4,7 +4,9 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:relief/cubits/incareCubit/inCareCubit.dart';
 
 import '../careGiverS/care_giver.dart';
+import '../models/AI_recommendation/MatchingCaregivers.dart';
 import '../models/GetAllUserDataCaregiver/GetAllUserDataCaregiver.dart';
+import '../models/nearbyCaregiversModel/Caregiver.dart';
 
 class ChooseCaregiver extends StatefulWidget {
   const ChooseCaregiver({super.key});
@@ -13,7 +15,23 @@ class ChooseCaregiver extends StatefulWidget {
   State<ChooseCaregiver> createState() => _ChooseCaregiverState();
 }
 
-class _ChooseCaregiverState extends State<ChooseCaregiver> {
+class _ChooseCaregiverState extends State<ChooseCaregiver>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  int valueIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(vsync: this, length: 3);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<inCareHeaderCubit, headerState>(
@@ -30,6 +48,61 @@ class _ChooseCaregiverState extends State<ChooseCaregiver> {
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: [
+                    TabBar(
+                      controller: _tabController,
+                      indicatorColor: Color(0xff0096c7),
+                      tabs: [
+                        Tab(
+                          child: Text(
+                            'All',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: valueIndex == 0
+                                    ? Color(0xff0096c7)
+                                    : Color(0xff212529)),
+                          ),
+                        ),
+                        Tab(
+                          child: Text(
+                            'Near you',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: valueIndex == 1
+                                    ? Color(0xff0096c7)
+                                    : Color(0xff212529)),
+                          ),
+                        ),
+                        Tab(
+                          child: Text(
+                            'For you',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: valueIndex == 2
+                                    ? Color(0xff0096c7)
+                                    : Color(0xff212529)),
+                          ),
+                        ),
+                      ],
+                      onTap: (value) {
+                        setState(() {
+                          valueIndex = value;
+
+                          if (valueIndex == 0) {
+                            cubit.getAllUserDataCaregiver();
+                          } else if (valueIndex == 1) {
+                            cubit.getNearbyCaregivers();
+                          } else {
+                            cubit.getAiRecommendation();
+                          }
+                        });
+                      },
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Row(
                       children: [
                         const SizedBox(
@@ -39,6 +112,7 @@ class _ChooseCaregiverState extends State<ChooseCaregiver> {
                         const SizedBox(
                           width: 8,
                         ),
+
                         const Text(
                           'Available For Work',
                           style: TextStyle(
@@ -55,19 +129,40 @@ class _ChooseCaregiverState extends State<ChooseCaregiver> {
                 ),
               ),
             ),
-            SliverList.builder(
-              itemCount: cubit.allUserDataCaregiver.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Nurse(nurseList: cubit.allUserDataCaregiver[index]);
-              },
-            ),
+            valueIndex == 0
+                ? SliverList.builder(
+                    itemCount: cubit.allUserDataCaregiver.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Nurse(
+                          nurseList: cubit.allUserDataCaregiver[index]);
+                    },
+                  )
+                : valueIndex == 1
+                    ? SliverList.builder(
+                        itemCount:
+                            cubit.nearbyCaregiversModel?.caregiver?.length ?? 0,
+                        itemBuilder: (BuildContext context, int index) {
+                          return nearByNurse(
+                              nurseList: cubit
+                                  .nearbyCaregiversModel?.caregiver?[index]);
+                        },
+                      )
+                    : SliverList.builder(
+                        itemCount:
+                            cubit.aiRecommendationModel?.matchingCaregivers?.length ??
+                                0,
+                        itemBuilder: (BuildContext context, int index) {
+                          return forYouNurse(
+                              nurseList: cubit
+                              .aiRecommendationModel?.matchingCaregivers?[index]);
+                        },
+                      ),
           ]),
         );
       },
     );
   }
 }
-
 
 class Nurse extends StatelessWidget {
   Nurse({super.key, required this.nurseList});
@@ -100,11 +195,11 @@ class Nurse extends StatelessWidget {
                       ),
                     ),
                     child: Center(
-                      child: Text('${nurseList.userName?[0]}${nurseList.userName?[1]}',
+                      child: Text(
+                        '${nurseList.userName?[0]}${nurseList.userName?[1]}',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 30,
-                          fontFamily: 'Barlow',
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -122,10 +217,9 @@ class Nurse extends StatelessWidget {
                             Text(
                               nurseList.userName ?? '',
                               style: TextStyle(
-                                color:
-                                Colors.black.withOpacity(0.20000000298023224),
+                                color: Colors.black
+                                    .withOpacity(0.20000000298023224),
                                 fontSize: 15,
-                                fontFamily: 'Barlow',
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -134,17 +228,18 @@ class Nurse extends StatelessWidget {
                               style: TextStyle(
                                 color: Color(0xFF3E5C76),
                                 fontSize: 14,
-                                fontFamily: 'Barlow',
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
                             RatingBar.builder(
                                 allowHalfRating: true,
-                                initialRating: nurseList.averageRating?.toDouble() ?? 0,
+                                initialRating:
+                                    nurseList.averageRating?.toDouble() ?? 0,
                                 itemSize: 15,
                                 itemCount: 5,
                                 direction: Axis.horizontal,
-                                itemPadding: EdgeInsets.symmetric(horizontal: 3),
+                                itemPadding:
+                                    EdgeInsets.symmetric(horizontal: 3),
                                 itemBuilder: (context, index) {
                                   switch (index) {
                                     case 0:
@@ -183,10 +278,12 @@ class Nurse extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => CareGiver(
-                      id:  nurseList.id ?? '',
-                    )));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CareGiver(
+                              id: nurseList.id ?? '',
+                            )));
               },
               child: Container(
                 width: double.infinity,
@@ -207,7 +304,6 @@ class Nurse extends StatelessWidget {
                     style: TextStyle(
                       color: Color(0xFF3E5C76),
                       fontSize: 14,
-                      fontFamily: 'Barlow',
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -224,7 +320,7 @@ class Nurse extends StatelessWidget {
 class nearByNurse extends StatelessWidget {
   nearByNurse({super.key, required this.nurseList});
 
-  final GetAllUserDataCaregiver nurseList;
+  final Caregiver? nurseList;
 
   @override
   Widget build(BuildContext context) {
@@ -253,11 +349,10 @@ class nearByNurse extends StatelessWidget {
                     ),
                     child: Center(
                       child: Text(
-                        '${nurseList.userName?[0]}${nurseList.userName?[1]}',
+                        '${nurseList?.userName?[0]}${nurseList?.userName?[1]}',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 30,
-                          fontFamily: 'Barlow',
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -273,12 +368,11 @@ class nearByNurse extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              nurseList.userName ?? '',
+                              nurseList?.userName ?? '',
                               style: TextStyle(
                                 color: Colors.black
                                     .withOpacity(0.20000000298023224),
                                 fontSize: 15,
-                                fontFamily: 'Barlow',
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -287,14 +381,13 @@ class nearByNurse extends StatelessWidget {
                               style: TextStyle(
                                 color: Color(0xFF3E5C76),
                                 fontSize: 14,
-                                fontFamily: 'Barlow',
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
                             RatingBar.builder(
                                 allowHalfRating: true,
                                 initialRating:
-                                    nurseList.averageRating?.toDouble() ?? 0,
+                                    nurseList?.averageRating?.toDouble() ?? 0,
                                 itemSize: 15,
                                 itemCount: 5,
                                 direction: Axis.horizontal,
@@ -342,7 +435,7 @@ class nearByNurse extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => CareGiver(
-                              id: nurseList.id ?? '',
+                              id: nurseList?.id ?? '',
                             )));
               },
               child: Container(
@@ -364,7 +457,6 @@ class nearByNurse extends StatelessWidget {
                     style: TextStyle(
                       color: Color(0xFF3E5C76),
                       fontSize: 14,
-                      fontFamily: 'Barlow',
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -381,7 +473,7 @@ class nearByNurse extends StatelessWidget {
 class forYouNurse extends StatelessWidget {
   forYouNurse({super.key, required this.nurseList});
 
-  final GetAllUserDataCaregiver nurseList;
+  final MatchingCaregivers? nurseList;
 
   @override
   Widget build(BuildContext context) {
@@ -410,11 +502,10 @@ class forYouNurse extends StatelessWidget {
                     ),
                     child: Center(
                       child: Text(
-                        '${nurseList.userName?[0]}${nurseList.userName?[1]}',
+                        '${nurseList?.caregiver?.userName?[0]}${nurseList?.caregiver?.userName?[1]}',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 30,
-                          fontFamily: 'Barlow',
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -430,12 +521,11 @@ class forYouNurse extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              nurseList.userName ?? '',
+                              nurseList?.caregiver?.userName ?? '',
                               style: TextStyle(
                                 color: Colors.black
                                     .withOpacity(0.20000000298023224),
                                 fontSize: 15,
-                                fontFamily: 'Barlow',
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -444,14 +534,13 @@ class forYouNurse extends StatelessWidget {
                               style: TextStyle(
                                 color: Color(0xFF3E5C76),
                                 fontSize: 14,
-                                fontFamily: 'Barlow',
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
                             RatingBar.builder(
                                 allowHalfRating: true,
                                 initialRating:
-                                    nurseList.averageRating?.toDouble() ?? 0,
+                                    nurseList?.caregiver?.averageRating?.toDouble() ?? 0,
                                 itemSize: 15,
                                 itemCount: 5,
                                 direction: Axis.horizontal,
@@ -499,7 +588,7 @@ class forYouNurse extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => CareGiver(
-                              id: nurseList.id ?? '',
+                              id: nurseList?.caregiver?.id ?? '',
                             )));
               },
               child: Container(
@@ -521,7 +610,6 @@ class forYouNurse extends StatelessWidget {
                     style: TextStyle(
                       color: Color(0xFF3E5C76),
                       fontSize: 14,
-                      fontFamily: 'Barlow',
                       fontWeight: FontWeight.w500,
                     ),
                   ),

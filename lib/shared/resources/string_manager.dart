@@ -40,4 +40,6 @@ class AppStrings{
   static const String getAllUserCaregiver = 'caregiver/displayAllCaregivers';
 
   static const String caregiverById = 'caregiver';
+
+  static const String nearbyCaregivers = 'nearbyCaregivers' ;
 }

@@ -10,6 +10,7 @@ import 'package:relief/caregiver_view_details_edit_profile/caregiver_view_detail
 import 'package:relief/caregiver_view_details_requests/caregiver_view_details_requests_viwe.dart';
 import 'package:relief/caregiver_view_details_review/caregiver_view_details_review.dart';
 import 'package:relief/homeScreen.dart';
+import 'package:relief/models/AI_recommendation/AIRecommendationModel.dart';
 import 'package:relief/models/UserDataCarer/UserDataCaregiver.dart';
 import 'package:relief/screens/benefits.dart';
 import 'package:relief/screens/howItWorks.dart';
@@ -25,6 +26,7 @@ import '../../models/GetAllUserDataCaregiver/GetAllUserDataCaregiver.dart';
 import '../../models/GetAprovedRequestsForPatient/RequestsForPatientModel.dart';
 import '../../models/PendingRequest/PendingRequestModel.dart';
 import '../../models/UserDataPatient/UserDataPatient.dart';
+import '../../models/nearbyCaregiversModel/NearbyCaregiversModel.dart';
 import '../../shared/network/local/cache_helper.dart';
 import '../../shared/network/remote/dio_helper.dart';
 import '../../shared/resources/string_manager.dart';
@@ -485,6 +487,43 @@ class inCareHeaderCubit extends Cubit<headerState> {
         debugPrint(onError.response!.data['message']);
         debugPrint(onError.message);
         emit(MakePublicRatingErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+
+
+  NearbyCaregiversModel? nearbyCaregiversModel;
+  Future<void> getNearbyCaregivers() async {
+    emit(NearbyCaregiversLoadingState());
+    await DioHelper.getDate(
+      url: '${AppStrings.nearbyCaregivers}?km=50',
+    ).then((value) {
+      nearbyCaregiversModel = NearbyCaregiversModel.fromJson(value.data);
+      emit(NearbyCaregiversSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(NearbyCaregiversErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+  AiRecommendationModel? aiRecommendationModel;
+  Future<void> getAiRecommendation() async {
+    emit(AiRecommendationLoadingState());
+    uid = CacheHelper.getData(key: 'ID');
+    await DioHelper.getDate(
+      url: 'match-diseases/${uid}',
+    ).then((value) {
+      aiRecommendationModel = AiRecommendationModel.fromJson(value.data);
+      emit(AiRecommendationSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(AiRecommendationErrorState(onError.response!.data['message']));
       }
     });
   }
