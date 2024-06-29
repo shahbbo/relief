@@ -53,112 +53,110 @@ class _PaymentDetailesState extends State<PaymentDetailes> {
                   context: context,
                   builder: (_) {
                     return AlertDialog(
-                      content: Expanded(
-                        child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
+                      content: SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Spacer(),
+                                IconButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  icon: Icon(Icons.close),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 8.0),
+                              child: Text(
+                                'Card Number',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                            Container(
+                              height: 55,
+                              width: 300,
+                              child: textfieldPayment(
+                                text: '**** **** **** ****',
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
                                 children: [
+                                  Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            bottom: 8.0),
+                                        child: Text(
+                                          'Expiration',
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 55,
+                                        width: 105,
+                                        child: textfieldPayment(
+                                          text: 'MM/YY',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                   Spacer(),
-                                  IconButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    icon: Icon(Icons.close),
+                                  Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(bottom: 8.0),
+                                        child: Text(
+                                          'CVV',
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 55,
+                                        width: 105,
+                                        child: textfieldPayment(
+                                          text: 'CVV',
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  'Card Number',
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600),
-                                ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 8.0),
+                              child: Text(
+                                'Cardholder Name',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600),
                               ),
-                              Container(
-                                height: 55,
-                                width: 300,
-                                child: textfieldPayment(
-                                  text: '**** **** **** ****',
-                                ),
+                            ),
+                            Container(
+                              height: 55,
+                              width: 300,
+                              child: CardHolderName(
+                                text: 'Cardholder Name',
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              bottom: 8.0),
-                                          child: Text(
-                                            'Expiration',
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                        ),
-                                        Container(
-                                          height: 55,
-                                          width: 105,
-                                          child: textfieldPayment(
-                                            text: 'MM/YY',
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Spacer(),
-                                    Column(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(bottom: 8.0),
-                                          child: Text(
-                                            'CVV',
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                        ),
-                                        Container(
-                                          height: 55,
-                                          width: 105,
-                                          child: textfieldPayment(
-                                            text: 'CVV',
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
-                                child: Text(
-                                  'Cardholder Name',
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              Container(
-                                height: 55,
-                                width: 300,
-                                child: CardHolderName(
-                                  text: 'Cardholder Name',
-                                ),
-                              ),
-                              Button(
-                                text: 'Save',
-                                onpressed: () {
-                                  Navigator.pop(context);
-                                },
-                              )
-                            ],
-                          ),
+                            ),
+                            Button(
+                              text: 'Save',
+                              onpressed: () {
+                                Navigator.pop(context);
+                              },
+                            )
+                          ],
                         ),
                       ),
                     );

@@ -20,7 +20,15 @@ class calender extends StatelessWidget {
                 SizedBox(height: 8),
                 elderNamePhoto(),
                 SizedBox(height: 4),
-                ListView.builder(
+                cubit.requestsForPatientModel.length == 0 ?  Center(
+                  child: Text(
+                    'No Schedule',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ) : ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: cubit.requestsForPatientModel.length,
