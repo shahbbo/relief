@@ -1,6 +1,5 @@
 class AppStrings{
-
-  static const baseUrl = 'https://relief-1.onrender.com/api/V1/';
+  static const baseUrl = 'https://relife.codepeak.live/api/V1/';
 
   static const String loginPatient = 'patient/signin';
 

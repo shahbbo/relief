@@ -97,7 +97,6 @@ class _CareGiverState extends State<CareGiver> {
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 30,
-                                          fontFamily: 'Barlow',
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
@@ -239,7 +238,6 @@ class _CareGiverState extends State<CareGiver> {
                                 style: TextStyle(
                                   color: Color(0xFF3E5C76),
                                   fontSize: 22,
-                                  fontFamily: 'Barlow',
                                   fontWeight: FontWeight.w500,
                                   height: 0,
                                 ),
@@ -281,7 +279,6 @@ class _CareGiverState extends State<CareGiver> {
                                 style: TextStyle(
                                   color: Color(0xFF3E5C76),
                                   fontSize: 22,
-                                  fontFamily: 'Barlow',
                                   fontWeight: FontWeight.w500,
                                   height: 0,
                                 ),
@@ -322,7 +319,6 @@ class _CareGiverState extends State<CareGiver> {
                                 style: TextStyle(
                                   color: Color(0xFF3E5C76),
                                   fontSize: 22,
-                                  fontFamily: 'Barlow',
                                   fontWeight: FontWeight.w500,
                                   height: 0,
                                 ),

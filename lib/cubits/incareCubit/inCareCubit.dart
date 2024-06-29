@@ -243,16 +243,16 @@ class inCareHeaderCubit extends Cubit<headerState> {
     required dynamic lat,
     required dynamic lon,
   }) async {
-    emit(LoadingPlace());
+    emit(LoadingPlaceCaregiver());
     await DioHelper.getPlace(url: 'lat=${lat}&lon=${lon}').then((value) {
       addressCaregiver = value.data['display_name'];
-      emit(SuccessPlace());
+      emit(SuccessPlaceCaregiver());
     }).catchError((onError) {
       if (onError is DioException) {
         print('error : ${onError.response!.data}');
       }
       print('error : $onError');
-      emit(ErrorPlace());
+      emit(ErrorPlaceCaregiver());
     });
   }
 
@@ -265,9 +265,15 @@ class inCareHeaderCubit extends Cubit<headerState> {
       url: '${AppStrings.caregiverById}/$id',
     ).then((value) {
       getCaregiverById = GetAllUserDataCaregiver.fromJson(value.data['data']);
-      getPlaceCaregiver(
-          lat: getCaregiverById?.location?.coordinates?[0],
+      getCaregiverById?.location?.coordinates?.length == 0
+          ? null
+          : Future.delayed(Duration(seconds: 3), () {
+              print('lat : ${getCaregiverById?.location?.coordinates?[0]}');
+              print('lon : ${getCaregiverById?.location?.coordinates?[1]}');
+              return getPlaceCaregiver(
+                  lat: getCaregiverById?.location?.coordinates?[0],
           lon: getCaregiverById?.location?.coordinates?[1]);
+            });
       emit(CaregiverGetUserByIdSuccessState());
     }).catchError((onError) {
       if (onError is DioException) {

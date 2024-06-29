@@ -36,7 +36,6 @@ class ScheduleWidget extends StatelessWidget {
                       style: TextStyle(
                         color: Color(0xFF003049),
                         fontSize: 16,
-                        fontFamily: 'Barlow',
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -47,7 +46,6 @@ class ScheduleWidget extends StatelessWidget {
                       style: TextStyle(
                         color: Color(0xFF003049),
                         fontSize: 16,
-                        fontFamily: 'Barlow',
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -65,7 +63,6 @@ class ScheduleWidget extends StatelessWidget {
                       style: TextStyle(
                         color: Color(0xFF003049),
                         fontSize: 16,
-                        fontFamily: 'Barlow',
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -75,7 +72,6 @@ class ScheduleWidget extends StatelessWidget {
                       style: TextStyle(
                         color: Color(0xFF003049),
                         fontSize: 16,
-                        fontFamily: 'Barlow',
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -93,7 +89,6 @@ class ScheduleWidget extends StatelessWidget {
                       style: TextStyle(
                         color: Color(0xFF003049),
                         fontSize: 16,
-                        fontFamily: 'Barlow',
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -104,7 +99,6 @@ class ScheduleWidget extends StatelessWidget {
                       style: TextStyle(
                         color: Color(0xFF003049),
                         fontSize: 16,
-                        fontFamily: 'Barlow',
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -122,7 +116,6 @@ class ScheduleWidget extends StatelessWidget {
                       style: TextStyle(
                         color: Color(0xFF003049),
                         fontSize: 16,
-                        fontFamily: 'Barlow',
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -132,7 +125,6 @@ class ScheduleWidget extends StatelessWidget {
                       style: TextStyle(
                         color: Color(0xFF003049),
                         fontSize: 16,
-                        fontFamily: 'Barlow',
                         fontWeight: FontWeight.w500,
                       ),
                     ),

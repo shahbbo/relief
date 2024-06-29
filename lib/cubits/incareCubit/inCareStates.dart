@@ -182,3 +182,9 @@ final class MakePublicRatingErrorState extends headerState {
 
   MakePublicRatingErrorState(this.error);
 }
+
+final class LoadingPlaceCaregiver extends headerState {}
+
+final class SuccessPlaceCaregiver extends headerState {}
+
+final class ErrorPlaceCaregiver extends headerState {}
