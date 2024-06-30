@@ -208,3 +208,13 @@ final class AiRecommendationErrorState extends headerState {
 
   AiRecommendationErrorState(this.error);
 }
+
+final class CaregiverGetUserByRatingLoadingState extends headerState {}
+
+final class CaregiverGetUserByRatingSuccessState extends headerState {}
+
+final class CaregiverGetUserByRatingErrorState extends headerState {
+  final String error;
+
+  CaregiverGetUserByRatingErrorState(this.error);
+}

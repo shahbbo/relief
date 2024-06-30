@@ -12,14 +12,16 @@ class nurseBuilder extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         var cubit = inCareHeaderCubit.get(context);
-        return Container(
-          height: 120,
+        return state is CaregiverGetUserByRatingLoadingState
+            ? CircularProgressIndicator()
+            : Container(
+                height: 120,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: cubit.allUserDataCaregiver.length,
-            itemBuilder: (BuildContext context, int index) {
-              return nurse(nurseList: cubit.allUserDataCaregiver[index]);
-            },
+                  itemCount: cubit.leg,
+                  itemBuilder: (BuildContext context, int index) {
+                    return nurse(nurseList: cubit.valueData[index]);
+                  },
           ),
         );
       },

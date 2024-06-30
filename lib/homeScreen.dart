@@ -65,7 +65,7 @@ class homeScreen extends StatelessWidget {
                     width: 8,
                   ),
                   const Text(
-                    'Available For Work',
+                    'Top Rating',
                     style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 12,
@@ -74,7 +74,9 @@ class homeScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 5),
-              nurseBuilder(),
+              state is CaregiverGetUserByRatingLoadingState
+                  ? CircularProgressIndicator()
+                  : nurseBuilder(),
               Incare(),
             ],
           ),

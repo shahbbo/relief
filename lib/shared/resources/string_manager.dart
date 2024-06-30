@@ -42,4 +42,7 @@ class AppStrings{
   static const String caregiverById = 'caregiver';
 
   static const String nearbyCaregivers = 'nearbyCaregivers' ;
+
+  static const String ByRatingcaregiver =
+      'caregivers/displayCaregiversByRating';
 }

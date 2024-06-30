@@ -243,7 +243,8 @@ class Nurse extends StatelessWidget {
                               ),
                             ),
                             RatingBar.builder(
-                                allowHalfRating: true,
+                                allowHalfRating: false,
+                                ignoreGestures: true,
                                 initialRating:
                                     nurseList.averageRating?.toDouble() ?? 0,
                                 itemSize: 15,
@@ -396,7 +397,8 @@ class nearByNurse extends StatelessWidget {
                               ),
                             ),
                             RatingBar.builder(
-                                allowHalfRating: true,
+                                allowHalfRating: false,
+                                ignoreGestures: true,
                                 initialRating:
                                     nurseList?.averageRating?.toDouble() ?? 0,
                                 itemSize: 15,
@@ -549,9 +551,12 @@ class forYouNurse extends StatelessWidget {
                               ),
                             ),
                             RatingBar.builder(
-                                allowHalfRating: true,
-                                initialRating:
-                                    nurseList?.caregiver?.averageRating?.toDouble() ?? 0,
+                                allowHalfRating: false,
+                                ignoreGestures: true,
+                                initialRating: nurseList
+                                        ?.caregiver?.averageRating
+                                        ?.toDouble() ??
+                                    0,
                                 itemSize: 15,
                                 itemCount: 5,
                                 direction: Axis.horizontal,

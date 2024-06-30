@@ -86,10 +86,37 @@ class _ReviewsState extends State<Reviews> with SingleTickerProviderStateMixin {
                         itemSize: 20,
                         itemCount: 5,
                         itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                        itemBuilder: (context, _) => const Icon(
-                          Icons.star,
-                          color: Colors.amber,
-                        ),
+                        itemBuilder: (context, index) {
+                          switch (index) {
+                            case 0:
+                              return Icon(
+                                Icons.sentiment_very_dissatisfied,
+                                color: Colors.red,
+                              );
+                            case 1:
+                              return Icon(
+                                Icons.sentiment_dissatisfied,
+                                color: Colors.redAccent,
+                              );
+                            case 2:
+                              return Icon(
+                                Icons.sentiment_neutral,
+                                color: Colors.amber,
+                              );
+                            case 3:
+                              return Icon(
+                                Icons.sentiment_satisfied,
+                                color: Colors.lightGreen,
+                              );
+                            case 4:
+                              return Icon(
+                                Icons.sentiment_very_satisfied,
+                                color: Colors.green,
+                              );
+                            default:
+                              return Container();
+                          }
+                        },
                         onRatingUpdate: (rating) {},
                       ),
                     ],
@@ -209,10 +236,37 @@ class MyReview extends StatelessWidget {
               itemSize: 20,
               itemCount: 5,
               itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-              itemBuilder: (context, _) => const Icon(
-                Icons.star,
-                color: Colors.amber,
-              ),
+              itemBuilder: (context, index) {
+                switch (index) {
+                  case 0:
+                    return Icon(
+                      Icons.sentiment_very_dissatisfied,
+                      color: Colors.red,
+                    );
+                  case 1:
+                    return Icon(
+                      Icons.sentiment_dissatisfied,
+                      color: Colors.redAccent,
+                    );
+                  case 2:
+                    return Icon(
+                      Icons.sentiment_neutral,
+                      color: Colors.amber,
+                    );
+                  case 3:
+                    return Icon(
+                      Icons.sentiment_satisfied,
+                      color: Colors.lightGreen,
+                    );
+                  case 4:
+                    return Icon(
+                      Icons.sentiment_very_satisfied,
+                      color: Colors.green,
+                    );
+                  default:
+                    return Container();
+                }
+              },
               onRatingUpdate: (rating) {},
             ),
             Text(
@@ -297,10 +351,37 @@ class Review extends StatelessWidget {
               itemSize: 20,
               itemCount: 5,
               itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-              itemBuilder: (context, _) => const Icon(
-                Icons.star,
-                color: Colors.amber,
-              ),
+              itemBuilder: (context, index) {
+                switch (index) {
+                  case 0:
+                    return Icon(
+                      Icons.sentiment_very_dissatisfied,
+                      color: Colors.red,
+                    );
+                  case 1:
+                    return Icon(
+                      Icons.sentiment_dissatisfied,
+                      color: Colors.redAccent,
+                    );
+                  case 2:
+                    return Icon(
+                      Icons.sentiment_neutral,
+                      color: Colors.amber,
+                    );
+                  case 3:
+                    return Icon(
+                      Icons.sentiment_satisfied,
+                      color: Colors.lightGreen,
+                    );
+                  case 4:
+                    return Icon(
+                      Icons.sentiment_very_satisfied,
+                      color: Colors.green,
+                    );
+                  default:
+                    return Container();
+                }
+              },
               onRatingUpdate: (rating) {},
             ),
             Text(

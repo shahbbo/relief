@@ -86,7 +86,8 @@ class relief extends StatelessWidget {
               ..getApprovedRequestsForCaregiver()
               ..caregiverAcceptRequest()
               ..getNearbyCaregivers()
-              ..getAiRecommendation()),
+              ..getAiRecommendation()
+              ..getCaregiverByRating()),
         BlocProvider<RegisterCubit>(create: (context) => RegisterCubit()),
         BlocProvider<RequestsCubit>(create: (context) => RequestsCubit()),
       ],

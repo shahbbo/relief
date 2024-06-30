@@ -11,6 +11,7 @@ import 'package:relief/caregiver_view_details_requests/caregiver_view_details_re
 import 'package:relief/caregiver_view_details_review/caregiver_view_details_review.dart';
 import 'package:relief/homeScreen.dart';
 import 'package:relief/models/AI_recommendation/AIRecommendationModel.dart';
+import 'package:relief/models/ByRatingCaregivers/ByRatingCaregivers.dart';
 import 'package:relief/models/UserDataCarer/UserDataCaregiver.dart';
 import 'package:relief/screens/benefits.dart';
 import 'package:relief/screens/howItWorks.dart';
@@ -74,7 +75,6 @@ class inCareHeaderCubit extends Cubit<headerState> {
   ];
 
   TextEditingController addressController = TextEditingController();
-
   Future<void> getPlace({
     required dynamic lat,
     required dynamic lon,
@@ -221,7 +221,6 @@ class inCareHeaderCubit extends Cubit<headerState> {
   }
 
   List<GetAllUserDataCaregiver> allUserDataCaregiver = [];
-
   Future<void> getAllUserDataCaregiver() async {
     emit(CaregiverGetAllUserLoadingState());
     await DioHelper.getDate(
@@ -524,6 +523,33 @@ class inCareHeaderCubit extends Cubit<headerState> {
         debugPrint(onError.response!.data['message']);
         debugPrint(onError.message);
         emit(AiRecommendationErrorState(onError.response!.data['message']));
+      }
+    });
+  }
+
+  dynamic valueData;
+
+  int leg = 0;
+  List<ByRatingCaregivers> byRatingCaregivers = [];
+
+  Future<void> getCaregiverByRating() async {
+    emit(CaregiverGetUserByRatingLoadingState());
+    await DioHelper.getDate(
+      url: AppStrings.ByRatingcaregiver,
+    ).then((value) async {
+      leg = value.data.length;
+      valueData = await value.data;
+      print(valueData.length);
+      /* byRatingCaregivers = (value.data as List)
+          .map((e) => ByRatingCaregivers.fromJson(e))
+          .toList();*/
+      emit(CaregiverGetUserByRatingSuccessState());
+    }).catchError((onError) {
+      if (onError is DioException) {
+        debugPrint(onError.response!.data['message']);
+        debugPrint(onError.message);
+        emit(CaregiverGetUserByRatingErrorState(
+            onError.response!.data['message']));
       }
     });
   }

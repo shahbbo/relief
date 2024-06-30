@@ -1,12 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:relief/shared/components/constants.dart';
-
 import '../../resources/string_manager.dart';
 import '../local/cache_helper.dart';
-
 class DioHelper {
   static late Dio dio;
-
   static inti() {
     dio = Dio(
       BaseOptions(
@@ -15,7 +12,6 @@ class DioHelper {
       ),
     );
   }
-
   static Future<Response> getDate(
       {required String url,
       Map<String, dynamic>? query,

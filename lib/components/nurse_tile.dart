@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:relief/careGiverS/care_giver.dart';
 
-import '../models/GetAllUserDataCaregiver/GetAllUserDataCaregiver.dart';
 
 class nurse extends StatelessWidget {
   nurse({super.key, required this.nurseList});
 
-  final GetAllUserDataCaregiver nurseList;
+  final dynamic nurseList;
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +39,12 @@ class nurse extends StatelessWidget {
                     ),
                   ),
                   child: Center(
-                    child: Text('${nurseList.userName?[0]}${nurseList.userName?[1]}',
-                    style: TextStyle(
+                    child: Text(
+                      '${nurseList['userName'][0]}${nurseList['userName'][1]}',
+                      style: TextStyle(
                       color: Colors.black,
                       fontSize: 30,
-                      fontFamily: 'Barlow',
-                      fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w500,
                     ),
                                   ),
                   ),
@@ -60,12 +59,11 @@ class nurse extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            nurseList.userName ?? '',
+                            nurseList['userName'],
                             style: TextStyle(
                               color:
                                   Colors.black.withOpacity(0.20000000298023224),
                               fontSize: 15,
-                              fontFamily: 'Barlow',
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -74,15 +72,16 @@ class nurse extends StatelessWidget {
                             style: TextStyle(
                               color: Color(0xFF3E5C76),
                               fontSize: 14,
-                              fontFamily: 'Barlow',
                               fontWeight: FontWeight.w400,
                             ),
                           ),
                           RatingBar.builder(
-                              allowHalfRating: true,
-                              initialRating: nurseList.averageRating?.toDouble() ?? 0,
+                              allowHalfRating: false,
+                              initialRating:
+                                  nurseList['averageRating'].toDouble(),
                               itemSize: 15,
                               itemCount: 5,
+                              ignoreGestures: true,
                               direction: Axis.horizontal,
                               itemPadding: EdgeInsets.symmetric(horizontal: 3),
                               itemBuilder: (context, index) {
@@ -125,8 +124,8 @@ class nurse extends StatelessWidget {
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => CareGiver(
-                    id:  nurseList.id ?? '',
-                  )));
+                            id: nurseList['_id'],
+                          )));
             },
             child: Container(
               width: 247,
@@ -147,7 +146,6 @@ class nurse extends StatelessWidget {
                   style: TextStyle(
                     color: Color(0xFF3E5C76),
                     fontSize: 14,
-                    fontFamily: 'Barlow',
                     fontWeight: FontWeight.w500,
                   ),
                 ),
